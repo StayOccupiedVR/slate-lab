@@ -1,0 +1,68 @@
+{
+ "generated": "2026-07-30T14:41:27.268094Z",
+ "model": "gbdt",
+ "trainRows": 7688,
+ "games": [
+  {
+   "gamePk": 822946,
+   "away": "TEX",
+   "home": "TB",
+   "pAway": 0.441
+  },
+  {
+   "gamePk": 823674,
+   "away": "KC",
+   "home": "MIN",
+   "pAway": 0.4685
+  },
+  {
+   "gamePk": 824568,
+   "away": "NYY",
+   "home": "CWS",
+   "pAway": 0.4915
+  },
+  {
+   "gamePk": 823023,
+   "away": "CHC",
+   "home": "STL",
+   "pAway": 0.505
+  },
+  {
+   "gamePk": 824488,
+   "away": "PIT",
+   "home": "CIN",
+   "pAway": 0.505
+  },
+  {
+   "gamePk": 823595,
+   "away": "MIA",
+   "home": "NYM",
+   "pAway": 0.4842
+  },
+  {
+   "gamePk": 824894,
+   "away": "WSH",
+   "home": "ATL",
+   "pAway": 0.441
+  },
+  {
+   "gamePk": 824974,
+   "away": "BOS",
+   "home": "ATH",
+   "pAway": 0.5226
+  },
+  {
+   "gamePk": 823271,
+   "away": "SF",
+   "home": "SD",
+   "pAway": 0.472
+  },
+  {
+   "gamePk": 823921,
+   "away": "SEA",
+   "home": "LAD",
+   "pAway": 0.4707
+  }
+ ],
+ "recorded": "2026-07-30T14:41:27.482326+00:00"
+}
