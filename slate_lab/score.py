@@ -18,8 +18,9 @@ import json
 
 import pandas as pd
 
-from .features import GROUPS, build_features, feature_columns
+from .features import feature_columns
 from .ingest import API, _get, connect, ingest_season
+from .sports import get_sport
 from .models import CLIP, make_gbdt, make_logistic, metrics
 
 
@@ -61,22 +62,25 @@ def slate_features(con, slate: list[dict], date: str) -> pd.DataFrame:
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--db", default="slate.db")
+    p.add_argument("--sport", default="mlb")
+    p.add_argument("--db", default=None)
     p.add_argument("--date", default=dt.date.today().isoformat())
     p.add_argument("--update-season", action="store_true",
                    help="re-ingest the current season before scoring")
     p.add_argument("--out", default="predictions.json")
     args = p.parse_args()
 
-    con = connect(args.db)
+    sport = get_sport(args.sport)
+    db = args.db or (sport.key + ".db" if sport.key != "mlb" else "slate.db")
+    con = connect(db)
     season = int(args.date[:4])
     if args.update_season:
-        print(f"Refreshing {season}…")
-        ingest_season(con, season)
+        print(f"[{sport.name}] Refreshing {season}…")
+        sport.ingest(con, season)
 
-    hist = build_features(con)
+    hist = sport.build_features(con)
     train = hist[hist.date < args.date]
-    cols = feature_columns(list(GROUPS))
+    cols = [c for g in sport.GROUPS for c in sport.GROUPS[g]]
     X, y = train[cols].to_numpy(), train["away_won"].to_numpy()
 
     lr = make_logistic().fit(X, y)
@@ -89,14 +93,14 @@ def main():
     )
     name, model = pick
 
-    slate = todays_slate(args.date)
+    slate = sport.slate(args.date)
     if not slate:
         json.dump({"generated": dt.datetime.utcnow().isoformat() + "Z",
                    "model": name, "games": []}, open(args.out, "w"))
         print("No games today.")
         return
 
-    sf = slate_features(con, slate, args.date)
+    sf = sport.slate_features(con, slate, args.date)
     preds = model.predict_proba(sf[cols].to_numpy())[:, 1].clip(*CLIP)
     by_pk = dict(zip(sf.game_pk, preds))
 
@@ -109,6 +113,7 @@ def main():
                           "pAway": round(float(by_pk[pk]), 4)})
 
     json.dump({"generated": dt.datetime.utcnow().isoformat() + "Z",
+               "sport": sport.key,
                "model": name, "trainRows": int(len(train)),
                "games": games}, open(args.out, "w"), indent=2)
     print(f"{len(games)} games scored with {name} → {args.out}")

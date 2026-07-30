@@ -1,133 +1,82 @@
 name: slate-nightly
-
 on:
   schedule:
-    - cron: "0 11 * * *"
-    - cron: "0 15 * * *"
-    - cron: "30 22 * * *"
-    - cron: "30 1 * * *"
+    - cron: "0 11 * * *"    # 7:00 AM ET  — grade yesterday, score today, file predictions
+    - cron: "0 15 * * *"    # 11:00 AM ET — odds snapshot (openers)
+    - cron: "30 22 * * *"   # 6:30 PM ET  — odds snapshot (east-coast closings)
+    - cron: "30 1 * * *"    # 9:30 PM ET  — odds snapshot (west-coast closings)
   workflow_dispatch:
-    inputs:
-      task:
-        description: "What to run"
-        type: choice
-        options: [score, odds, bootstrap-only]
-        default: score
 
 permissions:
   contents: write
 
-concurrency:
-  group: slate
-  cancel-in-progress: false
+concurrency: { group: slate, cancel-in-progress: false }
 
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+        with: { python-version: "3.12" }
+      - run: pip install pandas scikit-learn
 
-      - name: Install deps
-        run: pip install --quiet pandas scikit-learn
-
-      - name: Decide task
-        id: t
-        shell: bash
+      - name: Decide task from schedule
+        id: task
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "task=${{ inputs.task }}" >> $GITHUB_OUTPUT
-          elif [ "${{ github.event.schedule }}" = "0 11 * * *" ]; then
+          if [ "${{ github.event.schedule }}" = "0 11 * * *" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "task=score" >> $GITHUB_OUTPUT
           else
             echo "task=odds" >> $GITHUB_OUTPUT
           fi
 
       - name: Capture odds snapshot
-        if: steps.t.outputs.task == 'odds'
-        env:
-          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        shell: bash
-        run: |
-          if [ -z "$ODDS_API_KEY" ]; then
-            echo "::error::ODDS_API_KEY secret is not set."
-            exit 1
-          fi
-          python -m slate_lab.ledger capture-odds
+        if: steps.task.outputs.task == 'odds'
+        env: { ODDS_API_KEY: "${{ secrets.ODDS_API_KEY }}" }
+        run: python -m slate_lab.ledger capture-odds
 
       - name: Restore database cache
-        if: steps.t.outputs.task != 'odds'
+        if: steps.task.outputs.task == 'score'
         uses: actions/cache@v4
         with:
           path: slate.db
           key: slate-db-${{ github.run_id }}
           restore-keys: slate-db-
 
-      - name: Check whether history needs bootstrapping
-        if: steps.t.outputs.task != 'odds'
-        id: boot
+      - name: Bootstrap history (first run only)
+        if: steps.task.outputs.task == 'score'
         shell: bash
         run: |
-          NEED=yes
-          if [ -f slate.db ]; then
-            N=$(python -c "import sqlite3;print(sqlite3.connect('slate.db').execute('SELECT COUNT(*) FROM games').fetchone()[0])" 2>/dev/null || echo 0)
-            echo "Existing rows: $N"
-            [ "$N" -ge 2000 ] && NEED=no
-          fi
-          echo "need=$NEED" >> $GITHUB_OUTPUT
+          python - << 'PY' || python -m slate_lab.ingest --db slate.db --seasons 2023 2024 2025
+          import os, sqlite3, sys
+          if not os.path.exists("slate.db"): sys.exit(1)
+          n = sqlite3.connect("slate.db").execute("SELECT COUNT(*) FROM games").fetchone()[0]
+          sys.exit(0 if n >= 2000 else 1)
+          PY
 
-      - name: Bootstrap history (slow, first run only)
-        if: steps.t.outputs.task != 'odds' && steps.boot.outputs.need == 'yes'
-        run: python -m slate_lab.ingest --db slate.db --seasons 2023 2024 2025
-
-      - name: Grade finished days
-        if: steps.t.outputs.task == 'score'
-        continue-on-error: true
-        run: python -m slate_lab.ledger grade
-
-      - name: Score today and file predictions
-        if: steps.t.outputs.task == 'score'
-        shell: bash
+      - name: Grade yesterday, score today, file predictions
+        if: steps.task.outputs.task == 'score'
         run: |
+          python -m slate_lab.ledger grade
           python -m slate_lab.score --db slate.db --update-season --out predictions.json
-          python -m slate_lab.ledger record || echo "nothing to file"
-          echo "--- predictions.json ---"
-          cat predictions.json
+          python -m slate_lab.ledger record
 
-      - name: Commit ledger to main
-        shell: bash
+      - name: Commit ledger (git history = tamper-evident timestamps)
         run: |
-          git config user.name  "slate-bot"
-          git config user.email "slate-bot@users.noreply.github.com"
-          if [ -d data ]; then git add -f data; fi
-          if git diff --cached --quiet; then
-            echo "No ledger changes."
-          else
-            git commit -m "ledger: ${{ steps.t.outputs.task }} $(date -u +%FT%TZ)"
-            git pull --rebase --autostash origin main || true
-            git push origin HEAD:main
-          fi
+          git config user.name "slate-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ || true
+          git commit -m "ledger: ${{ steps.task.outputs.task }} $(date -u +%FT%TZ)" || echo "no changes"
+          git push
 
-      - name: Publish to gh-pages
-        if: steps.t.outputs.task == 'score'
-        shell: bash
+      - name: Publish predictions + report to gh-pages
+        if: steps.task.outputs.task == 'score'
         run: |
-          mkdir -p /tmp/pub
-          [ -f predictions.json ] && cp predictions.json /tmp/pub/
-          [ -f data/report.json ] && cp data/report.json /tmp/pub/
-          echo "published $(date -u +%FT%TZ)" > /tmp/pub/index.html
           git fetch origin gh-pages || true
-          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
-            git checkout -B gh-pages origin/gh-pages
-          else
-            git checkout --orphan gh-pages
-            git rm -rf . >/dev/null 2>&1 || true
-          fi
-          cp /tmp/pub/* . 2>/dev/null || true
-          git add -A -f index.html predictions.json report.json 2>/dev/null || git add -A
-          git commit --allow-empty -m "publish $(date -u +%FT%TZ)"
+          git checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages
+          git rm -rf --cached . 2>/dev/null || true
+          cp predictions.json . 2>/dev/null || true
+          cp data/report.json . 2>/dev/null || true
+          git add predictions.json report.json 2>/dev/null || true
+          git commit -m "publish $(date -u +%F)" || echo "no change"
           git push origin gh-pages

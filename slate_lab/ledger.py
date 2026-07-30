@@ -30,9 +30,23 @@ from pathlib import Path
 from .ingest import API as MLB_API
 from .ingest import _get
 
-ODDS_API = "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds"
-BOOKS = ["draftkings", "hardrockbet"]          # preference order
+ODDS_API_BASE = "https://api.the-odds-api.com/v4/sports/{sport}/odds"
+BOOKS = ["draftkings", "hardrockbet"]          # default preference order
 DATA = Path("data")
+
+def _configure(sport_key: str):
+    """Point module globals at a sport's odds feed, books, paths, and team map."""
+    global ODDS_API, BOOKS, DATA, TEAM_NAME_TO_ID
+    from .sports import get_sport
+    sp = get_sport(sport_key)
+    ODDS_API = ODDS_API_BASE.format(sport=sp.odds_sport)
+    BOOKS = list(sp.books)
+    DATA = Path("data") / sp.data_prefix if sp.data_prefix else Path("data")
+    if sp.team_name_to_id:
+        TEAM_NAME_TO_ID = sp.team_name_to_id
+    return sp
+
+ODDS_API = ODDS_API_BASE.format(sport="baseball_mlb")
 
 TEAM_NAME_TO_ID = {
     "Arizona Diamondbacks": 109, "Atlanta Braves": 144, "Baltimore Orioles": 110,
@@ -234,8 +248,10 @@ def main() -> None:
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("cmd", choices=["capture-odds", "record", "grade"])
+    p.add_argument("--sport", default="mlb")
     p.add_argument("--pred", default="predictions.json")
     args = p.parse_args()
+    _configure(args.sport)
     if args.cmd == "capture-odds":
         key = os.environ.get("ODDS_API_KEY")
         if not key:
