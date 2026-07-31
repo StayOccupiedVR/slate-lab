@@ -56,12 +56,14 @@ def synth_league(seed=11, seasons=(2023, 2024, 2025), n_teams=30,
             con.execute("INSERT INTO games VALUES (?,?,?,?,?,?,?,?,?)",
                         (pk, date, season, a, h, asc, hsc, asp_id, hsp_id))
             # starter line correlated with quality
-            er = max(0, round(rng.gauss(3.5 - asp_q * 2.5, 1.4)))
-            con.execute("INSERT OR REPLACE INTO pitcher_starts VALUES (?,?,?,?,?)",
-                        (asp_id, date, season, er, 17))
-            er = max(0, round(rng.gauss(3.5 - hsp_q * 2.5, 1.4)))
-            con.execute("INSERT OR REPLACE INTO pitcher_starts VALUES (?,?,?,?,?)",
-                        (hsp_id, date, season, er, 17))
+            for pid, q in ((asp_id, asp_q), (hsp_id, hsp_q)):
+                er = max(0, round(rng.gauss(3.5 - q * 2.5, 1.4)))
+                bf = 24
+                so = max(0, min(bf, round(rng.gauss(4.5 + q * 6, 1.6))))
+                bb = max(0, round(rng.gauss(2.6 - q * 1.5, 1.0)))
+                con.execute(
+                    "INSERT OR REPLACE INTO pitcher_starts VALUES (?,?,?,?,?,?,?,?)",
+                    (pid, date, season, er, 17, so, bb, bf))
             pk += 1
     con.commit()
     return con

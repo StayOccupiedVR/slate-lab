@@ -39,7 +39,7 @@ def test_ledger_configures_per_sport():
     assert str(ledger.DATA) == "data", "mlb must keep legacy ledger paths"
     sp = ledger._configure("nfl")
     assert "americanfootball_nfl" in ledger.ODDS_API
-    assert ledger.DATA.as_posix() == "data/nfl"
+    assert str(ledger.DATA) == "data/nfl"
     ledger._configure("mlb")   # restore default
     print("  ledger: per-sport odds URL and data paths \u2713")
 
@@ -48,4 +48,3 @@ if __name__ == "__main__":
     test_mlb_is_a_delegate()
     test_ledger_configures_per_sport()
     print("\nSPORTS TESTS PASSED")
-

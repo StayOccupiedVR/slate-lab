@@ -38,6 +38,9 @@ CREATE TABLE IF NOT EXISTS pitcher_starts (
   season     INTEGER NOT NULL,
   er         INTEGER NOT NULL,
   outs       INTEGER NOT NULL,
+  so         INTEGER,
+  bb         INTEGER,
+  bf         INTEGER,
   PRIMARY KEY (pitcher_id, date)
 );
 CREATE INDEX IF NOT EXISTS idx_ps_pid ON pitcher_starts(pitcher_id, date);
@@ -64,6 +67,11 @@ def _ip_to_outs(ip) -> int:
 def connect(db_path: str | Path) -> sqlite3.Connection:
     con = sqlite3.connect(db_path)
     con.executescript(SCHEMA)
+    cols = {r[1] for r in con.execute("PRAGMA table_info(pitcher_starts)")}
+    for c in ("so", "bb", "bf"):
+        if c not in cols:
+            con.execute(f"ALTER TABLE pitcher_starts ADD COLUMN {c} INTEGER")
+    con.commit()
     return con
 
 
@@ -111,9 +119,13 @@ def ingest_season(con: sqlite3.Connection, season: int, verbose: bool = True) ->
                 continue
             starts.append((pid, s["date"], season,
                            int(st.get("earnedRuns") or 0),
-                           _ip_to_outs(st.get("inningsPitched"))))
+                           _ip_to_outs(st.get("inningsPitched")),
+                           int(st.get("strikeOuts") or 0),
+                           int(st.get("baseOnBalls") or 0),
+                           int(st.get("battersFaced") or 0)))
         con.executemany(
-            "INSERT OR REPLACE INTO pitcher_starts VALUES (?,?,?,?,?)", starts
+            "INSERT OR REPLACE INTO pitcher_starts VALUES (?,?,?,?,?,?,?,?)",
+            starts
         )
         if verbose and n % 50 == 0:
             print(f"  ...pitcher logs {n}/{len(sp_ids)}")

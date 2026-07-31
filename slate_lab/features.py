@@ -21,7 +21,7 @@ IP_PER_START = 5.4
 
 GROUPS: dict[str, list[str]] = {
     "team":     ["pyth_diff", "gp_min"],
-    "starter":  ["sp_edge", "sp_known"],
+    "kbb":      ["sp_kbb"],
 }
 # All measured WORSE than team+starter on the 2025 holdout (n=2123).
 # Kept computed and re-testable, but out of the default model.
@@ -30,11 +30,32 @@ GROUPS: dict[str, list[str]] = {
 #                 pyth_diff -- a moving baseline (good staff makes every arm
 #                 look bad) so it measures roster shape, not pitching.
 LEGACY: dict[str, list[str]] = {
+    # retired 2026-07-30: equal holdout logloss to kbb (0.6827 both) but ERA
+    # stabilizes far slower and carries more team-strength collinearity
+    # (corr w/ pyth_diff +0.31 vs +0.25); kbb also stronger w/ outcome
+    # (+0.103 vs +0.081). Kept for re-testing.
+    "starter":  ["sp_edge", "sp_known"],
+    # retired 2026-07-30: +0.0001 in the ablation, below the noise floor
+    # at n=2123. Real effect may exist; undetectable at this sample size.
+    "park":     ["park_run"],
     "form":     ["l10_diff"],
     "rest":     ["rest_diff", "b2b_away", "b2b_home"],
     "rotation": ["sp_vs_rot"],
 }
 ROT_MIN_OUTS = 300          # ~100 IP before a team rotation baseline is trusted
+KBB_PRIOR_BF = 170.0        # ~40 IP of batters faced; K% stabilizes ~70, BB% ~170
+
+# Static 3-year park run factors (1.00 = neutral). Applied as (factor - 1) for
+# the HOME park. Rationale for including at all: higher run environments add
+# outcome variance, which slightly compresses favorite win probability. The
+# ablation judges whether that effect is detectable at this sample size.
+PARK_RUN = {
+    115: 1.33, 111: 1.07, 113: 1.10, 118: 1.05, 109: 1.05, 133: 1.05,
+    144: 1.04, 143: 1.04, 147: 1.02, 145: 1.01, 112: 1.01, 110: 1.00,
+    142: 1.00, 120: 1.00, 158: 1.00, 108: 0.99, 141: 0.99, 117: 0.99,
+    140: 0.98, 138: 0.97, 116: 0.96, 119: 0.96, 139: 0.96, 114: 0.95,
+    146: 0.94, 134: 0.94, 135: 0.94, 121: 0.94, 136: 0.90, 137: 0.90,
+}
 LABEL = "away_won"
 
 
@@ -51,10 +72,16 @@ def build_features(con: sqlite3.Connection, min_gp: int = 20) -> pd.DataFrame:
         "SELECT * FROM pitcher_starts ORDER BY pitcher_id, date", con
     )
     sp_by_pid: dict[int, list[tuple[str, int, int]]] = defaultdict(list)
+    kbb_by_pid: dict[int, list[tuple[str, float, float, float]]] = defaultdict(list)
     start_line: dict[tuple[int, str], tuple[int, int]] = {}
     for r in sp.itertuples():
         sp_by_pid[r.pitcher_id].append((r.date, r.er, r.outs))
         start_line[(r.pitcher_id, r.date)] = (r.er, r.outs)
+        so = getattr(r, "so", None)
+        bf = getattr(r, "bf", None)
+        if so is not None and bf and bf > 0:
+            kbb_by_pid[r.pitcher_id].append(
+                (r.date, float(so), float(getattr(r, "bb", 0) or 0), float(bf)))
 
     rows = []
     for season, sgames in games.groupby("season", sort=True):
@@ -62,6 +89,7 @@ def build_features(con: sqlite3.Connection, min_gp: int = 20) -> pd.DataFrame:
                                     "recent": [], "last_date": None})
         rotation = defaultdict(lambda: {"er": 0, "outs": 0})
         lg_runs, lg_team_games = 0, 0
+        lg_so, lg_bb, lg_bf = 0.0, 0.0, 0.0
 
         for g in sgames.itertuples():
             a, h = team[g.away_id], team[g.home_id]
@@ -91,6 +119,10 @@ def build_features(con: sqlite3.Connection, min_gp: int = 20) -> pd.DataFrame:
                 rh_rot = (0.0 if era_h is None
                           else (rot_era(g.home_id) - era_h) * IP_PER_START / 9)
 
+                lg_kbb = ((lg_so - lg_bb) / lg_bf) if lg_bf > 500 else 0.145
+                ka = _sp_kbb(kbb_by_pid.get(g.away_sp), g.date, lg_kbb)
+                kh = _sp_kbb(kbb_by_pid.get(g.home_sp), g.date, lg_kbb)
+
                 rows.append({
                     "game_pk": g.game_pk, "date": g.date, "season": season,
                     "pyth_diff": pyth(a) - pyth(h),
@@ -102,6 +134,9 @@ def build_features(con: sqlite3.Connection, min_gp: int = 20) -> pd.DataFrame:
                     "sp_edge": (ea or 0.0) - (eh or 0.0),
                     "sp_known": int(ea is not None and eh is not None),
                     "sp_vs_rot": ra_rot - rh_rot,
+                    "sp_kbb": ((ka if ka is not None else lg_kbb)
+                               - (kh if kh is not None else lg_kbb)),
+                    "park_run": PARK_RUN.get(g.home_id, 1.0) - 1.0,
                     LABEL: int(g.away_score > g.home_score),
                 })
 
@@ -122,6 +157,11 @@ def build_features(con: sqlite3.Connection, min_gp: int = 20) -> pd.DataFrame:
                 if line:
                     rotation[tid]["er"] += line[0]
                     rotation[tid]["outs"] += line[1]
+                for d, so, bb, bf in kbb_by_pid.get(pid, ()):
+                    if d == g.date:
+                        lg_so += so
+                        lg_bb += bb
+                        lg_bf += bf
 
     return pd.DataFrame(rows)
 
@@ -141,6 +181,26 @@ def _sp_era(log, date: str, lg_era: float) -> float | None:
     if o5 > 0:
         era = era * (1 - SP_L5_WEIGHT) + (sum(e for e, _ in l5) * 27 / o5) * SP_L5_WEIGHT
     return (era * ip + lg_era * SP_PRIOR_IP) / (ip + SP_PRIOR_IP)
+
+
+def _sp_kbb(log, date: str, lg_kbb: float) -> float | None:
+    """Prior-regressed K-BB% as of `date`. Returns None when unknown.
+
+    K-BB% is used instead of ERA because it stabilizes far faster (K% in ~70
+    batters faced, BB% in ~170) and excludes defense and sequencing luck.
+    Regressed toward the league rate over KBB_PRIOR_BF batters faced."""
+    if not log:
+        return None
+    before = [(so, bb, bf) for d, so, bb, bf in log if d < date]
+    if not before:
+        return None
+    so = sum(x[0] for x in before)
+    bb = sum(x[1] for x in before)
+    bf = sum(x[2] for x in before)
+    if bf < 30:
+        return None
+    raw = (so - bb) / bf
+    return (raw * bf + lg_kbb * KBB_PRIOR_BF) / (bf + KBB_PRIOR_BF)
 
 
 def feature_columns(groups: list[str] | None = None) -> list[str]:
