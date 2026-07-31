@@ -127,6 +127,7 @@ jobs:
           [ -f data/report.json ] && cp data/report.json /tmp/pub/
           [ -f odds.json ] && cp odds.json /tmp/pub/
           echo "published $(date -u +%FT%TZ)" > /tmp/pub/index.html
+          rm -f predictions.json odds.json
           git fetch origin gh-pages || true
           if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
             git checkout -B gh-pages origin/gh-pages
