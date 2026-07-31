@@ -21,9 +21,7 @@ IP_PER_START = 5.4
 
 GROUPS: dict[str, list[str]] = {
     "team":     ["pyth_diff", "gp_min"],
-    "starter":  ["sp_edge", "sp_known"],
     "kbb":      ["sp_kbb"],
-    "park":     ["park_run"],
 }
 # All measured WORSE than team+starter on the 2025 holdout (n=2123).
 # Kept computed and re-testable, but out of the default model.
@@ -32,6 +30,14 @@ GROUPS: dict[str, list[str]] = {
 #                 pyth_diff -- a moving baseline (good staff makes every arm
 #                 look bad) so it measures roster shape, not pitching.
 LEGACY: dict[str, list[str]] = {
+    # retired 2026-07-30: equal holdout logloss to kbb (0.6827 both) but ERA
+    # stabilizes far slower and carries more team-strength collinearity
+    # (corr w/ pyth_diff +0.31 vs +0.25); kbb also stronger w/ outcome
+    # (+0.103 vs +0.081). Kept for re-testing.
+    "starter":  ["sp_edge", "sp_known"],
+    # retired 2026-07-30: +0.0001 in the ablation, below the noise floor
+    # at n=2123. Real effect may exist; undetectable at this sample size.
+    "park":     ["park_run"],
     "form":     ["l10_diff"],
     "rest":     ["rest_diff", "b2b_away", "b2b_home"],
     "rotation": ["sp_vs_rot"],
