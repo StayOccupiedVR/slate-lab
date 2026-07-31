@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-31T11:19:28.672971Z",
+  "generated": "2026-07-31T13:01:55.251414Z",
   "sport": "mlb",
   "model": "gbdt",
   "trainRows": 7698,
@@ -8,91 +8,91 @@
       "gamePk": 824651,
       "away": "NYY",
       "home": "CHC",
-      "pAway": 0.4432
+      "pAway": 0.4413
     },
     {
       "gamePk": 824486,
       "away": "PIT",
       "home": "CIN",
-      "pAway": 0.5084
+      "pAway": 0.5344
     },
     {
       "gamePk": 824809,
       "away": "PHI",
       "home": "BAL",
-      "pAway": 0.4881
+      "pAway": 0.4413
     },
     {
       "gamePk": 822782,
       "away": "STL",
       "home": "TOR",
-      "pAway": 0.4875
+      "pAway": 0.5185
     },
     {
       "gamePk": 824407,
       "away": "AZ",
       "home": "CLE",
-      "pAway": 0.4038
+      "pAway": 0.4413
     },
     {
       "gamePk": 822945,
       "away": "CWS",
       "home": "TB",
-      "pAway": 0.4476
+      "pAway": 0.4582
     },
     {
       "gamePk": 823593,
       "away": "MIA",
       "home": "NYM",
-      "pAway": 0.4554
+      "pAway": 0.5066
     },
     {
       "gamePk": 824892,
       "away": "WSH",
       "home": "ATL",
-      "pAway": 0.5002
+      "pAway": 0.4544
     },
     {
       "gamePk": 824164,
       "away": "TEX",
       "home": "HOU",
-      "pAway": 0.4529
+      "pAway": 0.5162
     },
     {
       "gamePk": 824325,
       "away": "KC",
       "home": "COL",
-      "pAway": 0.5007
+      "pAway": 0.4413
     },
     {
       "gamePk": 823999,
       "away": "MIL",
       "home": "LAA",
-      "pAway": 0.5105
+      "pAway": 0.5388
     },
     {
       "gamePk": 824975,
       "away": "DET",
       "home": "ATH",
-      "pAway": 0.5084
+      "pAway": 0.538
     },
     {
       "gamePk": 823272,
       "away": "SF",
       "home": "SD",
-      "pAway": 0.4476
+      "pAway": 0.4544
     },
     {
       "gamePk": 823922,
       "away": "BOS",
       "home": "LAD",
-      "pAway": 0.4933
+      "pAway": 0.5295
     },
     {
       "gamePk": 823111,
       "away": "MIN",
       "home": "SEA",
-      "pAway": 0.4244
+      "pAway": 0.4544
     }
   ]
 }
