@@ -1,0 +1,11 @@
+{
+ "generated": "2026-07-31T10:46:45.824562+00:00",
+ "n_games": 10,
+ "model_logloss": 0.6556,
+ "model_accuracy": 0.8,
+ "n_with_odds": 6,
+ "market_logloss": 0.6422,
+ "model_logloss_on_same": 0.6564,
+ "disagreements": 2,
+ "model_won_disagreements": 1.0
+}
