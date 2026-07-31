@@ -18,7 +18,7 @@ import json
 
 import pandas as pd
 
-from .features import feature_columns
+from .features import build_features, feature_columns
 from .ingest import API, _get, connect, ingest_season
 from .sports import get_sport
 from .models import CLIP, make_gbdt, make_logistic, metrics
