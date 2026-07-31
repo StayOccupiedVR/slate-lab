@@ -1,0 +1,109 @@
+{
+ "captured": "20260731T045055Z",
+ "games": [
+  {
+   "away_id": 147,
+   "home_id": 112,
+   "commence": "2026-07-31T18:21:00Z",
+   "book": "draftkings",
+   "ml_away": 129,
+   "ml_home": -156
+  },
+  {
+   "away_id": 134,
+   "home_id": 113,
+   "commence": "2026-07-31T22:11:00Z",
+   "book": "draftkings",
+   "ml_away": -126,
+   "ml_home": 104
+  },
+  {
+   "away_id": 143,
+   "home_id": 110,
+   "commence": "2026-07-31T23:06:00Z",
+   "book": "hardrockbet",
+   "ml_away": 100,
+   "ml_home": -120
+  },
+  {
+   "away_id": 138,
+   "home_id": 141,
+   "commence": "2026-07-31T23:08:00Z",
+   "book": "draftkings",
+   "ml_away": 144,
+   "ml_home": -175
+  },
+  {
+   "away_id": 109,
+   "home_id": 114,
+   "commence": "2026-07-31T23:11:00Z",
+   "book": "draftkings",
+   "ml_away": 113,
+   "ml_home": -136
+  },
+  {
+   "away_id": 145,
+   "home_id": 139,
+   "commence": "2026-07-31T23:11:00Z",
+   "book": "draftkings",
+   "ml_away": 123,
+   "ml_home": -149
+  },
+  {
+   "away_id": 146,
+   "home_id": 121,
+   "commence": "2026-07-31T23:11:00Z",
+   "book": "draftkings",
+   "ml_away": 109,
+   "ml_home": -131
+  },
+  {
+   "away_id": 120,
+   "home_id": 144,
+   "commence": "2026-07-31T23:16:00Z",
+   "book": "draftkings",
+   "ml_away": 108,
+   "ml_home": -130
+  },
+  {
+   "away_id": 140,
+   "home_id": 117,
+   "commence": "2026-08-01T00:16:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -126
+  },
+  {
+   "away_id": 118,
+   "home_id": 115,
+   "commence": "2026-08-01T00:41:00Z",
+   "book": "draftkings",
+   "ml_away": -110,
+   "ml_home": -110
+  },
+  {
+   "away_id": 158,
+   "home_id": 108,
+   "commence": "2026-08-01T01:39:00Z",
+   "book": "draftkings",
+   "ml_away": -171,
+   "ml_home": 141
+  },
+  {
+   "away_id": 116,
+   "home_id": 133,
+   "commence": "2026-08-01T01:41:00Z",
+   "book": "draftkings",
+   "ml_away": -163,
+   "ml_home": 135
+  },
+  {
+   "away_id": 142,
+   "home_id": 136,
+   "commence": "2026-08-01T02:11:00Z",
+   "book": "draftkings",
+   "ml_away": 158,
+   "ml_home": -193
+  }
+ ]
+}
