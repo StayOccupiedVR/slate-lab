@@ -111,6 +111,35 @@ def capture_odds(api_key: str) -> Path:
     return out
 
 
+def export_odds(out_file: str = "odds.json") -> Path | None:
+    """Flatten the latest snapshot into a small file the app can fetch.
+
+    One row per upcoming game with the preferred book's current moneylines.
+    Published to gh-pages next to predictions.json so game cards can show
+    live DraftKings prices without any additional API spend."""
+    snaps = sorted((DATA / "odds").glob("*.json")) if (DATA / "odds").exists() else []
+    if not snaps:
+        print("No snapshots to export.")
+        return None
+    snap = json.loads(snaps[-1].read_text())
+    rows = []
+    for ev in snap.get("events", []):
+        book = next((b for b in BOOKS if b in ev.get("books", {})), None)
+        if not book:
+            continue
+        rows.append({
+            "away_id": ev["away_id"], "home_id": ev["home_id"],
+            "commence": ev["commence"], "book": book,
+            "ml_away": ev["books"][book]["ml_away"],
+            "ml_home": ev["books"][book]["ml_home"],
+        })
+    out = Path(out_file)
+    out.write_text(json.dumps({
+        "captured": snap.get("captured"), "games": rows}, indent=1))
+    print(f"{len(rows)} games -> {out}")
+    return out
+
+
 # ---------------------------------------------------------------- record
 def record_predictions(pred_file: str = "predictions.json") -> Path | None:
     p = json.loads(Path(pred_file).read_text())
@@ -247,11 +276,14 @@ def _report(rows: list[dict]) -> None:
 def main() -> None:
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("cmd", choices=["capture-odds", "record", "grade"])
+    p.add_argument("cmd", choices=["capture-odds", "record", "grade", "export-odds"])
     p.add_argument("--sport", default="mlb")
     p.add_argument("--pred", default="predictions.json")
     args = p.parse_args()
     _configure(args.sport)
+    if args.cmd == "export-odds":
+        export_odds()
+        return
     if args.cmd == "capture-odds":
         key = os.environ.get("ODDS_API_KEY")
         if not key:
