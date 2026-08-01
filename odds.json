@@ -1,125 +1,109 @@
 {
- "captured": "20260801T044445Z",
+ "captured": "20260801T160209Z",
  "games": [
-  {
-   "away_id": 111,
-   "home_id": 119,
-   "commence": "2026-08-01T02:11:00Z",
-   "book": "draftkings",
-   "ml_away": -10000,
-   "ml_home": 1260
-  },
-  {
-   "away_id": 142,
-   "home_id": 136,
-   "commence": "2026-08-01T02:11:00Z",
-   "book": "draftkings",
-   "ml_away": -1960,
-   "ml_home": 780
-  },
   {
    "away_id": 138,
    "home_id": 141,
    "commence": "2026-08-01T19:08:00Z",
    "book": "draftkings",
-   "ml_away": 119,
-   "ml_home": -144
+   "ml_away": 129,
+   "ml_home": -156
   },
   {
    "away_id": 145,
    "home_id": 139,
    "commence": "2026-08-01T20:11:00Z",
    "book": "draftkings",
-   "ml_away": 139,
-   "ml_home": -168
+   "ml_away": 141,
+   "ml_home": -171
   },
   {
    "away_id": 146,
    "home_id": 121,
    "commence": "2026-08-01T20:11:00Z",
    "book": "draftkings",
-   "ml_away": 109,
-   "ml_home": -131
+   "ml_away": 113,
+   "ml_home": -136
   },
   {
    "away_id": 142,
    "home_id": 136,
    "commence": "2026-08-01T20:11:00Z",
    "book": "draftkings",
-   "ml_away": 143,
-   "ml_home": -173
+   "ml_away": 141,
+   "ml_home": -171
   },
   {
    "away_id": 134,
    "home_id": 113,
    "commence": "2026-08-01T22:41:00Z",
    "book": "draftkings",
-   "ml_away": -123,
-   "ml_home": 102
+   "ml_away": -115,
+   "ml_home": -104
   },
   {
    "away_id": 143,
    "home_id": 110,
    "commence": "2026-08-01T23:06:00Z",
    "book": "draftkings",
-   "ml_away": -142,
-   "ml_home": 118
+   "ml_away": -149,
+   "ml_home": 123
   },
   {
    "away_id": 140,
    "home_id": 117,
    "commence": "2026-08-01T23:11:00Z",
    "book": "draftkings",
-   "ml_away": -131,
-   "ml_home": 109
+   "ml_away": -130,
+   "ml_home": 108
   },
   {
    "away_id": 109,
    "home_id": 114,
    "commence": "2026-08-01T23:16:00Z",
    "book": "draftkings",
-   "ml_away": 136,
-   "ml_home": -164
+   "ml_away": 148,
+   "ml_home": -180
   },
   {
    "away_id": 120,
    "home_id": 144,
    "commence": "2026-08-01T23:16:00Z",
    "book": "draftkings",
-   "ml_away": 161,
-   "ml_home": -197
+   "ml_away": 150,
+   "ml_home": -182
   },
   {
    "away_id": 147,
    "home_id": 112,
    "commence": "2026-08-01T23:16:00Z",
    "book": "draftkings",
-   "ml_away": -123,
-   "ml_home": 102
+   "ml_away": -102,
+   "ml_home": -118
   },
   {
    "away_id": 118,
    "home_id": 115,
    "commence": "2026-08-02T00:10:00Z",
    "book": "draftkings",
-   "ml_away": -102,
-   "ml_home": -118
+   "ml_away": 100,
+   "ml_home": -120
   },
   {
    "away_id": 137,
    "home_id": 135,
    "commence": "2026-08-02T00:41:00Z",
    "book": "draftkings",
-   "ml_away": 118,
-   "ml_home": -142
+   "ml_away": 124,
+   "ml_home": -150
   },
   {
    "away_id": 111,
    "home_id": 119,
    "commence": "2026-08-02T01:11:00Z",
    "book": "draftkings",
-   "ml_away": 135,
-   "ml_home": -163
+   "ml_away": 139,
+   "ml_home": -168
   },
   {
    "away_id": 158,
@@ -134,8 +118,8 @@
    "home_id": 133,
    "commence": "2026-08-02T01:41:00Z",
    "book": "draftkings",
-   "ml_away": -137,
-   "ml_home": 114
+   "ml_away": -168,
+   "ml_home": 139
   }
  ]
 }
