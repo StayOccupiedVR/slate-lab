@@ -5,8 +5,8 @@ committed to git by the workflow, so commit timestamps prove predictions
 existed before first pitch. A database row can be rewritten quietly; a
 git history can't.
 
-Books: prefers DraftKings (`draftkings`), falls back to Hard Rock Bet
-(`hardrockbet`) per game. DraftKings is licensed in more states and carries
+Books: DraftKings preferred, FanDuel then Hard Rock Bet as per-game
+fallbacks — all three captured in every snapshot for price comparison. DraftKings is licensed in more states and carries
 deeper liquidity, which makes its closing line the better benchmark. Both
 live in The Odds API's US regions.
 Free tier = 500 credits/month; each capture costs regions x markets
@@ -31,7 +31,7 @@ from .ingest import API as MLB_API
 from .ingest import _get
 
 ODDS_API_BASE = "https://api.the-odds-api.com/v4/sports/{sport}/odds"
-BOOKS = ["draftkings", "hardrockbet"]          # default preference order
+BOOKS = ["draftkings", "fanduel", "hardrockbet"]   # preference order everywhere
 DATA = Path("data")
 
 def _configure(sport_key: str):
@@ -132,6 +132,7 @@ def export_odds(out_file: str = "odds.json") -> Path | None:
             "commence": ev["commence"], "book": book,
             "ml_away": ev["books"][book]["ml_away"],
             "ml_home": ev["books"][book]["ml_home"],
+            "books": ev["books"],
         })
     out = Path(out_file)
     out.write_text(json.dumps({
