@@ -43,8 +43,64 @@ def test_ledger_configures_per_sport():
     ledger._configure("mlb")   # restore default
     print("  ledger: per-sport odds URL and data paths \u2713")
 
+
+
+def test_nfl_adapter_offline():
+    """NFL adapter: synthetic ingest-free test of features + trainability.
+
+    Builds a fake nfl_games table (no network), checks the feature frame is
+    point-in-time sane, market columns stay out of the model inputs, and the
+    shared trainer runs end to end on it.
+    """
+    import sqlite3
+    import random
+    from slate_lab.sports import get_sport
+
+    sp = get_sport("nfl")
+    con = sqlite3.connect(":memory:")
+    con.executescript(__import__("slate_lab.sports.nfl", fromlist=["SCHEMA"]).SCHEMA)
+    rng = random.Random(7)
+    teams = [f"T{i}" for i in range(16)]
+    strength = {t: rng.gauss(0, 4) for t in teams}
+    rows = []
+    for season in (2020, 2021, 2022, 2023):
+        for week in range(1, 19):
+            order = rng.sample(teams, len(teams))
+            for i in range(0, len(order), 2):
+                a, h = order[i], order[i + 1]
+                ma = 21 + strength[a] - 0.5 * strength[h]
+                mh = 23 + strength[h] - 0.5 * strength[a]   # ~2pt HFA
+                asc = max(0, round(rng.gauss(ma, 9)))
+                hsc = max(0, round(rng.gauss(mh, 9)))
+                rows.append((f"{season}_{week}_{a}_{h}", season, week,
+                             f"{season}-10-{week:02d}", a, h, asc, hsc,
+                             7, 7, f"QB{a}", f"QB{h}", 0,
+                             None, None, -120, 100, "REG"))
+    con.executemany(
+        "INSERT INTO nfl_games VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        rows)
+    con.commit()
+
+    df = sp.build_features(con)
+    assert len(df) > 400, "too few scoreable synthetic games"
+    assert df.away_won.isin((0, 1)).all()
+    # market/eval columns present but NOT in any model group
+    model_cols = {c for cols in sp.GROUPS.values() for c in cols}
+    for c in ("market_p_away", "close_spread", "margin"):
+        assert c in df.columns and c not in model_cols
+    # early-season games excluded until both teams have MIN_GP
+    assert df.week.min() > 1
+
+    from slate_lab.train import walk_forward
+    res = walk_forward(df, 2023, list(sp.GROUPS), sp)
+    ll = res["logistic"]["logloss"]
+    assert 0.5 < ll < 0.72, f"synthetic logloss out of range: {ll}"
+    print(f"  nfl synthetic: {len(df)} games, holdout logloss {ll:.4f}")
+
+
 if __name__ == "__main__":
     test_contract()
     test_mlb_is_a_delegate()
     test_ledger_configures_per_sport()
+    test_nfl_adapter_offline()
     print("\nSPORTS TESTS PASSED")
