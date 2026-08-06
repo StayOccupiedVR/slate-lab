@@ -20,7 +20,7 @@ on:
       task:
         description: "What to run"
         type: choice
-        options: [score, odds, bootstrap-only]
+        options: [score, odds, bootstrap-only, nfl-odds, nfl-file, nfl-sunday, nfl-grade]
         default: score
 
 permissions:
