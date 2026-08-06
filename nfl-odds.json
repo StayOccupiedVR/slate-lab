@@ -1,0 +1,4005 @@
+{
+ "captured": "20260806T015735Z",
+ "games": [
+  {
+   "away_id": "NE",
+   "home_id": "SEA",
+   "commence": "2026-09-10T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 164,
+   "ml_home": -198,
+   "books": {
+    "draftkings": {
+     "ml_away": 164,
+     "ml_home": -198
+    },
+    "fanduel": {
+     "ml_away": 166,
+     "ml_home": -198
+    },
+    "hardrockbet": {
+     "ml_away": 170,
+     "ml_home": -200
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "LA",
+   "commence": "2026-09-11T00:35:00Z",
+   "book": "draftkings",
+   "ml_away": 150,
+   "ml_home": -180,
+   "books": {
+    "draftkings": {
+     "ml_away": 150,
+     "ml_home": -180
+    },
+    "fanduel": {
+     "ml_away": 176,
+     "ml_home": -210
+    },
+    "hardrockbet": {
+     "ml_away": 165,
+     "ml_home": -195
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "PIT",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 145,
+   "ml_home": -175,
+   "books": {
+    "draftkings": {
+     "ml_away": 145,
+     "ml_home": -175
+    },
+    "fanduel": {
+     "ml_away": 126,
+     "ml_home": -148
+    },
+    "hardrockbet": {
+     "ml_away": 135,
+     "ml_home": -155
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "IND",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -185,
+   "ml_home": 154,
+   "books": {
+    "draftkings": {
+     "ml_away": -185,
+     "ml_home": 154
+    },
+    "fanduel": {
+     "ml_away": -200,
+     "ml_home": 168
+    },
+    "hardrockbet": {
+     "ml_away": -195,
+     "ml_home": 165
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "HOU",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -118,
+   "ml_home": -102,
+   "books": {
+    "draftkings": {
+     "ml_away": -118,
+     "ml_home": -102
+    },
+    "fanduel": {
+     "ml_away": -110,
+     "ml_home": -106
+    },
+    "hardrockbet": {
+     "ml_away": -115,
+     "ml_home": -105
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "CAR",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -148,
+   "ml_home": 124,
+   "books": {
+    "draftkings": {
+     "ml_away": -148,
+     "ml_home": 124
+    },
+    "fanduel": {
+     "ml_away": -146,
+     "ml_home": 124
+    },
+    "hardrockbet": {
+     "ml_away": -145,
+     "ml_home": 125
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "CIN",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    },
+    "fanduel": {
+     "ml_away": 176,
+     "ml_home": -210
+    },
+    "hardrockbet": {
+     "ml_away": 165,
+     "ml_home": -200
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "JAX",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 300,
+   "ml_home": -380,
+   "books": {
+    "draftkings": {
+     "ml_away": 300,
+     "ml_home": -380
+    },
+    "fanduel": {
+     "ml_away": 320,
+     "ml_home": -405
+    },
+    "hardrockbet": {
+     "ml_away": 300,
+     "ml_home": -400
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "DET",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 250,
+   "ml_home": -310,
+   "books": {
+    "draftkings": {
+     "ml_away": 250,
+     "ml_home": -310
+    },
+    "fanduel": {
+     "ml_away": 260,
+     "ml_home": -320
+    },
+    "hardrockbet": {
+     "ml_away": 260,
+     "ml_home": -325
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "TEN",
+   "commence": "2026-09-13T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 130,
+   "ml_home": -155,
+   "books": {
+    "draftkings": {
+     "ml_away": 130,
+     "ml_home": -155
+    },
+    "fanduel": {
+     "ml_away": 116,
+     "ml_home": -134
+    },
+    "hardrockbet": {
+     "ml_away": 120,
+     "ml_home": -140
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "LAC",
+   "commence": "2026-09-13T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 455,
+   "ml_home": -625,
+   "books": {
+    "draftkings": {
+     "ml_away": 455,
+     "ml_home": -625
+    },
+    "fanduel": {
+     "ml_away": 440,
+     "ml_home": -590
+    },
+    "hardrockbet": {
+     "ml_away": 450,
+     "ml_home": -650
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "MIN",
+   "commence": "2026-09-13T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": -112,
+   "ml_home": -108,
+   "books": {
+    "draftkings": {
+     "ml_away": -112,
+     "ml_home": -108
+    },
+    "fanduel": {
+     "ml_away": -110,
+     "ml_home": -106
+    },
+    "hardrockbet": {
+     "ml_away": -110,
+     "ml_home": -110
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "LV",
+   "commence": "2026-09-13T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 164,
+   "ml_home": -198,
+   "books": {
+    "draftkings": {
+     "ml_away": 164,
+     "ml_home": -198
+    },
+    "fanduel": {
+     "ml_away": 176,
+     "ml_home": -210
+    },
+    "hardrockbet": {
+     "ml_away": 170,
+     "ml_home": -200
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "PHI",
+   "commence": "2026-09-13T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 170,
+   "ml_home": -205,
+   "books": {
+    "draftkings": {
+     "ml_away": 170,
+     "ml_home": -205
+    },
+    "fanduel": {
+     "ml_away": 180,
+     "ml_home": -215
+    },
+    "hardrockbet": {
+     "ml_away": 180,
+     "ml_home": -220
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "NYG",
+   "commence": "2026-09-14T00:20:00Z",
+   "book": "draftkings",
+   "ml_away": -148,
+   "ml_home": 124,
+   "books": {
+    "draftkings": {
+     "ml_away": -148,
+     "ml_home": 124
+    },
+    "fanduel": {
+     "ml_away": -152,
+     "ml_home": 128
+    },
+    "hardrockbet": {
+     "ml_away": -150,
+     "ml_home": 130
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "KC",
+   "commence": "2026-09-15T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 136,
+   "ml_home": -162,
+   "books": {
+    "draftkings": {
+     "ml_away": 136,
+     "ml_home": -162
+    },
+    "fanduel": {
+     "ml_away": 124,
+     "ml_home": -146
+    },
+    "hardrockbet": {
+     "ml_away": 130,
+     "ml_home": -150
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "BUF",
+   "commence": "2026-09-18T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 130,
+   "ml_home": -155,
+   "books": {
+    "draftkings": {
+     "ml_away": 130,
+     "ml_home": -155
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "ATL",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "BAL",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 270,
+   "ml_home": -340,
+   "books": {
+    "draftkings": {
+     "ml_away": 270,
+     "ml_home": -340
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "CHI",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 154,
+   "ml_home": -185,
+   "books": {
+    "draftkings": {
+     "ml_away": 154,
+     "ml_home": -185
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "HOU",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "TB",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 195,
+   "ml_home": -238,
+   "books": {
+    "draftkings": {
+     "ml_away": 195,
+     "ml_home": -238
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "NYJ",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -250,
+   "ml_home": 205,
+   "books": {
+    "draftkings": {
+     "ml_away": -250,
+     "ml_home": 205
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "NE",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 190,
+   "ml_home": -230,
+   "books": {
+    "draftkings": {
+     "ml_away": 190,
+     "ml_home": -230
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "TEN",
+   "commence": "2026-09-20T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -205,
+   "ml_home": 170,
+   "books": {
+    "draftkings": {
+     "ml_away": -205,
+     "ml_home": 170
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "DEN",
+   "commence": "2026-09-20T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "LAC",
+   "commence": "2026-09-20T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": 330,
+   "ml_home": -425,
+   "books": {
+    "draftkings": {
+     "ml_away": 330,
+     "ml_home": -425
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "ARI",
+   "commence": "2026-09-20T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": -500,
+   "ml_home": 380,
+   "books": {
+    "draftkings": {
+     "ml_away": -500,
+     "ml_home": 380
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "DAL",
+   "commence": "2026-09-20T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "SF",
+   "commence": "2026-09-20T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 410,
+   "ml_home": -550,
+   "books": {
+    "draftkings": {
+     "ml_away": 410,
+     "ml_home": -550
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "KC",
+   "commence": "2026-09-21T00:20:00Z",
+   "book": "draftkings",
+   "ml_away": 225,
+   "ml_home": -278,
+   "books": {
+    "draftkings": {
+     "ml_away": 225,
+     "ml_home": -278
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "LA",
+   "commence": "2026-09-22T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 300,
+   "ml_home": -380,
+   "books": {
+    "draftkings": {
+     "ml_away": 300,
+     "ml_home": -380
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "GB",
+   "commence": "2026-09-25T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 285,
+   "ml_home": -360,
+   "books": {
+    "draftkings": {
+     "ml_away": 285,
+     "ml_home": -360
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "BUF",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 140,
+   "ml_home": -166,
+   "books": {
+    "draftkings": {
+     "ml_away": 140,
+     "ml_home": -166
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "CLE",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "PIT",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "DET",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 340,
+   "ml_home": -440,
+   "books": {
+    "draftkings": {
+     "ml_away": 340,
+     "ml_home": -440
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "IND",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "JAX",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -102,
+   "ml_home": -118,
+   "books": {
+    "draftkings": {
+     "ml_away": -102,
+     "ml_home": -118
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "MIA",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -355,
+   "ml_home": 280,
+   "books": {
+    "draftkings": {
+     "ml_away": -355,
+     "ml_home": 280
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "NYG",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 142,
+   "ml_home": -170,
+   "books": {
+    "draftkings": {
+     "ml_away": 142,
+     "ml_home": -170
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "WAS",
+   "commence": "2026-09-27T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -185,
+   "ml_home": 154,
+   "books": {
+    "draftkings": {
+     "ml_away": -185,
+     "ml_home": 154
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "SF",
+   "commence": "2026-09-27T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": 425,
+   "ml_home": -575,
+   "books": {
+    "draftkings": {
+     "ml_away": 425,
+     "ml_home": -575
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "TB",
+   "commence": "2026-09-27T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "DAL",
+   "commence": "2026-09-27T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": -135,
+   "ml_home": 114,
+   "books": {
+    "draftkings": {
+     "ml_away": -135,
+     "ml_home": 114
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "NO",
+   "commence": "2026-09-27T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 164,
+   "ml_home": -198,
+   "books": {
+    "draftkings": {
+     "ml_away": 164,
+     "ml_home": -198
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "DEN",
+   "commence": "2026-09-28T00:20:00Z",
+   "book": "draftkings",
+   "ml_away": -155,
+   "ml_home": 130,
+   "books": {
+    "draftkings": {
+     "ml_away": -155,
+     "ml_home": 130
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "CHI",
+   "commence": "2026-09-29T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": -102,
+   "ml_home": -118,
+   "books": {
+    "draftkings": {
+     "ml_away": -102,
+     "ml_home": -118
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "CLE",
+   "commence": "2026-10-02T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": -135,
+   "ml_home": 114,
+   "books": {
+    "draftkings": {
+     "ml_away": -135,
+     "ml_home": 114
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "WAS",
+   "commence": "2026-10-04T13:30:00Z",
+   "book": "draftkings",
+   "ml_away": -102,
+   "ml_home": -118,
+   "books": {
+    "draftkings": {
+     "ml_away": -102,
+     "ml_home": -118
+    },
+    "fanduel": {
+     "ml_away": -102,
+     "ml_home": -116
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "NYG",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 245,
+   "ml_home": -305,
+   "books": {
+    "draftkings": {
+     "ml_away": 245,
+     "ml_home": -305
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "BAL",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 310,
+   "ml_home": -395,
+   "books": {
+    "draftkings": {
+     "ml_away": 310,
+     "ml_home": -395
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "BUF",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 136,
+   "ml_home": -162,
+   "books": {
+    "draftkings": {
+     "ml_away": 136,
+     "ml_home": -162
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "CHI",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 320,
+   "ml_home": -410,
+   "books": {
+    "draftkings": {
+     "ml_away": 320,
+     "ml_home": -410
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "CIN",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "HOU",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "TB",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "PHI",
+   "commence": "2026-10-04T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "MIN",
+   "commence": "2026-10-04T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": 295,
+   "ml_home": -375,
+   "books": {
+    "draftkings": {
+     "ml_away": 295,
+     "ml_home": -375
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "SF",
+   "commence": "2026-10-04T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "LV",
+   "commence": "2026-10-04T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": -230,
+   "ml_home": 190,
+   "books": {
+    "draftkings": {
+     "ml_away": -230,
+     "ml_home": 190
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "SEA",
+   "commence": "2026-10-04T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 145,
+   "ml_home": -175,
+   "books": {
+    "draftkings": {
+     "ml_away": 145,
+     "ml_home": -175
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "CAR",
+   "commence": "2026-10-05T00:20:00Z",
+   "book": "draftkings",
+   "ml_away": -162,
+   "ml_home": 136,
+   "books": {
+    "draftkings": {
+     "ml_away": -162,
+     "ml_home": 136
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "NO",
+   "commence": "2026-10-06T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "DAL",
+   "commence": "2026-10-09T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "JAX",
+   "commence": "2026-10-11T13:30:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    },
+    "fanduel": {
+     "ml_away": -124,
+     "ml_home": 106
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "MIA",
+   "commence": "2026-10-11T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -258,
+   "ml_home": 210,
+   "books": {
+    "draftkings": {
+     "ml_away": -258,
+     "ml_home": 210
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "NYJ",
+   "commence": "2026-10-11T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 110,
+   "ml_home": -130,
+   "books": {
+    "draftkings": {
+     "ml_away": 110,
+     "ml_home": -130
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "TEN",
+   "commence": "2026-10-11T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -192,
+   "ml_home": 160,
+   "books": {
+    "draftkings": {
+     "ml_away": -192,
+     "ml_home": 160
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "PIT",
+   "commence": "2026-10-11T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "NE",
+   "commence": "2026-10-11T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 310,
+   "ml_home": -395,
+   "books": {
+    "draftkings": {
+     "ml_away": 310,
+     "ml_home": -395
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "NO",
+   "commence": "2026-10-11T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "WAS",
+   "commence": "2026-10-11T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 110,
+   "ml_home": -130,
+   "books": {
+    "draftkings": {
+     "ml_away": 110,
+     "ml_home": -130
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "LAC",
+   "commence": "2026-10-11T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "ARI",
+   "commence": "2026-10-11T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": -375,
+   "ml_home": 295,
+   "books": {
+    "draftkings": {
+     "ml_away": -375,
+     "ml_home": 295
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "GB",
+   "commence": "2026-10-11T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 140,
+   "ml_home": -166,
+   "books": {
+    "draftkings": {
+     "ml_away": 140,
+     "ml_home": -166
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "SEA",
+   "commence": "2026-10-11T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "ATL",
+   "commence": "2026-10-12T00:20:00Z",
+   "book": "draftkings",
+   "ml_away": -205,
+   "ml_home": 170,
+   "books": {
+    "draftkings": {
+     "ml_away": -205,
+     "ml_home": 170
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "LA",
+   "commence": "2026-10-13T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 130,
+   "ml_home": -155,
+   "books": {
+    "draftkings": {
+     "ml_away": 130,
+     "ml_home": -155
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "DEN",
+   "commence": "2026-10-16T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": -130,
+   "ml_home": 110,
+   "books": {
+    "draftkings": {
+     "ml_away": -130,
+     "ml_home": 110
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "JAX",
+   "commence": "2026-10-18T13:30:00Z",
+   "book": "draftkings",
+   "ml_away": -108,
+   "ml_home": -112,
+   "books": {
+    "draftkings": {
+     "ml_away": -108,
+     "ml_home": -112
+    },
+    "fanduel": {
+     "ml_away": -110,
+     "ml_home": -106
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "ATL",
+   "commence": "2026-10-18T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -155,
+   "ml_home": 130,
+   "books": {
+    "draftkings": {
+     "ml_away": -155,
+     "ml_home": 130
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "CLE",
+   "commence": "2026-10-18T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -258,
+   "ml_home": 210,
+   "books": {
+    "draftkings": {
+     "ml_away": -258,
+     "ml_home": 210
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "PHI",
+   "commence": "2026-10-18T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 225,
+   "ml_home": -278,
+   "books": {
+    "draftkings": {
+     "ml_away": 225,
+     "ml_home": -278
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "IND",
+   "commence": "2026-10-18T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "NE",
+   "commence": "2026-10-18T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 360,
+   "ml_home": -470,
+   "books": {
+    "draftkings": {
+     "ml_away": 360,
+     "ml_home": -470
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "NYG",
+   "commence": "2026-10-18T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "TB",
+   "commence": "2026-10-18T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "LA",
+   "commence": "2026-10-18T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": 500,
+   "ml_home": -700,
+   "books": {
+    "draftkings": {
+     "ml_away": 500,
+     "ml_home": -700
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "LV",
+   "commence": "2026-10-18T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": -278,
+   "ml_home": 225,
+   "books": {
+    "draftkings": {
+     "ml_away": -278,
+     "ml_home": 225
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "KC",
+   "commence": "2026-10-18T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "GB",
+   "commence": "2026-10-19T00:20:00Z",
+   "book": "draftkings",
+   "ml_away": 140,
+   "ml_home": -166,
+   "books": {
+    "draftkings": {
+     "ml_away": 140,
+     "ml_home": -166
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "SF",
+   "commence": "2026-10-20T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 205,
+   "ml_home": -250,
+   "books": {
+    "draftkings": {
+     "ml_away": 205,
+     "ml_home": -250
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "CHI",
+   "commence": "2026-10-23T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "NO",
+   "commence": "2026-10-25T13:30:00Z",
+   "book": "draftkings",
+   "ml_away": -142,
+   "ml_home": 120,
+   "books": {
+    "draftkings": {
+     "ml_away": -142,
+     "ml_home": 120
+    },
+    "fanduel": {
+     "ml_away": -126,
+     "ml_home": 108
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "ATL",
+   "commence": "2026-10-25T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -218,
+   "ml_home": 180,
+   "books": {
+    "draftkings": {
+     "ml_away": -218,
+     "ml_home": 180
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "BAL",
+   "commence": "2026-10-25T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "CAR",
+   "commence": "2026-10-25T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "TEN",
+   "commence": "2026-10-25T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "HOU",
+   "commence": "2026-10-25T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 195,
+   "ml_home": -238,
+   "books": {
+    "draftkings": {
+     "ml_away": 195,
+     "ml_home": -238
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "MIN",
+   "commence": "2026-10-25T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "NYJ",
+   "commence": "2026-10-25T17:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "ARI",
+   "commence": "2026-10-25T20:05:00Z",
+   "book": "draftkings",
+   "ml_away": -375,
+   "ml_home": 295,
+   "books": {
+    "draftkings": {
+     "ml_away": -375,
+     "ml_home": 295
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "DET",
+   "commence": "2026-10-25T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "LV",
+   "commence": "2026-10-25T20:25:00Z",
+   "book": "draftkings",
+   "ml_away": -345,
+   "ml_home": 275,
+   "books": {
+    "draftkings": {
+     "ml_away": -345,
+     "ml_home": 275
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "SEA",
+   "commence": "2026-10-26T00:20:00Z",
+   "book": "draftkings",
+   "ml_away": 140,
+   "ml_home": -166,
+   "books": {
+    "draftkings": {
+     "ml_away": 140,
+     "ml_home": -166
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "PHI",
+   "commence": "2026-10-27T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 136,
+   "ml_home": -162,
+   "books": {
+    "draftkings": {
+     "ml_away": 136,
+     "ml_home": -162
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "GB",
+   "commence": "2026-10-30T00:15:00Z",
+   "book": "draftkings",
+   "ml_away": 260,
+   "ml_home": -325,
+   "books": {
+    "draftkings": {
+     "ml_away": 260,
+     "ml_home": -325
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "DAL",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 370,
+   "ml_home": -485,
+   "books": {
+    "draftkings": {
+     "ml_away": 370,
+     "ml_home": -485
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "TB",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 180,
+   "ml_home": -218,
+   "books": {
+    "draftkings": {
+     "ml_away": 180,
+     "ml_home": -218
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "BUF",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "CIN",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 220,
+   "ml_home": -270,
+   "books": {
+    "draftkings": {
+     "ml_away": 220,
+     "ml_home": -270
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "PIT",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 205,
+   "ml_home": -250,
+   "books": {
+    "draftkings": {
+     "ml_away": 205,
+     "ml_home": -250
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "DET",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 180,
+   "ml_home": -218,
+   "books": {
+    "draftkings": {
+     "ml_away": 180,
+     "ml_home": -218
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "JAX",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 170,
+   "ml_home": -205,
+   "books": {
+    "draftkings": {
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "NYJ",
+   "commence": "2026-11-01T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "LA",
+   "commence": "2026-11-01T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": 170,
+   "ml_home": -205,
+   "books": {
+    "draftkings": {
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "DEN",
+   "commence": "2026-11-01T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "MIA",
+   "commence": "2026-11-01T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": -325,
+   "ml_home": 260,
+   "books": {
+    "draftkings": {
+     "ml_away": -325,
+     "ml_home": 260
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "WAS",
+   "commence": "2026-11-02T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "SEA",
+   "commence": "2026-11-03T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 180,
+   "ml_home": -218,
+   "books": {
+    "draftkings": {
+     "ml_away": 180,
+     "ml_home": -218
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "BAL",
+   "commence": "2026-11-06T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 170,
+   "ml_home": -205,
+   "books": {
+    "draftkings": {
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "ATL",
+   "commence": "2026-11-08T14:30:00Z",
+   "book": "draftkings",
+   "ml_away": -230,
+   "ml_home": 190,
+   "books": {
+    "draftkings": {
+     "ml_away": -230,
+     "ml_home": 190
+    },
+    "fanduel": {
+     "ml_away": -225,
+     "ml_home": 188
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "CAR",
+   "commence": "2026-11-08T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -162,
+   "ml_home": 136,
+   "books": {
+    "draftkings": {
+     "ml_away": -162,
+     "ml_home": 136
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "NO",
+   "commence": "2026-11-08T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 164,
+   "ml_home": -198,
+   "books": {
+    "draftkings": {
+     "ml_away": 164,
+     "ml_home": -198
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "IND",
+   "commence": "2026-11-08T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "MIA",
+   "commence": "2026-11-08T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -258,
+   "ml_home": 210,
+   "books": {
+    "draftkings": {
+     "ml_away": -258,
+     "ml_home": 210
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "KC",
+   "commence": "2026-11-08T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 350,
+   "ml_home": -455,
+   "books": {
+    "draftkings": {
+     "ml_away": 350,
+     "ml_home": -455
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "WAS",
+   "commence": "2026-11-08T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -205,
+   "ml_home": 170,
+   "books": {
+    "draftkings": {
+     "ml_away": -205,
+     "ml_home": 170
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "PHI",
+   "commence": "2026-11-08T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 190,
+   "ml_home": -230,
+   "books": {
+    "draftkings": {
+     "ml_away": 190,
+     "ml_home": -230
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "LAC",
+   "commence": "2026-11-08T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "SF",
+   "commence": "2026-11-08T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": 330,
+   "ml_home": -425,
+   "books": {
+    "draftkings": {
+     "ml_away": 330,
+     "ml_home": -425
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "SEA",
+   "commence": "2026-11-08T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 525,
+   "ml_home": -750,
+   "books": {
+    "draftkings": {
+     "ml_away": 525,
+     "ml_home": -750
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "NE",
+   "commence": "2026-11-08T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "CHI",
+   "commence": "2026-11-09T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "MIN",
+   "commence": "2026-11-10T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": -166,
+   "ml_home": 140,
+   "books": {
+    "draftkings": {
+     "ml_away": -166,
+     "ml_home": 140
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "NYG",
+   "commence": "2026-11-13T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 102,
+   "ml_home": -122,
+   "books": {
+    "draftkings": {
+     "ml_away": 102,
+     "ml_home": -122
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "DET",
+   "commence": "2026-11-15T14:30:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    },
+    "fanduel": {
+     "ml_away": -102,
+     "ml_home": -116
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "ATL",
+   "commence": "2026-11-15T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -218,
+   "ml_home": 180,
+   "books": {
+    "draftkings": {
+     "ml_away": -218,
+     "ml_home": 180
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "NYJ",
+   "commence": "2026-11-15T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -340,
+   "ml_home": 270,
+   "books": {
+    "draftkings": {
+     "ml_away": -340,
+     "ml_home": 270
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "NO",
+   "commence": "2026-11-15T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -102,
+   "ml_home": -118,
+   "books": {
+    "draftkings": {
+     "ml_away": -102,
+     "ml_home": -118
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "CLE",
+   "commence": "2026-11-15T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -205,
+   "ml_home": 170,
+   "books": {
+    "draftkings": {
+     "ml_away": -205,
+     "ml_home": 170
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "GB",
+   "commence": "2026-11-15T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 185,
+   "ml_home": -225,
+   "books": {
+    "draftkings": {
+     "ml_away": 185,
+     "ml_home": -225
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "IND",
+   "commence": "2026-11-15T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 220,
+   "ml_home": -270,
+   "books": {
+    "draftkings": {
+     "ml_away": 220,
+     "ml_home": -270
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "TEN",
+   "commence": "2026-11-15T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -142,
+   "ml_home": 120,
+   "books": {
+    "draftkings": {
+     "ml_away": -142,
+     "ml_home": 120
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "ARI",
+   "commence": "2026-11-15T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": -470,
+   "ml_home": 360,
+   "books": {
+    "draftkings": {
+     "ml_away": -470,
+     "ml_home": 360
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "LV",
+   "commence": "2026-11-15T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": -310,
+   "ml_home": 250,
+   "books": {
+    "draftkings": {
+     "ml_away": -310,
+     "ml_home": 250
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "DAL",
+   "commence": "2026-11-15T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": -102,
+   "ml_home": -118,
+   "books": {
+    "draftkings": {
+     "ml_away": -102,
+     "ml_home": -118
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "CIN",
+   "commence": "2026-11-16T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 154,
+   "ml_home": -185,
+   "books": {
+    "draftkings": {
+     "ml_away": 154,
+     "ml_home": -185
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "BAL",
+   "commence": "2026-11-17T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 154,
+   "ml_home": -185,
+   "books": {
+    "draftkings": {
+     "ml_away": 154,
+     "ml_home": -185
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "HOU",
+   "commence": "2026-11-20T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 200,
+   "ml_home": -245,
+   "books": {
+    "draftkings": {
+     "ml_away": 200,
+     "ml_home": -245
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "KC",
+   "commence": "2026-11-22T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 440,
+   "ml_home": -600,
+   "books": {
+    "draftkings": {
+     "ml_away": 440,
+     "ml_home": -600
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "CAR",
+   "commence": "2026-11-22T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -205,
+   "ml_home": 170,
+   "books": {
+    "draftkings": {
+     "ml_away": -205,
+     "ml_home": 170
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "BUF",
+   "commence": "2026-11-22T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 410,
+   "ml_home": -550,
+   "books": {
+    "draftkings": {
+     "ml_away": 410,
+     "ml_home": -550
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "CHI",
+   "commence": "2026-11-22T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 215,
+   "ml_home": -265,
+   "books": {
+    "draftkings": {
+     "ml_away": 215,
+     "ml_home": -265
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "DAL",
+   "commence": "2026-11-22T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 230,
+   "ml_home": -285,
+   "books": {
+    "draftkings": {
+     "ml_away": 230,
+     "ml_home": -285
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "DET",
+   "commence": "2026-11-22T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 185,
+   "ml_home": -225,
+   "books": {
+    "draftkings": {
+     "ml_away": 185,
+     "ml_home": -225
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "NYG",
+   "commence": "2026-11-22T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "LAC",
+   "commence": "2026-11-22T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": 330,
+   "ml_home": -425,
+   "books": {
+    "draftkings": {
+     "ml_away": 330,
+     "ml_home": -425
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "DEN",
+   "commence": "2026-11-22T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 295,
+   "ml_home": -375,
+   "books": {
+    "draftkings": {
+     "ml_away": 295,
+     "ml_home": -375
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "PHI",
+   "commence": "2026-11-22T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 205,
+   "ml_home": -250,
+   "books": {
+    "draftkings": {
+     "ml_away": 205,
+     "ml_home": -250
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "SF",
+   "commence": "2026-11-23T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    },
+    "fanduel": {
+     "ml_away": 176,
+     "ml_home": -210
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "WAS",
+   "commence": "2026-11-24T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "LA",
+   "commence": "2026-11-26T01:00:00Z",
+   "book": "draftkings",
+   "ml_away": 185,
+   "ml_home": -225,
+   "books": {
+    "draftkings": {
+     "ml_away": 185,
+     "ml_home": -225
+    },
+    "fanduel": {
+     "ml_away": 198,
+     "ml_home": -240
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "DET",
+   "commence": "2026-11-26T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    },
+    "fanduel": {
+     "ml_away": 114,
+     "ml_home": -134
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "DAL",
+   "commence": "2026-11-26T20:30:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    },
+    "fanduel": {
+     "ml_away": 100,
+     "ml_home": -118
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "BUF",
+   "commence": "2026-11-27T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 124,
+   "ml_home": -148,
+   "books": {
+    "draftkings": {
+     "ml_away": 124,
+     "ml_home": -148
+    },
+    "fanduel": {
+     "ml_away": 126,
+     "ml_home": -148
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "PIT",
+   "commence": "2026-11-27T20:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    },
+    "fanduel": {
+     "ml_away": -132,
+     "ml_home": 112
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "MIN",
+   "commence": "2026-11-29T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 180,
+   "ml_home": -218,
+   "books": {
+    "draftkings": {
+     "ml_away": 180,
+     "ml_home": -218
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "HOU",
+   "commence": "2026-11-29T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "CIN",
+   "commence": "2026-11-29T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 220,
+   "ml_home": -270,
+   "books": {
+    "draftkings": {
+     "ml_away": 220,
+     "ml_home": -270
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "CLE",
+   "commence": "2026-11-29T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "IND",
+   "commence": "2026-11-29T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "JAX",
+   "commence": "2026-11-29T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 200,
+   "ml_home": -245,
+   "books": {
+    "draftkings": {
+     "ml_away": 200,
+     "ml_home": -245
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "MIA",
+   "commence": "2026-11-29T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "ARI",
+   "commence": "2026-11-29T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": -218,
+   "ml_home": 180,
+   "books": {
+    "draftkings": {
+     "ml_away": -218,
+     "ml_home": 180
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "SF",
+   "commence": "2026-11-29T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": -110,
+   "ml_home": -110,
+   "books": {
+    "draftkings": {
+     "ml_away": -110,
+     "ml_home": -110
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "LAC",
+   "commence": "2026-11-30T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "TB",
+   "commence": "2026-12-01T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 164,
+   "ml_home": -198,
+   "books": {
+    "draftkings": {
+     "ml_away": 164,
+     "ml_home": -198
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "LA",
+   "commence": "2026-12-04T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 170,
+   "ml_home": -205,
+   "books": {
+    "draftkings": {
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "ATL",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -185,
+   "ml_home": 154,
+   "books": {
+    "draftkings": {
+     "ml_away": -185,
+     "ml_home": 154
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "CHI",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "CLE",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -218,
+   "ml_home": 180,
+   "books": {
+    "draftkings": {
+     "ml_away": -218,
+     "ml_home": 180
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "DEN",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 350,
+   "ml_home": -455,
+   "books": {
+    "draftkings": {
+     "ml_away": 350,
+     "ml_home": -455
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "NO",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -218,
+   "ml_home": 180,
+   "books": {
+    "draftkings": {
+     "ml_away": -218,
+     "ml_home": 180
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "TB",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -142,
+   "ml_home": 120,
+   "books": {
+    "draftkings": {
+     "ml_away": -142,
+     "ml_home": 120
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "NYG",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -162,
+   "ml_home": 136,
+   "books": {
+    "draftkings": {
+     "ml_away": -162,
+     "ml_home": 136
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "TEN",
+   "commence": "2026-12-06T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "ARI",
+   "commence": "2026-12-06T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": -395,
+   "ml_home": 310,
+   "books": {
+    "draftkings": {
+     "ml_away": -395,
+     "ml_home": 310
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "NE",
+   "commence": "2026-12-06T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 102,
+   "ml_home": -122,
+   "books": {
+    "draftkings": {
+     "ml_away": 102,
+     "ml_home": -122
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "MIN",
+   "commence": "2026-12-06T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "PIT",
+   "commence": "2026-12-07T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "SEA",
+   "commence": "2026-12-08T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 185,
+   "ml_home": -225,
+   "books": {
+    "draftkings": {
+     "ml_away": 185,
+     "ml_home": -225
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "NE",
+   "commence": "2026-12-11T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 185,
+   "ml_home": -225,
+   "books": {
+    "draftkings": {
+     "ml_away": 185,
+     "ml_home": -225
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "CLE",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 102,
+   "ml_home": -122,
+   "books": {
+    "draftkings": {
+     "ml_away": 102,
+     "ml_home": -122
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "BAL",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 205,
+   "ml_home": -250,
+   "books": {
+    "draftkings": {
+     "ml_away": 205,
+     "ml_home": -250
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "CAR",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "MIA",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -238,
+   "ml_home": 195,
+   "books": {
+    "draftkings": {
+     "ml_away": -238,
+     "ml_home": 195
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "NYJ",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -245,
+   "ml_home": 200,
+   "books": {
+    "draftkings": {
+     "ml_away": -245,
+     "ml_home": 200
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "DET",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 285,
+   "ml_home": -360,
+   "books": {
+    "draftkings": {
+     "ml_away": 285,
+     "ml_home": -360
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "WAS",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -122,
+   "ml_home": 102,
+   "books": {
+    "draftkings": {
+     "ml_away": -122,
+     "ml_home": 102
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "PHI",
+   "commence": "2026-12-13T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 195,
+   "ml_home": -238,
+   "books": {
+    "draftkings": {
+     "ml_away": 195,
+     "ml_home": -238
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "LV",
+   "commence": "2026-12-13T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": -245,
+   "ml_home": 200,
+   "books": {
+    "draftkings": {
+     "ml_away": -245,
+     "ml_home": 200
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "CIN",
+   "commence": "2026-12-13T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "SF",
+   "commence": "2026-12-13T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": -130,
+   "ml_home": 110,
+   "books": {
+    "draftkings": {
+     "ml_away": -130,
+     "ml_home": 110
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "SEA",
+   "commence": "2026-12-13T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 275,
+   "ml_home": -345,
+   "books": {
+    "draftkings": {
+     "ml_away": 275,
+     "ml_home": -345
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "GB",
+   "commence": "2026-12-14T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "JAX",
+   "commence": "2026-12-15T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 140,
+   "ml_home": -166,
+   "books": {
+    "draftkings": {
+     "ml_away": 140,
+     "ml_home": -166
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "LAC",
+   "commence": "2026-12-18T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "PHI",
+   "commence": "2026-12-19T22:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "BUF",
+   "commence": "2026-12-20T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "WAS",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "PIT",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -148,
+   "ml_home": 124,
+   "books": {
+    "draftkings": {
+     "ml_away": -148,
+     "ml_home": 124
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "CAR",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -135,
+   "ml_home": 114,
+   "books": {
+    "draftkings": {
+     "ml_away": -135,
+     "ml_home": 114
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "NYG",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 180,
+   "ml_home": -218,
+   "books": {
+    "draftkings": {
+     "ml_away": 180,
+     "ml_home": -218
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "GB",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 410,
+   "ml_home": -550,
+   "books": {
+    "draftkings": {
+     "ml_away": 410,
+     "ml_home": -550
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "HOU",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 136,
+   "ml_home": -162,
+   "books": {
+    "draftkings": {
+     "ml_away": 136,
+     "ml_home": -162
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "TEN",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "TB",
+   "commence": "2026-12-20T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "ARI",
+   "commence": "2026-12-20T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": -110,
+   "ml_home": -110,
+   "books": {
+    "draftkings": {
+     "ml_away": -110,
+     "ml_home": -110
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "LA",
+   "commence": "2026-12-20T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 210,
+   "ml_home": -258,
+   "books": {
+    "draftkings": {
+     "ml_away": 210,
+     "ml_home": -258
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "LV",
+   "commence": "2026-12-20T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": -218,
+   "ml_home": 180,
+   "books": {
+    "draftkings": {
+     "ml_away": -218,
+     "ml_home": 180
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "MIN",
+   "commence": "2026-12-21T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "KC",
+   "commence": "2026-12-22T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "PHI",
+   "commence": "2026-12-25T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    },
+    "fanduel": {
+     "ml_away": 110,
+     "ml_home": -130
+    }
+   }
+  },
+  {
+   "away_id": "GB",
+   "home_id": "CHI",
+   "commence": "2026-12-25T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -102,
+   "ml_home": -118,
+   "books": {
+    "draftkings": {
+     "ml_away": -102,
+     "ml_home": -118
+    },
+    "fanduel": {
+     "ml_away": 100,
+     "ml_home": -118
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "DEN",
+   "commence": "2026-12-25T21:30:00Z",
+   "book": "draftkings",
+   "ml_away": -130,
+   "ml_home": 110,
+   "books": {
+    "draftkings": {
+     "ml_away": -130,
+     "ml_home": 110
+    },
+    "fanduel": {
+     "ml_away": -132,
+     "ml_home": 112
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "SEA",
+   "commence": "2026-12-26T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 110,
+   "ml_home": -130,
+   "books": {
+    "draftkings": {
+     "ml_away": 110,
+     "ml_home": -130
+    },
+    "fanduel": {
+     "ml_away": -112,
+     "ml_home": -104
+    }
+   }
+  },
+  {
+   "away_id": "ARI",
+   "home_id": "NO",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 200,
+   "ml_home": -245,
+   "books": {
+    "draftkings": {
+     "ml_away": 200,
+     "ml_home": -245
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "ATL",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "BAL",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 350,
+   "ml_home": -455,
+   "books": {
+    "draftkings": {
+     "ml_away": 350,
+     "ml_home": -455
+    }
+   }
+  },
+  {
+   "away_id": "CAR",
+   "home_id": "PIT",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 160,
+   "ml_home": -192,
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192
+    }
+   }
+  },
+  {
+   "away_id": "CIN",
+   "home_id": "IND",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -122,
+   "ml_home": 102,
+   "books": {
+    "draftkings": {
+     "ml_away": -122,
+     "ml_home": 102
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "LV",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "MIA",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -325,
+   "ml_home": 260,
+   "books": {
+    "draftkings": {
+     "ml_away": -325,
+     "ml_home": 260
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "MIN",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "NE",
+   "home_id": "NYJ",
+   "commence": "2026-12-27T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -278,
+   "ml_home": 225,
+   "books": {
+    "draftkings": {
+     "ml_away": -278,
+     "ml_home": 225
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "KC",
+   "commence": "2026-12-27T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 130,
+   "ml_home": -155,
+   "books": {
+    "draftkings": {
+     "ml_away": 130,
+     "ml_home": -155
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "DAL",
+   "commence": "2026-12-28T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 136,
+   "ml_home": -162,
+   "books": {
+    "draftkings": {
+     "ml_away": 136,
+     "ml_home": -162
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "DET",
+   "commence": "2026-12-29T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 170,
+   "ml_home": -205,
+   "books": {
+    "draftkings": {
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "away_id": "BAL",
+   "home_id": "CIN",
+   "commence": "2027-01-01T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "NO",
+   "home_id": "ATL",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 102,
+   "ml_home": -122,
+   "books": {
+    "draftkings": {
+     "ml_away": 102,
+     "ml_home": -122
+    }
+   }
+  },
+  {
+   "away_id": "BUF",
+   "home_id": "MIA",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -340,
+   "ml_home": 270,
+   "books": {
+    "draftkings": {
+     "ml_away": -340,
+     "ml_home": 270
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "CAR",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -230,
+   "ml_home": 190,
+   "books": {
+    "draftkings": {
+     "ml_away": -230,
+     "ml_home": 190
+    }
+   }
+  },
+  {
+   "away_id": "IND",
+   "home_id": "CLE",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -135,
+   "ml_home": 114,
+   "books": {
+    "draftkings": {
+     "ml_away": -135,
+     "ml_home": 114
+    }
+   }
+  },
+  {
+   "away_id": "NYG",
+   "home_id": "DAL",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 170,
+   "ml_home": -205,
+   "books": {
+    "draftkings": {
+     "ml_away": 170,
+     "ml_home": -205
+    }
+   }
+  },
+  {
+   "away_id": "DEN",
+   "home_id": "NE",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "WAS",
+   "home_id": "JAX",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 154,
+   "ml_home": -185,
+   "books": {
+    "draftkings": {
+     "ml_away": 154,
+     "ml_home": -185
+    }
+   }
+  },
+  {
+   "away_id": "LA",
+   "home_id": "TB",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -218,
+   "ml_home": 180,
+   "books": {
+    "draftkings": {
+     "ml_away": -218,
+     "ml_home": 180
+    }
+   }
+  },
+  {
+   "away_id": "MIN",
+   "home_id": "NYJ",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -192,
+   "ml_home": 160,
+   "books": {
+    "draftkings": {
+     "ml_away": -192,
+     "ml_home": 160
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "TEN",
+   "commence": "2027-01-03T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "ARI",
+   "commence": "2027-01-03T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": -130,
+   "ml_home": 110,
+   "books": {
+    "draftkings": {
+     "ml_away": -130,
+     "ml_home": 110
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "CHI",
+   "commence": "2027-01-03T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 102,
+   "ml_home": -122,
+   "books": {
+    "draftkings": {
+     "ml_away": 102,
+     "ml_home": -122
+    }
+   }
+  },
+  {
+   "away_id": "KC",
+   "home_id": "LAC",
+   "commence": "2027-01-03T21:25:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "SF",
+   "commence": "2027-01-04T01:20:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "HOU",
+   "home_id": "GB",
+   "commence": "2027-01-05T01:15:00Z",
+   "book": "draftkings",
+   "ml_away": 120,
+   "ml_home": -142,
+   "books": {
+    "draftkings": {
+     "ml_away": 120,
+     "ml_home": -142
+    }
+   }
+  },
+  {
+   "away_id": "ATL",
+   "home_id": "CAR",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "PIT",
+   "home_id": "BAL",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 195,
+   "ml_home": -238,
+   "books": {
+    "draftkings": {
+     "ml_away": 195,
+     "ml_home": -238
+    }
+   }
+  },
+  {
+   "away_id": "NYJ",
+   "home_id": "BUF",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 370,
+   "ml_home": -485,
+   "books": {
+    "draftkings": {
+     "ml_away": 370,
+     "ml_home": -485
+    }
+   }
+  },
+  {
+   "away_id": "CHI",
+   "home_id": "MIN",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "CLE",
+   "home_id": "CIN",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 275,
+   "ml_home": -345,
+   "books": {
+    "draftkings": {
+     "ml_away": 275,
+     "ml_home": -345
+    }
+   }
+  },
+  {
+   "away_id": "DAL",
+   "home_id": "WAS",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "LAC",
+   "home_id": "DEN",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 102,
+   "ml_home": -122,
+   "books": {
+    "draftkings": {
+     "ml_away": 102,
+     "ml_home": -122
+    }
+   }
+  },
+  {
+   "away_id": "DET",
+   "home_id": "GB",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 114,
+   "ml_home": -135,
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135
+    }
+   }
+  },
+  {
+   "away_id": "TEN",
+   "home_id": "HOU",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 250,
+   "ml_home": -310,
+   "books": {
+    "draftkings": {
+     "ml_away": 250,
+     "ml_home": -310
+    }
+   }
+  },
+  {
+   "away_id": "JAX",
+   "home_id": "IND",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 105,
+   "ml_home": -125,
+   "books": {
+    "draftkings": {
+     "ml_away": 105,
+     "ml_home": -125
+    }
+   }
+  },
+  {
+   "away_id": "LV",
+   "home_id": "KC",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 310,
+   "ml_home": -395,
+   "books": {
+    "draftkings": {
+     "ml_away": 310,
+     "ml_home": -395
+    }
+   }
+  },
+  {
+   "away_id": "MIA",
+   "home_id": "NE",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": 425,
+   "ml_home": -575,
+   "books": {
+    "draftkings": {
+     "ml_away": 425,
+     "ml_home": -575
+    }
+   }
+  },
+  {
+   "away_id": "TB",
+   "home_id": "NO",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -125,
+   "ml_home": 105,
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105
+    }
+   }
+  },
+  {
+   "away_id": "PHI",
+   "home_id": "NYG",
+   "commence": "2027-01-10T18:00:00Z",
+   "book": "draftkings",
+   "ml_away": -155,
+   "ml_home": 130,
+   "books": {
+    "draftkings": {
+     "ml_away": -155,
+     "ml_home": 130
+    }
+   }
+  },
+  {
+   "away_id": "SF",
+   "home_id": "ARI",
+   "commence": "2027-01-10T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": -395,
+   "ml_home": 310,
+   "books": {
+    "draftkings": {
+     "ml_away": -395,
+     "ml_home": 310
+    }
+   }
+  },
+  {
+   "away_id": "SEA",
+   "home_id": "LA",
+   "commence": "2027-01-10T21:05:00Z",
+   "book": "draftkings",
+   "ml_away": 136,
+   "ml_home": -162,
+   "books": {
+    "draftkings": {
+     "ml_away": 136,
+     "ml_home": -162
+    }
+   }
+  }
+ ]
+}
