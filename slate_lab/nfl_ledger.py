@@ -170,6 +170,23 @@ def _week_rows(sp, con, season: int, week: int) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def upcoming_week(con, lookahead_days: int = 10) -> tuple[int, int] | None:
+    """(season, week) of the next unplayed REG game within the lookahead
+    window, or None — which is how every cron knows to sleep through the
+    preseason and the offseason without configuration."""
+    from datetime import date, timedelta
+    today = date.today()
+    horizon = (today + timedelta(days=lookahead_days)).isoformat()
+    row = pd.read_sql(
+        "SELECT season, week FROM nfl_games WHERE game_type='REG' AND "
+        "away_score IS NULL AND gameday >= ? AND gameday <= ? "
+        "ORDER BY gameday LIMIT 1", con,
+        params=(today.isoformat(), horizon))
+    if row.empty:
+        return None
+    return int(row.season.iloc[0]), int(row.week.iloc[0])
+
+
 # ---------------------------------------------------------------- commands
 def file_week(sp, con, season: int, week: int) -> None:
     """File every not-yet-filed game of the week. Idempotent: existing

@@ -2,10 +2,19 @@ name: slate-nightly
 
 on:
   schedule:
-    - cron: "0 11 * * *"    # 7:00 AM ET  — grade, score, file predictions
-    - cron: "0 15 * * *"    # 11:00 AM ET — odds snapshot
-    - cron: "30 22 * * *"   # 6:30 PM ET  — odds snapshot
-    - cron: "30 1 * * *"    # 9:30 PM ET  — odds snapshot
+    - cron: "0 11 * * *"    # 7:00 AM ET  — MLB grade, score, file
+    - cron: "0 15 * * *"    # 11:00 AM ET — MLB odds snapshot
+    - cron: "30 22 * * *"   # 6:30 PM ET  — MLB odds snapshot
+    - cron: "30 1 * * *"    # 9:30 PM ET  — MLB odds snapshot
+    # ---- NFL (self-sleeping outside the regular season) ----
+    - cron: "0 13 * * 3"    # Wed 9:00 AM ET  — file the week
+    - cron: "0 13 * * 0"    # Sun 9:00 AM ET  — QB revisions + capture
+    - cron: "0 12 * * 2"    # Tue 8:00 AM ET  — grade + report
+    - cron: "0 21 * * 2"    # Tue 5:00 PM ET  — NFL odds capture (open)
+    - cron: "0 21 * * 4"    # Thu 5:00 PM ET  — NFL odds capture
+    - cron: "45 16 * * 0"   # Sun 12:45 PM ET — NFL odds capture (pre-kick)
+    - cron: "0 23 * * 0"    # Sun 7:00 PM ET  — NFL odds capture
+    - cron: "0 21 * * 1"    # Mon 5:00 PM ET  — NFL odds capture
   workflow_dispatch:
     inputs:
       task:
@@ -39,13 +48,16 @@ jobs:
         id: t
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "task=${{ inputs.task }}" >> $GITHUB_OUTPUT
-          elif [ "${{ github.event.schedule }}" = "0 11 * * *" ]; then
-            echo "task=score" >> $GITHUB_OUTPUT
-          else
-            echo "task=odds" >> $GITHUB_OUTPUT
-          fi
+          case "${{ github.event_name }}:${{ github.event.schedule }}" in
+            workflow_dispatch:*) echo "task=${{ inputs.task }}" >> $GITHUB_OUTPUT ;;
+            *:"0 11 * * *")  echo "task=score" >> $GITHUB_OUTPUT ;;
+            *:"0 13 * * 3")  echo "task=nfl-file" >> $GITHUB_OUTPUT ;;
+            *:"0 13 * * 0")  echo "task=nfl-sunday" >> $GITHUB_OUTPUT ;;
+            *:"0 12 * * 2")  echo "task=nfl-grade" >> $GITHUB_OUTPUT ;;
+            *:"0 21 * * 2"|*:"0 21 * * 4"|*:"45 16 * * 0"|*:"0 23 * * 0"|*:"0 21 * * 1")
+                             echo "task=nfl-odds" >> $GITHUB_OUTPUT ;;
+            *)               echo "task=odds" >> $GITHUB_OUTPUT ;;
+          esac
           echo "Task: $(cat $GITHUB_OUTPUT)"
 
       # ---------------- odds path ----------------
@@ -118,6 +130,55 @@ jobs:
             git pull --rebase --autostash origin main || true
             git push origin HEAD:main
           fi
+
+      # ---------------- NFL paths (sleep outside regular season) ----------------
+      - name: NFL season guard
+        id: nflguard
+        if: startsWith(steps.t.outputs.task, 'nfl-')
+        shell: bash
+        run: |
+          python - << 'EOF' > guard.txt
+          import sqlite3
+          from slate_lab.sports import get_sport
+          from slate_lab.nfl_ledger import upcoming_week
+          from datetime import date
+          sp = get_sport("nfl")
+          con = sqlite3.connect("nfl.db")
+          season = date.today().year if date.today().month >= 8 else date.today().year - 1
+          sp.ingest(con, season)
+          print("awake" if upcoming_week(con) else "asleep")
+          EOF
+          echo "state=$(tail -1 guard.txt)" >> $GITHUB_OUTPUT
+          tail -1 guard.txt
+
+      - name: NFL file week
+        if: steps.t.outputs.task == 'nfl-file' && steps.nflguard.outputs.state == 'awake'
+        run: python -m slate_lab.ledger record --sport nfl --db nfl.db
+
+      - name: NFL Sunday revisions
+        if: steps.t.outputs.task == 'nfl-sunday' && steps.nflguard.outputs.state == 'awake'
+        run: python -m slate_lab.ledger revise --sport nfl --db nfl.db
+
+      - name: NFL odds capture
+        if: (steps.t.outputs.task == 'nfl-odds' || steps.t.outputs.task == 'nfl-sunday') && steps.nflguard.outputs.state == 'awake'
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          python -m slate_lab.ledger capture-odds --sport nfl
+          python -m slate_lab.ledger export-odds --sport nfl || true
+
+      - name: NFL grade
+        if: steps.t.outputs.task == 'nfl-grade' && steps.nflguard.outputs.state == 'awake'
+        run: python -m slate_lab.ledger grade --sport nfl --db nfl.db
+
+      - name: Commit NFL ledger to main
+        if: startsWith(steps.t.outputs.task, 'nfl-') && steps.nflguard.outputs.state == 'awake'
+        shell: bash
+        run: |
+          git config user.name "slate-bot"; git config user.email "bot@slate"
+          git add data/nfl 2>/dev/null || true
+          git commit -m "nfl ledger: ${{ steps.t.outputs.task }}" || echo "nothing to commit"
+          git push || (git pull --rebase origin main && git push)
 
       - name: Publish to gh-pages
         shell: bash

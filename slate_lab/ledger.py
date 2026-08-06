@@ -301,13 +301,20 @@ def main() -> None:
             sport.ingest(con, season)          # refresh results first
             nfl_ledger.grade(sport, con, season)
             return
-        if args.week is None:
-            raise SystemExit("--week is required for nfl record/revise")
         sport.ingest(con, season)
-        if args.cmd == "record":
-            nfl_ledger.file_week(sport, con, season, args.week)
+        if args.week is not None:
+            season_week = (season, args.week)
         else:
-            nfl_ledger.revise_week(sport, con, season, args.week)
+            season_week = nfl_ledger.upcoming_week(con)
+            if season_week is None:
+                print("No regular-season NFL game in the next 10 days — "
+                      "sleeping. (Preseason and offseason are not filed.)")
+                return
+        s_, w_ = season_week
+        if args.cmd == "record":
+            nfl_ledger.file_week(sport, con, s_, w_)
+        else:
+            nfl_ledger.revise_week(sport, con, s_, w_)
         return
     if args.cmd == "export-odds":
         export_odds()
