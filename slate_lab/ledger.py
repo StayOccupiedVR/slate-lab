@@ -277,11 +277,38 @@ def _report(rows: list[dict]) -> None:
 def main() -> None:
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("cmd", choices=["capture-odds", "record", "grade", "export-odds"])
+    p.add_argument("cmd", choices=["capture-odds", "record", "grade",
+                                   "export-odds", "revise"])
     p.add_argument("--sport", default="mlb")
     p.add_argument("--pred", default="predictions.json")
+    p.add_argument("--db", default="slate.db")
+    p.add_argument("--season", type=int, default=None)
+    p.add_argument("--week", type=int, default=None)
     args = p.parse_args()
-    _configure(args.sport)
+    sp = _configure(args.sport)
+
+    if args.sport == "nfl" and args.cmd in ("record", "grade", "revise"):
+        import sqlite3
+        from datetime import date
+        from . import nfl_ledger
+        from .sports import get_sport
+        sport = get_sport("nfl")
+        con = sqlite3.connect(args.db)
+        season = args.season or (date.today().year
+                                 if date.today().month >= 8
+                                 else date.today().year - 1)
+        if args.cmd == "grade":
+            sport.ingest(con, season)          # refresh results first
+            nfl_ledger.grade(sport, con, season)
+            return
+        if args.week is None:
+            raise SystemExit("--week is required for nfl record/revise")
+        sport.ingest(con, season)
+        if args.cmd == "record":
+            nfl_ledger.file_week(sport, con, season, args.week)
+        else:
+            nfl_ledger.revise_week(sport, con, season, args.week)
+        return
     if args.cmd == "export-odds":
         export_odds()
         return

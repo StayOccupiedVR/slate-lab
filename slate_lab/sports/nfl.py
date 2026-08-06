@@ -26,6 +26,21 @@ VALIDATE  ~272 games/season; wide error bars. Two holdout seasons minimum
           ablation a model-vs-Vegas statement.
 
 LEDGER  Live picks start in September; grading vs DraftKings closing.
+
+EPA FINDINGS (2026-08-04 session, full script: experiments/nfl_epa.py)
+    Team net EPA/play (prior-blended): REJECTED. Correlates 0.971 with
+    pyth_diff — point differential and cashed-in EPA are the same signal.
+    Holdout deltas were within noise both directions.
+
+    QB EPA/dropback (announced starter, prior 200 db, season decay 0.5):
+    BENCHED, not shipped. Holdout log loss vs base:
+        2023  .6487 -> .6454     2024  .6029 -> .5854     2025  .6324 -> .6489
+    Helps two seasons materially, damages the most recent one in every
+    formulation tried (raw / decayed / clipped +-0.10/.06/.03 — tighter
+    clips shrink both the gain and the damage in proportion). Hyper-
+    parameters were tuned while observing holdouts, so treat even the
+    good cells as optimistic. Revisit in-season with live starter data;
+    do not ship a feature that fails its most recent season into launch.
 """
 from __future__ import annotations
 
