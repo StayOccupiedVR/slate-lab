@@ -284,6 +284,7 @@ def main() -> None:
     p.add_argument("--db", default="slate.db")
     p.add_argument("--season", type=int, default=None)
     p.add_argument("--week", type=int, default=None)
+    p.add_argument("--out", default="odds.json")
     args = p.parse_args()
     sp = _configure(args.sport)
 
@@ -317,7 +318,7 @@ def main() -> None:
             nfl_ledger.revise_week(sport, con, s_, w_)
         return
     if args.cmd == "export-odds":
-        export_odds()
+        export_odds(args.out)
         return
     if args.cmd == "capture-odds":
         key = os.environ.get("ODDS_API_KEY")

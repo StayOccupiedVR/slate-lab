@@ -160,12 +160,14 @@ jobs:
         run: python -m slate_lab.ledger revise --sport nfl --db nfl.db
 
       - name: NFL odds capture
-        if: (steps.t.outputs.task == 'nfl-odds' || steps.t.outputs.task == 'nfl-sunday') && steps.nflguard.outputs.state == 'awake'
+        # unguarded on purpose: preseason odds are display-only and never
+        # touch the ledger (filing/grading stay behind the season guard)
+        if: steps.t.outputs.task == 'nfl-odds' || steps.t.outputs.task == 'nfl-sunday'
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: |
           python -m slate_lab.ledger capture-odds --sport nfl
-          python -m slate_lab.ledger export-odds --sport nfl || true
+          python -m slate_lab.ledger export-odds --sport nfl --out nfl-odds.json || true
 
       - name: NFL grade
         if: steps.t.outputs.task == 'nfl-grade' && steps.nflguard.outputs.state == 'awake'
@@ -187,8 +189,9 @@ jobs:
           [ -f predictions.json ] && cp predictions.json /tmp/pub/
           [ -f data/report.json ] && cp data/report.json /tmp/pub/
           [ -f odds.json ] && cp odds.json /tmp/pub/
+          [ -f nfl-odds.json ] && cp nfl-odds.json /tmp/pub/
           echo "published $(date -u +%FT%TZ)" > /tmp/pub/index.html
-          rm -f predictions.json odds.json
+          rm -f predictions.json odds.json nfl-odds.json
           git fetch origin gh-pages || true
           if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
             git checkout -B gh-pages origin/gh-pages
@@ -197,6 +200,6 @@ jobs:
             git rm -rf . >/dev/null 2>&1 || true
           fi
           cp /tmp/pub/* . 2>/dev/null || true
-          git add -A -f index.html predictions.json report.json odds.json 2>/dev/null || git add -A
+          git add -A -f index.html predictions.json report.json odds.json nfl-odds.json 2>/dev/null || git add -A
           git commit --allow-empty -m "publish $(date -u +%FT%TZ)"
           git push origin gh-pages
