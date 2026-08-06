@@ -1,0 +1,46 @@
+{
+ "date": "2026-08-05",
+ "model": "gbdt",
+ "games": [
+  {
+   "date": "2026-08-05",
+   "gamePk": 824158,
+   "away": "TOR",
+   "home": "HOU",
+   "p_model": 0.4569,
+   "away_won": true,
+   "p_market": 0.3342013888888889,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-05",
+   "gamePk": 824646,
+   "away": "LAD",
+   "home": "CHC",
+   "p_model": 0.5157,
+   "away_won": false,
+   "p_market": 0.48807959451849076,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-05",
+   "gamePk": 822866,
+   "away": "SF",
+   "home": "TEX",
+   "p_model": 0.4569,
+   "away_won": false,
+   "p_market": 0.41383238950507656,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-05",
+   "gamePk": 824322,
+   "away": "TB",
+   "home": "COL",
+   "p_model": 0.5317,
+   "away_won": true,
+   "p_market": 0.5944380069524913,
+   "book": "draftkings"
+  }
+ ]
+}
