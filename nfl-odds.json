@@ -1,5 +1,5 @@
 {
- "captured": "20260807T010035Z",
+ "captured": "20260809T135313Z",
  "games": [
   {
    "away_id": "NE",
@@ -14,12 +14,12 @@
      "ml_home": -192
     },
     "fanduel": {
-     "ml_away": 166,
-     "ml_home": -198
+     "ml_away": 160,
+     "ml_home": -190
     },
     "hardrockbet": {
      "ml_away": 165,
-     "ml_home": -200
+     "ml_home": -195
     }
    }
   },
@@ -28,16 +28,16 @@
    "home_id": "LA",
    "commence": "2026-09-11T00:35:00Z",
    "book": "draftkings",
-   "ml_away": 145,
-   "ml_home": -175,
+   "ml_away": 160,
+   "ml_home": -192,
    "books": {
     "draftkings": {
-     "ml_away": 145,
-     "ml_home": -175
+     "ml_away": 160,
+     "ml_home": -192
     },
     "fanduel": {
-     "ml_away": 176,
-     "ml_home": -210
+     "ml_away": 172,
+     "ml_home": -205
     },
     "hardrockbet": {
      "ml_away": 165,
@@ -50,16 +50,16 @@
    "home_id": "PIT",
    "commence": "2026-09-13T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 145,
-   "ml_home": -175,
+   "ml_away": 150,
+   "ml_home": -180,
    "books": {
     "draftkings": {
-     "ml_away": 145,
-     "ml_home": -175
+     "ml_away": 150,
+     "ml_home": -180
     },
     "fanduel": {
-     "ml_away": 126,
-     "ml_home": -148
+     "ml_away": 128,
+     "ml_home": -152
     },
     "hardrockbet": {
      "ml_away": 135,
@@ -80,12 +80,12 @@
      "ml_home": 150
     },
     "fanduel": {
-     "ml_away": -198,
-     "ml_home": 164
+     "ml_away": -186,
+     "ml_home": 156
     },
     "hardrockbet": {
-     "ml_away": -190,
-     "ml_home": 160
+     "ml_away": -185,
+     "ml_home": 155
     }
    }
   },
@@ -102,8 +102,8 @@
      "ml_home": 100
     },
     "fanduel": {
-     "ml_away": -110,
-     "ml_home": -106
+     "ml_away": -112,
+     "ml_home": -104
     },
     "hardrockbet": {
      "ml_away": -115,
@@ -124,12 +124,12 @@
      "ml_home": 124
     },
     "fanduel": {
-     "ml_away": -146,
-     "ml_home": 124
+     "ml_away": -152,
+     "ml_home": 128
     },
     "hardrockbet": {
      "ml_away": -150,
-     "ml_home": 125
+     "ml_home": 130
     }
    }
   },
@@ -138,12 +138,12 @@
    "home_id": "CIN",
    "commence": "2026-09-13T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 160,
-   "ml_home": -192,
+   "ml_away": 170,
+   "ml_home": -205,
    "books": {
     "draftkings": {
-     "ml_away": 160,
-     "ml_home": -192
+     "ml_away": 170,
+     "ml_home": -205
     },
     "fanduel": {
      "ml_away": 176,
@@ -160,16 +160,16 @@
    "home_id": "JAX",
    "commence": "2026-09-13T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 320,
-   "ml_home": -410,
+   "ml_away": 300,
+   "ml_home": -380,
    "books": {
     "draftkings": {
-     "ml_away": 320,
-     "ml_home": -410
+     "ml_away": 300,
+     "ml_home": -380
     },
     "fanduel": {
      "ml_away": 320,
-     "ml_home": -405
+     "ml_home": -420
     },
     "hardrockbet": {
      "ml_away": 300,
@@ -182,20 +182,20 @@
    "home_id": "DET",
    "commence": "2026-09-13T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 250,
-   "ml_home": -310,
+   "ml_away": 260,
+   "ml_home": -325,
    "books": {
     "draftkings": {
-     "ml_away": 250,
-     "ml_home": -310
+     "ml_away": 260,
+     "ml_home": -325
     },
     "fanduel": {
      "ml_away": 265,
      "ml_home": -330
     },
     "hardrockbet": {
-     "ml_away": 260,
-     "ml_home": -325
+     "ml_away": 275,
+     "ml_home": -350
     }
    }
   },
@@ -204,16 +204,16 @@
    "home_id": "TEN",
    "commence": "2026-09-13T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 130,
-   "ml_home": -155,
+   "ml_away": 124,
+   "ml_home": -148,
    "books": {
     "draftkings": {
-     "ml_away": 130,
-     "ml_home": -155
+     "ml_away": 124,
+     "ml_home": -148
     },
     "fanduel": {
-     "ml_away": 116,
-     "ml_home": -134
+     "ml_away": 118,
+     "ml_home": -138
     },
     "hardrockbet": {
      "ml_away": 125,
@@ -234,8 +234,8 @@
      "ml_home": -625
     },
     "fanduel": {
-     "ml_away": 440,
-     "ml_home": -590
+     "ml_away": 450,
+     "ml_home": -600
     },
     "hardrockbet": {
      "ml_away": 425,
@@ -260,8 +260,8 @@
      "ml_home": -108
     },
     "hardrockbet": {
-     "ml_away": -110,
-     "ml_home": -110
+     "ml_away": -105,
+     "ml_home": -115
     }
    }
   },
@@ -270,16 +270,16 @@
    "home_id": "LV",
    "commence": "2026-09-13T20:25:00Z",
    "book": "draftkings",
-   "ml_away": 164,
-   "ml_home": -198,
+   "ml_away": 170,
+   "ml_home": -205,
    "books": {
     "draftkings": {
-     "ml_away": 164,
-     "ml_home": -198
+     "ml_away": 170,
+     "ml_home": -205
     },
     "fanduel": {
-     "ml_away": 176,
-     "ml_home": -210
+     "ml_away": 168,
+     "ml_home": -200
     },
     "hardrockbet": {
      "ml_away": 170,
@@ -300,12 +300,12 @@
      "ml_home": -218
     },
     "fanduel": {
-     "ml_away": 180,
-     "ml_home": -215
+     "ml_away": 198,
+     "ml_home": -240
     },
     "hardrockbet": {
-     "ml_away": 180,
-     "ml_home": -220
+     "ml_away": 190,
+     "ml_home": -230
     }
    }
   },
@@ -322,12 +322,12 @@
      "ml_home": 124
     },
     "fanduel": {
-     "ml_away": -152,
-     "ml_home": 128
+     "ml_away": -146,
+     "ml_home": 124
     },
     "hardrockbet": {
-     "ml_away": -150,
-     "ml_home": 130
+     "ml_away": -145,
+     "ml_home": 125
     }
    }
   },
@@ -344,12 +344,12 @@
      "ml_home": -162
     },
     "fanduel": {
-     "ml_away": 124,
-     "ml_home": -146
+     "ml_away": 130,
+     "ml_home": -154
     },
     "hardrockbet": {
      "ml_away": 130,
-     "ml_home": -150
+     "ml_home": -155
     }
    }
   },
@@ -386,12 +386,12 @@
    "home_id": "BAL",
    "commence": "2026-09-20T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 270,
-   "ml_home": -340,
+   "ml_away": 280,
+   "ml_home": -355,
    "books": {
     "draftkings": {
-     "ml_away": 270,
-     "ml_home": -340
+     "ml_away": 280,
+     "ml_home": -355
     }
    }
   },
@@ -428,12 +428,12 @@
    "home_id": "TB",
    "commence": "2026-09-20T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 200,
-   "ml_home": -245,
+   "ml_away": 205,
+   "ml_home": -250,
    "books": {
     "draftkings": {
-     "ml_away": 200,
-     "ml_home": -245
+     "ml_away": 205,
+     "ml_home": -250
     }
    }
   },
@@ -456,12 +456,12 @@
    "home_id": "NE",
    "commence": "2026-09-20T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 190,
-   "ml_home": -230,
+   "ml_away": 185,
+   "ml_home": -225,
    "books": {
     "draftkings": {
-     "ml_away": 190,
-     "ml_home": -230
+     "ml_away": 185,
+     "ml_home": -225
     }
    }
   },
@@ -498,12 +498,12 @@
    "home_id": "LAC",
    "commence": "2026-09-20T20:05:00Z",
    "book": "draftkings",
-   "ml_away": 330,
-   "ml_home": -425,
+   "ml_away": 320,
+   "ml_home": -410,
    "books": {
     "draftkings": {
-     "ml_away": 330,
-     "ml_home": -425
+     "ml_away": 320,
+     "ml_home": -410
     }
    }
   },
@@ -568,12 +568,12 @@
    "home_id": "LA",
    "commence": "2026-09-22T00:15:00Z",
    "book": "draftkings",
-   "ml_away": 295,
-   "ml_home": -375,
+   "ml_away": 300,
+   "ml_home": -380,
    "books": {
     "draftkings": {
-     "ml_away": 295,
-     "ml_home": -375
+     "ml_away": 300,
+     "ml_home": -380
     }
    }
   },
@@ -582,12 +582,12 @@
    "home_id": "GB",
    "commence": "2026-09-25T00:15:00Z",
    "book": "draftkings",
-   "ml_away": 295,
-   "ml_home": -375,
+   "ml_away": 285,
+   "ml_home": -360,
    "books": {
     "draftkings": {
-     "ml_away": 295,
-     "ml_home": -375
+     "ml_away": 285,
+     "ml_home": -360
     }
    }
   },
@@ -828,8 +828,8 @@
      "ml_home": -118
     },
     "fanduel": {
-     "ml_away": -102,
-     "ml_home": -116
+     "ml_away": -120,
+     "ml_home": 102
     }
    }
   },
@@ -838,12 +838,12 @@
    "home_id": "NYG",
    "commence": "2026-10-04T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 250,
-   "ml_home": -310,
+   "ml_away": 245,
+   "ml_home": -305,
    "books": {
     "draftkings": {
-     "ml_away": 250,
-     "ml_home": -310
+     "ml_away": 245,
+     "ml_home": -305
     }
    }
   },
@@ -852,12 +852,12 @@
    "home_id": "BAL",
    "commence": "2026-10-04T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 300,
-   "ml_home": -380,
+   "ml_away": 310,
+   "ml_home": -395,
    "books": {
     "draftkings": {
-     "ml_away": 300,
-     "ml_home": -380
+     "ml_away": 310,
+     "ml_home": -395
     }
    }
   },
@@ -908,12 +908,12 @@
    "home_id": "HOU",
    "commence": "2026-10-04T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 114,
-   "ml_home": -135,
+   "ml_away": 120,
+   "ml_home": -142,
    "books": {
     "draftkings": {
-     "ml_away": 114,
-     "ml_home": -135
+     "ml_away": 120,
+     "ml_home": -142
     }
    }
   },
@@ -950,12 +950,12 @@
    "home_id": "MIN",
    "commence": "2026-10-04T20:05:00Z",
    "book": "draftkings",
-   "ml_away": 285,
-   "ml_home": -360,
+   "ml_away": 295,
+   "ml_home": -375,
    "books": {
     "draftkings": {
-     "ml_away": 285,
-     "ml_home": -360
+     "ml_away": 295,
+     "ml_home": -375
     }
    }
   },
@@ -1056,8 +1056,8 @@
      "ml_home": 105
     },
     "fanduel": {
-     "ml_away": -124,
-     "ml_home": 106
+     "ml_away": -122,
+     "ml_home": 104
     }
    }
   },
@@ -1066,12 +1066,12 @@
    "home_id": "MIA",
    "commence": "2026-10-11T17:00:00Z",
    "book": "draftkings",
-   "ml_away": -250,
-   "ml_home": 205,
+   "ml_away": -258,
+   "ml_home": 210,
    "books": {
     "draftkings": {
-     "ml_away": -250,
-     "ml_home": 205
+     "ml_away": -258,
+     "ml_home": 210
     }
    }
   },
@@ -1178,12 +1178,12 @@
    "home_id": "ARI",
    "commence": "2026-10-11T20:25:00Z",
    "book": "draftkings",
-   "ml_away": -375,
-   "ml_home": 295,
+   "ml_away": -380,
+   "ml_home": 300,
    "books": {
     "draftkings": {
-     "ml_away": -375,
-     "ml_home": 295
+     "ml_away": -380,
+     "ml_home": 300
     }
    }
   },
@@ -1206,12 +1206,12 @@
    "home_id": "SEA",
    "commence": "2026-10-11T20:25:00Z",
    "book": "draftkings",
-   "ml_away": 160,
-   "ml_home": -192,
+   "ml_away": 164,
+   "ml_home": -198,
    "books": {
     "draftkings": {
-     "ml_away": 160,
-     "ml_home": -192
+     "ml_away": 164,
+     "ml_home": -198
     }
    }
   },
@@ -1270,8 +1270,8 @@
      "ml_home": -112
     },
     "fanduel": {
-     "ml_away": -110,
-     "ml_home": -106
+     "ml_away": -112,
+     "ml_home": -104
     }
    }
   },
@@ -1280,12 +1280,12 @@
    "home_id": "ATL",
    "commence": "2026-10-18T17:00:00Z",
    "book": "draftkings",
-   "ml_away": -162,
-   "ml_home": 136,
+   "ml_away": -155,
+   "ml_home": 130,
    "books": {
     "draftkings": {
-     "ml_away": -162,
-     "ml_home": 136
+     "ml_away": -155,
+     "ml_home": 130
     }
    }
   },
@@ -1294,12 +1294,12 @@
    "home_id": "CLE",
    "commence": "2026-10-18T17:00:00Z",
    "book": "draftkings",
-   "ml_away": -258,
-   "ml_home": 210,
+   "ml_away": -270,
+   "ml_home": 220,
    "books": {
     "draftkings": {
-     "ml_away": -258,
-     "ml_home": 210
+     "ml_away": -270,
+     "ml_home": 220
     }
    }
   },
@@ -1322,12 +1322,12 @@
    "home_id": "IND",
    "commence": "2026-10-18T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 164,
-   "ml_home": -198,
+   "ml_away": 160,
+   "ml_home": -192,
    "books": {
     "draftkings": {
-     "ml_away": 164,
-     "ml_home": -198
+     "ml_away": 160,
+     "ml_home": -192
     }
    }
   },
@@ -1336,12 +1336,12 @@
    "home_id": "NE",
    "commence": "2026-10-18T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 350,
-   "ml_home": -455,
+   "ml_away": 360,
+   "ml_home": -470,
    "books": {
     "draftkings": {
-     "ml_away": 350,
-     "ml_home": -455
+     "ml_away": 360,
+     "ml_home": -470
     }
    }
   },
@@ -1470,8 +1470,8 @@
      "ml_home": 120
     },
     "fanduel": {
-     "ml_away": -126,
-     "ml_home": 108
+     "ml_away": -130,
+     "ml_home": 110
     }
    }
   },
@@ -1676,12 +1676,12 @@
    "home_id": "TB",
    "commence": "2026-11-01T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 185,
-   "ml_home": -225,
+   "ml_away": 180,
+   "ml_home": -218,
    "books": {
     "draftkings": {
-     "ml_away": 185,
-     "ml_home": -225
+     "ml_away": 180,
+     "ml_home": -218
     }
    }
   },
@@ -1718,12 +1718,12 @@
    "home_id": "PIT",
    "commence": "2026-11-01T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 205,
-   "ml_home": -250,
+   "ml_away": 210,
+   "ml_home": -258,
    "books": {
     "draftkings": {
-     "ml_away": 205,
-     "ml_home": -250
+     "ml_away": 210,
+     "ml_home": -258
     }
    }
   },
@@ -1866,8 +1866,8 @@
      "ml_home": 190
     },
     "fanduel": {
-     "ml_away": -225,
-     "ml_home": 188
+     "ml_away": -220,
+     "ml_home": 184
     }
    }
   },
@@ -1876,12 +1876,12 @@
    "home_id": "CAR",
    "commence": "2026-11-08T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -166,
-   "ml_home": 140,
+   "ml_away": -162,
+   "ml_home": 136,
    "books": {
     "draftkings": {
-     "ml_away": -166,
-     "ml_home": 140
+     "ml_away": -162,
+     "ml_home": 136
     }
    }
   },
@@ -1890,12 +1890,12 @@
    "home_id": "NO",
    "commence": "2026-11-08T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 164,
-   "ml_home": -198,
+   "ml_away": 170,
+   "ml_home": -205,
    "books": {
     "draftkings": {
-     "ml_away": 164,
-     "ml_home": -198
+     "ml_away": 170,
+     "ml_home": -205
     }
    }
   },
@@ -1932,12 +1932,12 @@
    "home_id": "KC",
    "commence": "2026-11-08T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 340,
-   "ml_home": -440,
+   "ml_away": 330,
+   "ml_home": -425,
    "books": {
     "draftkings": {
-     "ml_away": 340,
-     "ml_home": -440
+     "ml_away": 330,
+     "ml_home": -425
     }
    }
   },
@@ -1960,12 +1960,12 @@
    "home_id": "PHI",
    "commence": "2026-11-08T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 185,
-   "ml_home": -225,
+   "ml_away": 195,
+   "ml_home": -238,
    "books": {
     "draftkings": {
-     "ml_away": 185,
-     "ml_home": -225
+     "ml_away": 195,
+     "ml_home": -238
     }
    }
   },
@@ -2002,12 +2002,12 @@
    "home_id": "SEA",
    "commence": "2026-11-08T21:25:00Z",
    "book": "draftkings",
-   "ml_away": 550,
-   "ml_home": -800,
+   "ml_away": 500,
+   "ml_home": -700,
    "books": {
     "draftkings": {
-     "ml_away": 550,
-     "ml_home": -800
+     "ml_away": 500,
+     "ml_home": -700
     }
    }
   },
@@ -2030,12 +2030,12 @@
    "home_id": "CHI",
    "commence": "2026-11-09T01:20:00Z",
    "book": "draftkings",
-   "ml_away": 154,
-   "ml_home": -185,
+   "ml_away": 160,
+   "ml_home": -192,
    "books": {
     "draftkings": {
-     "ml_away": 154,
-     "ml_home": -185
+     "ml_away": 160,
+     "ml_home": -192
     }
    }
   },
@@ -2080,8 +2080,8 @@
      "ml_home": -125
     },
     "fanduel": {
-     "ml_away": -102,
-     "ml_home": -116
+     "ml_away": -104,
+     "ml_home": -112
     }
    }
   },
@@ -2104,12 +2104,12 @@
    "home_id": "NYJ",
    "commence": "2026-11-15T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -325,
-   "ml_home": 260,
+   "ml_away": -340,
+   "ml_home": 270,
    "books": {
     "draftkings": {
-     "ml_away": -325,
-     "ml_home": 260
+     "ml_away": -340,
+     "ml_home": 270
     }
    }
   },
@@ -2132,12 +2132,12 @@
    "home_id": "CLE",
    "commence": "2026-11-15T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -205,
-   "ml_home": 170,
+   "ml_away": -218,
+   "ml_home": 180,
    "books": {
     "draftkings": {
-     "ml_away": -205,
-     "ml_home": 170
+     "ml_away": -218,
+     "ml_home": 180
     }
    }
   },
@@ -2216,12 +2216,12 @@
    "home_id": "DAL",
    "commence": "2026-11-15T21:25:00Z",
    "book": "draftkings",
-   "ml_away": 100,
-   "ml_home": -120,
+   "ml_away": -102,
+   "ml_home": -118,
    "books": {
     "draftkings": {
-     "ml_away": 100,
-     "ml_home": -120
+     "ml_away": -102,
+     "ml_home": -118
     }
    }
   },
@@ -2230,12 +2230,12 @@
    "home_id": "CIN",
    "commence": "2026-11-16T01:20:00Z",
    "book": "draftkings",
-   "ml_away": 160,
-   "ml_home": -192,
+   "ml_away": 154,
+   "ml_home": -185,
    "books": {
     "draftkings": {
-     "ml_away": 160,
-     "ml_home": -192
+     "ml_away": 154,
+     "ml_home": -185
     }
    }
   },
@@ -2244,12 +2244,12 @@
    "home_id": "BAL",
    "commence": "2026-11-17T01:15:00Z",
    "book": "draftkings",
-   "ml_away": 160,
-   "ml_home": -192,
+   "ml_away": 154,
+   "ml_home": -185,
    "books": {
     "draftkings": {
-     "ml_away": 160,
-     "ml_home": -192
+     "ml_away": 154,
+     "ml_home": -185
     }
    }
   },
@@ -2300,12 +2300,12 @@
    "home_id": "BUF",
    "commence": "2026-11-22T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 410,
-   "ml_home": -550,
+   "ml_away": 425,
+   "ml_home": -575,
    "books": {
     "draftkings": {
-     "ml_away": 410,
-     "ml_home": -550
+     "ml_away": 425,
+     "ml_home": -575
     }
    }
   },
@@ -2328,12 +2328,12 @@
    "home_id": "DAL",
    "commence": "2026-11-22T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 225,
-   "ml_home": -278,
+   "ml_away": 230,
+   "ml_home": -285,
    "books": {
     "draftkings": {
-     "ml_away": 225,
-     "ml_home": -278
+     "ml_away": 230,
+     "ml_home": -285
     }
    }
   },
@@ -2398,12 +2398,12 @@
    "home_id": "PHI",
    "commence": "2026-11-22T21:25:00Z",
    "book": "draftkings",
-   "ml_away": 200,
-   "ml_home": -245,
+   "ml_away": 205,
+   "ml_home": -250,
    "books": {
     "draftkings": {
-     "ml_away": 200,
-     "ml_home": -245
+     "ml_away": 205,
+     "ml_home": -250
     }
    }
   },
@@ -2488,8 +2488,8 @@
      "ml_home": -125
     },
     "fanduel": {
-     "ml_away": 100,
-     "ml_home": -118
+     "ml_away": 102,
+     "ml_home": -120
     }
    }
   },
@@ -2506,8 +2506,8 @@
      "ml_home": -148
     },
     "fanduel": {
-     "ml_away": 126,
-     "ml_home": -148
+     "ml_away": 128,
+     "ml_home": -152
     }
    }
   },
@@ -2716,12 +2716,12 @@
    "home_id": "CHI",
    "commence": "2026-12-06T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 120,
-   "ml_home": -142,
+   "ml_away": 130,
+   "ml_home": -155,
    "books": {
     "draftkings": {
-     "ml_away": 120,
-     "ml_home": -142
+     "ml_away": 130,
+     "ml_home": -155
     }
    }
   },
@@ -2744,12 +2744,12 @@
    "home_id": "DEN",
    "commence": "2026-12-06T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 340,
-   "ml_home": -440,
+   "ml_away": 360,
+   "ml_home": -470,
    "books": {
     "draftkings": {
-     "ml_away": 340,
-     "ml_home": -440
+     "ml_away": 360,
+     "ml_home": -470
     }
    }
   },
@@ -2772,12 +2772,12 @@
    "home_id": "TB",
    "commence": "2026-12-06T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -135,
-   "ml_home": 114,
+   "ml_away": -142,
+   "ml_home": 120,
    "books": {
     "draftkings": {
-     "ml_away": -135,
-     "ml_home": 114
+     "ml_away": -142,
+     "ml_home": 120
     }
    }
   },
@@ -2884,12 +2884,12 @@
    "home_id": "NE",
    "commence": "2026-12-11T01:15:00Z",
    "book": "draftkings",
-   "ml_away": 180,
-   "ml_home": -218,
+   "ml_away": 185,
+   "ml_home": -225,
    "books": {
     "draftkings": {
-     "ml_away": 180,
-     "ml_home": -218
+     "ml_away": 185,
+     "ml_home": -225
     }
    }
   },
@@ -2982,12 +2982,12 @@
    "home_id": "WAS",
    "commence": "2026-12-13T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -122,
-   "ml_home": 102,
+   "ml_away": -125,
+   "ml_home": 105,
    "books": {
     "draftkings": {
-     "ml_away": -122,
-     "ml_home": 102
+     "ml_away": -125,
+     "ml_home": 105
     }
    }
   },
@@ -2996,12 +2996,12 @@
    "home_id": "PHI",
    "commence": "2026-12-13T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 195,
-   "ml_home": -238,
+   "ml_away": 200,
+   "ml_home": -245,
    "books": {
     "draftkings": {
-     "ml_away": 195,
-     "ml_home": -238
+     "ml_away": 200,
+     "ml_home": -245
     }
    }
   },
@@ -3164,12 +3164,12 @@
    "home_id": "CAR",
    "commence": "2026-12-20T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -135,
-   "ml_home": 114,
+   "ml_away": -148,
+   "ml_home": 124,
    "books": {
     "draftkings": {
-     "ml_away": -135,
-     "ml_home": 114
+     "ml_away": -148,
+     "ml_home": 124
     }
    }
   },
@@ -3178,12 +3178,12 @@
    "home_id": "NYG",
    "commence": "2026-12-20T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 185,
-   "ml_home": -225,
+   "ml_away": 180,
+   "ml_home": -218,
    "books": {
     "draftkings": {
-     "ml_away": 185,
-     "ml_home": -225
+     "ml_away": 180,
+     "ml_home": -218
     }
    }
   },
@@ -3206,12 +3206,12 @@
    "home_id": "HOU",
    "commence": "2026-12-20T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 136,
-   "ml_home": -162,
+   "ml_away": 130,
+   "ml_home": -155,
    "books": {
     "draftkings": {
-     "ml_away": 136,
-     "ml_home": -162
+     "ml_away": 130,
+     "ml_home": -155
     }
    }
   },
@@ -3276,12 +3276,12 @@
    "home_id": "LV",
    "commence": "2026-12-20T21:25:00Z",
    "book": "draftkings",
-   "ml_away": -218,
-   "ml_home": 180,
+   "ml_away": -225,
+   "ml_home": 185,
    "books": {
     "draftkings": {
-     "ml_away": -218,
-     "ml_home": 180
+     "ml_away": -225,
+     "ml_home": 185
     }
    }
   },
@@ -3326,8 +3326,8 @@
      "ml_home": -135
     },
     "fanduel": {
-     "ml_away": 110,
-     "ml_home": -130
+     "ml_away": 108,
+     "ml_home": -126
     }
    }
   },
@@ -3380,8 +3380,8 @@
      "ml_home": -130
     },
     "fanduel": {
-     "ml_away": -112,
-     "ml_home": -104
+     "ml_away": -116,
+     "ml_home": -102
     }
    }
   },
@@ -3432,12 +3432,12 @@
    "home_id": "PIT",
    "commence": "2026-12-27T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 154,
-   "ml_home": -185,
+   "ml_away": 160,
+   "ml_home": -192,
    "books": {
     "draftkings": {
-     "ml_away": 154,
-     "ml_home": -185
+     "ml_away": 160,
+     "ml_home": -192
     }
    }
   },
@@ -3446,12 +3446,12 @@
    "home_id": "IND",
    "commence": "2026-12-27T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -122,
-   "ml_home": 102,
+   "ml_away": -125,
+   "ml_home": 105,
    "books": {
     "draftkings": {
-     "ml_away": -122,
-     "ml_home": 102
+     "ml_away": -125,
+     "ml_home": 105
     }
    }
   },
@@ -3684,12 +3684,12 @@
    "home_id": "NYJ",
    "commence": "2027-01-03T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -185,
-   "ml_home": 154,
+   "ml_away": -192,
+   "ml_home": 160,
    "books": {
     "draftkings": {
-     "ml_away": -185,
-     "ml_home": 154
+     "ml_away": -192,
+     "ml_home": 160
     }
    }
   },
@@ -3698,12 +3698,12 @@
    "home_id": "TEN",
    "commence": "2027-01-03T18:00:00Z",
    "book": "draftkings",
-   "ml_away": -122,
-   "ml_home": 102,
+   "ml_away": -125,
+   "ml_home": 105,
    "books": {
     "draftkings": {
-     "ml_away": -122,
-     "ml_home": 102
+     "ml_away": -125,
+     "ml_home": 105
     }
    }
   },
@@ -3894,12 +3894,12 @@
    "home_id": "HOU",
    "commence": "2027-01-10T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 250,
-   "ml_home": -310,
+   "ml_away": 260,
+   "ml_home": -325,
    "books": {
     "draftkings": {
-     "ml_away": 250,
-     "ml_home": -310
+     "ml_away": 260,
+     "ml_home": -325
     }
    }
   },
@@ -3992,12 +3992,12 @@
    "home_id": "LA",
    "commence": "2027-01-10T21:05:00Z",
    "book": "draftkings",
-   "ml_away": 136,
-   "ml_home": -162,
+   "ml_away": 140,
+   "ml_home": -166,
    "books": {
     "draftkings": {
-     "ml_away": 136,
-     "ml_home": -162
+     "ml_away": 140,
+     "ml_home": -166
     }
    }
   }
