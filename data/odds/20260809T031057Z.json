@@ -1,0 +1,299 @@
+{
+ "captured": "20260809T031057Z",
+ "events": [
+  {
+   "commence": "2026-08-09T00:11:00Z",
+   "away_id": 119,
+   "home_id": 109,
+   "away": "Los Angeles Dodgers",
+   "home": "Arizona Diamondbacks",
+   "books": {
+    "fanduel": {
+     "ml_away": 550,
+     "ml_home": -700
+    },
+    "draftkings": {
+     "ml_away": 456,
+     "ml_home": -581
+    },
+    "hardrockbet": {
+     "ml_away": 650,
+     "ml_home": -1100
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T01:51:00Z",
+   "away_id": 139,
+   "home_id": 136,
+   "away": "Tampa Bay Rays",
+   "home": "Seattle Mariners",
+   "books": {
+    "fanduel": {
+     "ml_away": 140,
+     "ml_home": -160
+    },
+    "draftkings": {
+     "ml_away": 134,
+     "ml_home": -155
+    },
+    "hardrockbet": {
+     "ml_away": 125,
+     "ml_home": -160
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T16:16:00Z",
+   "away_id": 113,
+   "home_id": 120,
+   "away": "Cincinnati Reds",
+   "home": "Washington Nationals",
+   "books": {
+    "fanduel": {
+     "ml_away": -112,
+     "ml_home": -104
+    },
+    "hardrockbet": {
+     "ml_away": -110,
+     "ml_home": 100
+    },
+    "draftkings": {
+     "ml_away": -112,
+     "ml_home": -108
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T17:35:00Z",
+   "away_id": 144,
+   "home_id": 147,
+   "away": "Atlanta Braves",
+   "home": "New York Yankees",
+   "books": {
+    "draftkings": {
+     "ml_away": 124,
+     "ml_home": -150
+    },
+    "fanduel": {
+     "ml_away": 128,
+     "ml_home": -152
+    },
+    "hardrockbet": {
+     "ml_away": 135,
+     "ml_home": -145
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T17:35:00Z",
+   "away_id": 121,
+   "home_id": 134,
+   "away": "New York Mets",
+   "home": "Pittsburgh Pirates",
+   "books": {
+    "draftkings": {
+     "ml_away": 118,
+     "ml_home": -142
+    },
+    "fanduel": {
+     "ml_away": 122,
+     "ml_home": -144
+    },
+    "hardrockbet": {
+     "ml_away": 120,
+     "ml_home": -130
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T17:36:00Z",
+   "away_id": 141,
+   "home_id": 143,
+   "away": "Toronto Blue Jays",
+   "home": "Philadelphia Phillies",
+   "books": {
+    "fanduel": {
+     "ml_away": 168,
+     "ml_home": -200
+    },
+    "hardrockbet": {
+     "ml_away": 175,
+     "ml_home": -185
+    },
+    "draftkings": {
+     "ml_away": 163,
+     "ml_home": -199
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T17:40:00Z",
+   "away_id": 108,
+   "home_id": 146,
+   "away": "Los Angeles Angels",
+   "home": "Miami Marlins",
+   "books": {
+    "draftkings": {
+     "ml_away": 129,
+     "ml_home": -156
+    },
+    "fanduel": {
+     "ml_away": 134,
+     "ml_home": -158
+    },
+    "hardrockbet": {
+     "ml_away": 135,
+     "ml_home": -145
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T18:10:00Z",
+   "away_id": 112,
+   "home_id": 118,
+   "away": "Chicago Cubs",
+   "home": "Kansas City Royals",
+   "books": {
+    "draftkings": {
+     "ml_away": -168,
+     "ml_home": 139
+    },
+    "fanduel": {
+     "ml_away": -162,
+     "ml_home": 136
+    },
+    "hardrockbet": {
+     "ml_away": -155,
+     "ml_home": 145
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T18:10:00Z",
+   "away_id": 114,
+   "home_id": 145,
+   "away": "Cleveland Guardians",
+   "home": "Chicago White Sox",
+   "books": {
+    "draftkings": {
+     "ml_away": -108,
+     "ml_home": -112
+    },
+    "fanduel": {
+     "ml_away": -108,
+     "ml_home": -108
+    },
+    "hardrockbet": {
+     "ml_away": -105,
+     "ml_home": -105
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T18:10:00Z",
+   "away_id": 142,
+   "home_id": 158,
+   "away": "Minnesota Twins",
+   "home": "Milwaukee Brewers",
+   "books": {
+    "draftkings": {
+     "ml_away": 207,
+     "ml_home": -257
+    },
+    "fanduel": {
+     "ml_away": 200,
+     "ml_home": -245
+    },
+    "hardrockbet": {
+     "ml_away": 220,
+     "ml_home": -230
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T18:15:00Z",
+   "away_id": 115,
+   "home_id": 138,
+   "away": "Colorado Rockies",
+   "home": "St. Louis Cardinals",
+   "books": {
+    "draftkings": {
+     "ml_away": 139,
+     "ml_home": -168
+    },
+    "fanduel": {
+     "ml_away": 140,
+     "ml_home": -166
+    },
+    "hardrockbet": {
+     "ml_away": 145,
+     "ml_home": -155
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T18:35:00Z",
+   "away_id": 110,
+   "home_id": 140,
+   "away": "Baltimore Orioles",
+   "home": "Texas Rangers",
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -137
+    },
+    "fanduel": {
+     "ml_away": 116,
+     "ml_home": -134
+    },
+    "hardrockbet": {
+     "ml_away": 120,
+     "ml_home": -130
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T20:05:00Z",
+   "away_id": 116,
+   "home_id": 137,
+   "away": "Detroit Tigers",
+   "home": "San Francisco Giants",
+   "books": {
+    "draftkings": {
+     "ml_away": -121,
+     "ml_home": 101
+    },
+    "fanduel": {
+     "ml_away": -120,
+     "ml_home": 102
+    },
+    "hardrockbet": {
+     "ml_away": -110,
+     "ml_home": 100
+    }
+   }
+  },
+  {
+   "commence": "2026-08-09T20:10:00Z",
+   "away_id": 119,
+   "home_id": 109,
+   "away": "Los Angeles Dodgers",
+   "home": "Arizona Diamondbacks",
+   "books": {
+    "draftkings": {
+     "ml_away": -142,
+     "ml_home": 118
+    },
+    "fanduel": {
+     "ml_away": -146,
+     "ml_home": 124
+    },
+    "hardrockbet": {
+     "ml_away": -135,
+     "ml_home": 125
+    }
+   }
+  }
+ ]
+}
