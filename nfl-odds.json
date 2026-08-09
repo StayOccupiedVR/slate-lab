@@ -1,5 +1,5 @@
 {
- "captured": "20260809T135313Z",
+ "captured": "20260809T171415Z",
  "games": [
   {
    "away_id": "NE",
@@ -638,12 +638,12 @@
    "home_id": "DET",
    "commence": "2026-09-27T17:00:00Z",
    "book": "draftkings",
-   "ml_away": 360,
-   "ml_home": -470,
+   "ml_away": 350,
+   "ml_home": -455,
    "books": {
     "draftkings": {
-     "ml_away": 360,
-     "ml_home": -470
+     "ml_away": 350,
+     "ml_home": -455
     }
    }
   },
@@ -1592,12 +1592,12 @@
    "home_id": "DET",
    "commence": "2026-10-25T20:25:00Z",
    "book": "draftkings",
-   "ml_away": 120,
-   "ml_home": -142,
+   "ml_away": 114,
+   "ml_home": -135,
    "books": {
     "draftkings": {
-     "ml_away": 120,
-     "ml_home": -142
+     "ml_away": 114,
+     "ml_home": -135
     }
    }
   },
@@ -2146,12 +2146,12 @@
    "home_id": "GB",
    "commence": "2026-11-15T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 190,
-   "ml_home": -230,
+   "ml_away": 185,
+   "ml_home": -225,
    "books": {
     "draftkings": {
-     "ml_away": 190,
-     "ml_home": -230
+     "ml_away": 185,
+     "ml_home": -225
     }
    }
   },
@@ -2342,12 +2342,12 @@
    "home_id": "DET",
    "commence": "2026-11-22T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 185,
-   "ml_home": -225,
+   "ml_away": 180,
+   "ml_home": -218,
    "books": {
     "draftkings": {
-     "ml_away": 185,
-     "ml_home": -225
+     "ml_away": 180,
+     "ml_home": -218
     }
    }
   },
@@ -2968,12 +2968,12 @@
    "home_id": "DET",
    "commence": "2026-12-13T18:00:00Z",
    "book": "draftkings",
-   "ml_away": 285,
-   "ml_home": -360,
+   "ml_away": 280,
+   "ml_home": -355,
    "books": {
     "draftkings": {
-     "ml_away": 285,
-     "ml_home": -360
+     "ml_away": 280,
+     "ml_home": -355
     }
    }
   },
@@ -3290,12 +3290,12 @@
    "home_id": "MIN",
    "commence": "2026-12-21T01:20:00Z",
    "book": "draftkings",
-   "ml_away": -122,
-   "ml_home": 102,
+   "ml_away": -125,
+   "ml_home": 105,
    "books": {
     "draftkings": {
-     "ml_away": -122,
-     "ml_home": 102
+     "ml_away": -125,
+     "ml_home": 105
     }
    }
   },
