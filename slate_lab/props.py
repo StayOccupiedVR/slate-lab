@@ -77,6 +77,128 @@ def k_distribution(prior: list[tuple[int, int]], lg_rate: float) -> dict | None:
     }
 
 
+# ---- batting: hits and home runs share the binomial-mixture core ----
+HIT_PRIOR_AB = 250       # BA stabilizes slowly (~900+ AB); heavy shrink by design
+HR_PRIOR_AB = 300        # HR/AB stabilizes around ~170 PA; shrink a bit past it
+MIN_PRIOR_GAMES = 30     # don't project a batter on fewer prior games
+BAT_MAX = 6              # hits/HR support 0..6 (6+ pooled)
+LG_HIT_RATE_FALLBACK = 0.245
+LG_HR_RATE_FALLBACK = 0.032
+
+
+def _bin_mix(pairs: list[tuple[int, int]], prior_n: float, lg_rate: float,
+             max_k: int) -> dict | None:
+    """Binomial mixture over empirical opportunity counts.
+
+    pairs = (successes, opportunities) per prior game. Rate is
+    prior-regressed; the opportunity mixture uses the full history —
+    the same full-support finding the strikeout ablation produced.
+    """
+    pairs = [(a, b) for a, b in pairs if b and b > 0]
+    if not pairs:
+        return None
+    succ = sum(p[0] for p in pairs)
+    opp = sum(p[1] for p in pairs)
+    rate = (succ + lg_rate * prior_n) / (opp + prior_n)
+    pmf = np.zeros(max_k + 1)
+    w = 1.0 / len(pairs)
+    for _, n in pairs:
+        n = min(int(n), 12)
+        row = np.array([comb(n, k) * rate**k * (1 - rate)**(n - k)
+                        if k <= n else 0.0 for k in range(max_k + 1)])
+        row[-1] += max(0.0, 1.0 - row.sum())
+        pmf += w * row
+    mean = float((np.arange(max_k + 1) * pmf).sum())
+    return {"pmf": pmf, "mean": mean, "rate": rate}
+
+
+def hit_distribution(prior: list[tuple[int, int]], lg_rate: float) -> dict | None:
+    """prior = (hits, at-bats) per game, oldest first."""
+    if len(prior) < MIN_PRIOR_GAMES:
+        return None
+    d = _bin_mix(prior, HIT_PRIOR_AB, lg_rate, BAT_MAX)
+    if d is None:
+        return None
+    pmf = d["pmf"]
+    return {"mean": round(d["mean"], 2), "rate": round(d["rate"], 4),
+            "n_prior": len(prior),
+            "over": {"0.5": round(float(pmf[1:].sum()), 4),
+                     "1.5": round(float(pmf[2:].sum()), 4),
+                     "2.5": round(float(pmf[3:].sum()), 4)}}
+
+
+def hr_distribution(prior: list[tuple[int, int]], lg_rate: float) -> dict | None:
+    """prior = (home runs, at-bats) per game, oldest first."""
+    if len(prior) < MIN_PRIOR_GAMES:
+        return None
+    d = _bin_mix(prior, HR_PRIOR_AB, lg_rate, BAT_MAX)
+    if d is None:
+        return None
+    pmf = d["pmf"]
+    return {"mean": round(d["mean"], 3), "rate": round(d["rate"], 4),
+            "n_prior": len(prior),
+            "over": {"0.5": round(float(pmf[1:].sum()), 4),
+                     "1.5": round(float(pmf[2:].sum()), 4)}}
+
+
+def backtest_batting(con, season: int) -> dict:
+    bg = pd.read_sql(
+        "SELECT batter_id, date, ab, h, hr FROM batter_games "
+        "WHERE ab IS NOT NULL AND ab > 0 ORDER BY date", con)
+    hist_lg = bg[bg.date < f"{season}-01-01"]
+    lg_hit = (float(hist_lg.h.sum()) / float(hist_lg.ab.sum())
+              if len(hist_lg) else LG_HIT_RATE_FALLBACK)
+    lg_hr = (float(hist_lg.hr.sum()) / float(hist_lg.ab.sum())
+             if len(hist_lg) else LG_HR_RATE_FALLBACK)
+    hist: dict = defaultdict(list)
+    for r in hist_lg.itertuples():
+        hist[r.batter_id].append((r.h, r.hr, r.ab))
+    rows = []
+    for r in bg[(bg.date >= f"{season}-01-01")
+                & (bg.date <= f"{season}-12-31")].itertuples():
+        pr = hist.get(r.batter_id, [])
+        if len(pr) >= MIN_PRIOR_GAMES:
+            hd = hit_distribution([(h, ab) for h, _, ab in pr], lg_hit)
+            rd = hr_distribution([(hr, ab) for _, hr, ab in pr], lg_hr)
+            if hd and rd:
+                rows.append({
+                    "h": int(r.h), "hr": int(r.hr),
+                    "p1": hd["over"]["0.5"], "p2": hd["over"]["1.5"],
+                    "p3": hd["over"]["2.5"],
+                    "phr": rd["over"]["0.5"], "phr2": rd["over"]["1.5"]})
+        hist.setdefault(r.batter_id, []).append((r.h, r.hr, r.ab))
+    if not rows:
+        return {"n": 0}
+    df = pd.DataFrame(rows)
+    def calib(pred, actual):
+        out = []
+        for lo in (0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8):
+            m = (pred >= lo) & (pred < lo + 0.1)
+            if m.sum() >= 50:
+                out.append({"pred": round(float(pred[m].mean()), 3),
+                            "hit": round(float(actual[m].mean()), 3),
+                            "n": int(m.sum())})
+        return out
+    return {"season": season, "n": len(df),
+            "calibration": {
+                "hits_1plus": calib(df.p1, (df.h >= 1).astype(float)),
+                "hits_2plus": calib(df.p2, (df.h >= 2).astype(float)),
+                "hits_3plus": calib(df.p3, (df.h >= 3).astype(float)),
+                "hr_1plus": calib(df.phr, (df.hr >= 1).astype(float)),
+                "hr_2plus": calib(df.phr2, (df.hr >= 2).astype(float))}}
+
+
+def print_batting(res: dict) -> None:
+    if not res.get("n"):
+        print("No scoreable batter games — run the batting ingest first.")
+        return
+    print(f"season {res['season']}  batter-games scored: {res['n']}")
+    for mk, buckets in res["calibration"].items():
+        parts = ", ".join(f"{b['pred']:.0%}->{b['hit']:.0%} (n={b['n']})"
+                          for b in buckets)
+        print(f"  {mk}: {parts or 'no full buckets'}")
+
+
 def _poisson_pmf(lam: float) -> np.ndarray:
     ks = np.arange(0, MAX_K + 1)
     pmf = np.array([exp(-lam) * lam**k / factorial(k) for k in ks])
@@ -187,21 +309,84 @@ def project_slate(con, slate: list[dict], date: str) -> dict:
                 "gamePk": g.get("gamePk"),
                 **d,
             })
+    # batters: recent regulars for every team on the slate
+    team_ids = set()
+    for g in slate:
+        for k in ("away_id", "home_id"):
+            if g.get(k):
+                team_ids.add(g[k])
+    opp_of = {}
+    ab_map = {}
+    for g in slate:
+        if g.get("away_id") and g.get("home_id"):
+            opp_of[g["away_id"]] = g.get("home") or ""
+            opp_of[g["home_id"]] = g.get("away") or ""
+            ab_map[g["away_id"]] = g.get("away") or ""
+            ab_map[g["home_id"]] = g.get("home") or ""
+    batters = []
+    if team_ids:
+        bg = pd.read_sql(
+            "SELECT batter_id, date, team_id, name, ab, h, hr FROM batter_games "
+            "WHERE ab IS NOT NULL AND ab > 0 AND date < ? ORDER BY date",
+            con, params=(date,))
+        lg_hit = (float(bg.h.sum()) / float(bg.ab.sum())
+                  if len(bg) else LG_HIT_RATE_FALLBACK)
+        lg_hr = (float(bg.hr.sum()) / float(bg.ab.sum())
+                 if len(bg) else LG_HR_RATE_FALLBACK)
+        hist2 = defaultdict(list)
+        latest_team = {}
+        latest_name = {}
+        recent_ct = defaultdict(int)
+        cutoff = (pd.Timestamp(date) - pd.Timedelta(days=14)).date().isoformat()
+        for r in bg.itertuples():
+            hist2[r.batter_id].append((r.h, r.hr, r.ab))
+            latest_team[r.batter_id] = r.team_id
+            latest_name[r.batter_id] = r.name
+            if r.date >= cutoff:
+                recent_ct[r.batter_id] += 1
+        per_team = defaultdict(list)
+        for bid, tid in latest_team.items():
+            if tid in team_ids and recent_ct.get(bid, 0) >= 5:
+                per_team[tid].append(bid)
+        for tid, bids in per_team.items():
+            bids.sort(key=lambda b: -recent_ct[b])
+            for bid in bids[:10]:
+                pr = hist2[bid]
+                hd = hit_distribution([(h, ab) for h, _, ab in pr], lg_hit)
+                rd = hr_distribution([(hr, ab) for _, hr, ab in pr], lg_hr)
+                if hd and rd:
+                    batters.append({
+                        "batter_id": bid,
+                        "name": latest_name.get(bid) or str(bid),
+                        "team": ab_map.get(tid, ""),
+                        "opp": opp_of.get(tid, ""),
+                        "hits": {"mean": hd["mean"], "over": hd["over"]},
+                        "hr": {"mean": rd["mean"], "over": rd["over"]},
+                        "n_prior": hd["n_prior"]})
     return {"date": date, "market": "strikeouts", "model": "props-k-v1",
-            "pitchers": out}
+            "pitchers": out, "batters": batters}
 
 
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--db", default="slate.db")
     p.add_argument("--backtest", type=int, default=None,
-                   help="season to walk point-in-time")
+                   help="season to walk point-in-time (strikeouts)")
+    p.add_argument("--backtest-batting", type=int, default=None,
+                   help="season to walk point-in-time (hits + HR)")
     p.add_argument("--out", default=None,
                    help="write JSON here (backtest or projections)")
     p.add_argument("--project", default=None,
                    help="date YYYY-MM-DD: project today's probable starters")
     args = p.parse_args()
     con = sqlite3.connect(args.db)
+    if args.backtest_batting:
+        res = backtest_batting(con, args.backtest_batting)
+        print_batting(res)
+        if args.out:
+            with open(args.out, "w") as f:
+                json.dump(res, f, indent=1)
+            print(f"written -> {args.out}")
     if args.backtest:
         res = backtest(con, args.backtest)
         print_backtest(res)

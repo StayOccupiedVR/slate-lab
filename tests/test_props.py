@@ -66,5 +66,73 @@ def main():
     print("\nPROPS TESTS PASSED")
 
 
+
+
+
+def test_batting():
+    """Hits + HR distributions on a synthetic league with known rates."""
+    import sqlite3
+    import random
+    import numpy as np
+    from slate_lab.props import (hit_distribution, hr_distribution,
+                                 backtest_batting, project_slate)
+
+    con = sqlite3.connect(":memory:")
+    con.executescript("""
+    CREATE TABLE batter_games (
+      batter_id INTEGER, date TEXT, season INTEGER, team_id INTEGER,
+      name TEXT, pa INTEGER, ab INTEGER, h INTEGER, hr INTEGER,
+      PRIMARY KEY (batter_id, date));
+    CREATE TABLE pitcher_starts (
+      pitcher_id INTEGER, date TEXT, season INTEGER, er INTEGER,
+      outs INTEGER, so INTEGER, bb INTEGER, bf INTEGER,
+      PRIMARY KEY (pitcher_id, date));""")
+    rng = random.Random(11)
+    rows = []
+    for bid in range(80):
+        hit_rate = min(0.34, max(0.18, rng.gauss(0.25, 0.03)))
+        hr_rate = min(0.09, max(0.005, rng.gauss(0.032, 0.015)))
+        team = 100 + bid % 4
+        for season in (2024, 2025):
+            for i in range(120):
+                ab = rng.choice([3, 3, 4, 4, 4, 5])
+                h = sum(1 for _ in range(ab) if rng.random() < hit_rate)
+                hr = sum(1 for _ in range(ab) if rng.random() < hr_rate)
+                rows.append((bid, f"{season}-{4 + i // 26:02d}-{1 + i % 26:02d}",
+                             season, team, f"Batter {bid}", ab + 1, ab, h,
+                             min(hr, h)))
+    con.executemany(
+        "INSERT OR REPLACE INTO batter_games VALUES (?,?,?,?,?,?,?,?,?)", rows)
+    con.commit()
+
+    prior = [(1, 4)] * 40
+    hd = hit_distribution(prior, 0.245)
+    assert hd and hd["over"]["0.5"] > hd["over"]["1.5"] > hd["over"]["2.5"]
+    assert hit_distribution([(1, 4)] * 10, 0.245) is None, "thin refused"
+    rd = hr_distribution([(0, 4)] * 35 + [(1, 4)] * 5, 0.032)
+    assert rd and rd["over"]["0.5"] < 0.5
+    print(f"  distributions: P(1+ hit)={hd['over']['0.5']}, "
+          f"P(HR)={rd['over']['0.5']}")
+
+    res = backtest_batting(con, 2025)
+    assert res["n"] > 5000
+    for mk, buckets in res["calibration"].items():
+        for b in buckets:
+            assert abs(b["pred"] - b["hit"]) < 0.10, (mk, b)
+    print(f"  batting backtest: n={res['n']}, calibration within 10pts")
+
+    slate = [{"gamePk": 1, "away": "AAA", "home": "BBB",
+              "away_id": 100, "home_id": 101,
+              "away_sp": None, "home_sp": None}]
+    doc = project_slate(con, slate, "2025-08-20")
+    assert len(doc["batters"]) > 0
+    b0 = doc["batters"][0]
+    assert b0["team"] in ("AAA", "BBB") and "0.5" in b0["hits"]["over"]
+    assert b0["opp"] in ("AAA", "BBB") and b0["opp"] != b0["team"]
+    print(f"  feed: {len(doc['batters'])} batters projected")
+    print("\nBATTING TESTS PASSED")
+
+
 if __name__ == "__main__":
     main()
+    test_batting()
