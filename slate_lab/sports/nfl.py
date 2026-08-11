@@ -27,6 +27,18 @@ VALIDATE  ~272 games/season; wide error bars. Two holdout seasons minimum
 
 LEDGER  Live picks start in September; grading vs DraftKings closing.
 
+SPREAD FINDINGS (2026-08-11 session)
+    Margin model (linear on the validated features): walk-forward MAE
+    9.8-10.4 pts vs the closing spread's 9.3-9.9 — within half a point
+    of Vegas, corr .78-.85 with the line. SHIPS for display + public
+    margin-accuracy grading.
+    Cover probabilities via empirical residual CDF: log loss .71-.73 vs
+    the .693 coin baseline on all three holdouts; ATS picks 45-54%, no
+    edge at any threshold. DOES NOT SHIP — deviations from the closing
+    spread are anti-informative, so no cover picks, ever, until a model
+    actually beats this bar. Key numbers confirmed (|margin| modes: 3
+    then 7), so any future cover work stays on empirical distributions.
+
 EPA FINDINGS (2026-08-04 session, full script: experiments/nfl_epa.py)
     Team net EPA/play (prior-blended): REJECTED. Correlates 0.971 with
     pyth_diff — point differential and cashed-in EPA are the same signal.

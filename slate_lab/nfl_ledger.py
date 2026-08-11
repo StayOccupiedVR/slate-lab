@@ -110,11 +110,14 @@ def _latest_line(away: str, home: str, before: datetime | None = None):
 
 
 # ---------------------------------------------------------------- model
-def _fit(sp, con) -> tuple[LogisticRegression, list[str]]:
+def _fit(sp, con):
+    from sklearn.linear_model import LinearRegression
     df = sp.build_features(con)
     cols = [c for g in sp.GROUPS.values() for c in g]
     m = LogisticRegression(C=1.0).fit(df[cols], df[sp.label])
-    return m, cols
+    # margin: home - away, matching nflverse's `result` convention
+    mm = LinearRegression().fit(df[cols], -df["margin"])
+    return m, mm, cols
 
 
 def _week_rows(sp, con, season: int, week: int) -> pd.DataFrame:
@@ -197,11 +200,12 @@ def file_week(sp, con, season: int, week: int) -> None:
     if wk.empty:
         print(f"week {week}: no scheduled games to file")
         return
-    model, cols = _fit(sp, con)
+    model, margin_model, cols = _fit(sp, con)
     probs = model.predict_proba(wk[cols])[:, 1]
+    margins = margin_model.predict(wk[cols])
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     added = 0
-    for row, p in zip(wk.itertuples(), probs):
+    for row, p, mg in zip(wk.itertuples(), probs, margins):
         if row.game_id in have:
             continue
         doc["games"].append({
@@ -209,6 +213,7 @@ def file_week(sp, con, season: int, week: int) -> None:
             "away": row.away, "home": row.home,
             "filed": now, "model": MODEL_TAG,
             "p_away": round(float(p), 4),
+            "proj_home_margin": round(float(mg), 1),
             "qb_assumed": {"away": row.qb_assumed_away,
                            "home": row.qb_assumed_home},
             "line_at_file": _latest_line(row.away, row.home),
@@ -231,7 +236,7 @@ def revise_week(sp, con, season: int, week: int) -> None:
     if wk.empty:
         print(f"week {week}: no unplayed games left to revise")
         return
-    model, cols = _fit(sp, con)
+    model, margin_model, cols = _fit(sp, con)
     probs = {r.game_id: p for r, p in
              zip(wk.itertuples(), model.predict_proba(wk[cols])[:, 1])}
     now_d = datetime.now(timezone.utc).date().isoformat()
@@ -296,6 +301,11 @@ def grade(sp, con, season: int) -> None:
         file_p = (_devig_away(g["line_at_file"]["ml_away"],
                               g["line_at_file"]["ml_home"])
                   if g["line_at_file"] else None)
+        actual_hm = g["result"]["home_score"] - g["result"]["away_score"]
+        if g.get("proj_home_margin") is not None:
+            entry["margin_ae"] = abs(g["proj_home_margin"] - actual_hm)
+        if g.get("close") and g["close"].get("spread") is not None:
+            entry["market_margin_ae"] = abs(g["close"]["spread"] - actual_hm)
         if close_p is not None:
             entry["market_ll"] = -np.log(close_p if won else 1 - close_p)
             if file_p is not None:
@@ -315,6 +325,13 @@ def grade(sp, con, season: int) -> None:
             "clv_avg_pts": round(100 * float(np.mean(
                 [s["clv"] for s in scored if "clv" in s])), 2)
             if any("clv" in s for s in scored) else None,
+            "margin_mae": round(float(np.mean(
+                [s["margin_ae"] for s in scored if "margin_ae" in s])), 2)
+            if any("margin_ae" in s for s in scored) else None,
+            "market_margin_mae": round(float(np.mean(
+                [s["market_margin_ae"] for s in scored
+                 if "market_margin_ae" in s])), 2)
+            if any("market_margin_ae" in s for s in scored) else None,
         }
         (DATA / "report.json").write_text(json.dumps(report, indent=1))
         print(f"graded {report['n']} games | logloss {report['logloss']}"
