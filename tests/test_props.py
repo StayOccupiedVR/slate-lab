@@ -16,7 +16,7 @@ def synth(seed=5):
     CREATE TABLE pitcher_starts (
       pitcher_id INTEGER, date TEXT, season INTEGER,
       er INTEGER, outs INTEGER, so INTEGER, bb INTEGER, bf INTEGER,
-      PRIMARY KEY (pitcher_id, date));""")
+      opp_id INTEGER, PRIMARY KEY (pitcher_id, date));""")
     rng = random.Random(seed)
     rows = []
     for pid in range(60):
@@ -26,9 +26,9 @@ def synth(seed=5):
                 bf = max(12, round(rng.gauss(23, 3)))
                 so = sum(1 for _ in range(bf) if rng.random() < true_rate)
                 rows.append((pid, f"{season}-{4 + i % 6:02d}-{day:02d}",
-                             season, 2, 17, so, 2, bf))
+                             season, 2, 17, so, 2, bf, 100 + (pid + i) % 4))
     con.executemany("INSERT OR REPLACE INTO pitcher_starts VALUES "
-                    "(?,?,?,?,?,?,?,?)", rows)
+                    "(?,?,?,?,?,?,?,?,?)", rows)
     con.commit()
     return con
 
@@ -82,11 +82,15 @@ def test_batting():
     CREATE TABLE batter_games (
       batter_id INTEGER, date TEXT, season INTEGER, team_id INTEGER,
       name TEXT, pa INTEGER, ab INTEGER, h INTEGER, hr INTEGER,
-      PRIMARY KEY (batter_id, date));
+      opp_id INTEGER, PRIMARY KEY (batter_id, date));
     CREATE TABLE pitcher_starts (
       pitcher_id INTEGER, date TEXT, season INTEGER, er INTEGER,
-      outs INTEGER, so INTEGER, bb INTEGER, bf INTEGER,
-      PRIMARY KEY (pitcher_id, date));""")
+      outs INTEGER, so INTEGER, bb INTEGER, bf INTEGER, opp_id INTEGER,
+      PRIMARY KEY (pitcher_id, date));
+    CREATE TABLE games (gamePk INTEGER PRIMARY KEY, date TEXT,
+      season INTEGER, away_id INTEGER, home_id INTEGER,
+      away_score INTEGER, home_score INTEGER,
+      away_sp INTEGER, home_sp INTEGER);""")
     rng = random.Random(11)
     rows = []
     for bid in range(80):
@@ -100,9 +104,14 @@ def test_batting():
                 hr = sum(1 for _ in range(ab) if rng.random() < hr_rate)
                 rows.append((bid, f"{season}-{4 + i // 26:02d}-{1 + i % 26:02d}",
                              season, team, f"Batter {bid}", ab + 1, ab, h,
-                             min(hr, h)))
+                             min(hr, h), 100 + (bid + i) % 4))
     con.executemany(
-        "INSERT OR REPLACE INTO batter_games VALUES (?,?,?,?,?,?,?,?,?)", rows)
+        "INSERT OR REPLACE INTO batter_games VALUES (?,?,?,?,?,?,?,?,?,?)", rows)
+    for gpk in range(1, 40):
+        a, h = 100 + gpk % 4, 100 + (gpk + 1) % 4
+        con.execute("INSERT INTO games VALUES (?,?,?,?,?,?,?,?,?)",
+                    (gpk, f"2025-{4 + gpk // 26:02d}-{1 + gpk % 26:02d}", 2025,
+                     a, h, 4, 3, None, None))
     con.commit()
 
     prior = [(1, 4)] * 40
@@ -129,7 +138,11 @@ def test_batting():
     b0 = doc["batters"][0]
     assert b0["team"] in ("AAA", "BBB") and "0.5" in b0["hits"]["over"]
     assert b0["opp"] in ("AAA", "BBB") and b0["opp"] != b0["team"]
-    print(f"  feed: {len(doc['batters'])} batters projected")
+    assert len(b0["last10"]) == 10 and {"date", "ab", "h", "hr"} <= set(b0["last10"][0])
+    assert b0["last10"][0]["date"] > b0["last10"][-1]["date"], "newest first"
+    assert "vs_top_pitching" in b0 and "vs_bottom_pitching" in b0
+    assert (b0["vs_top_pitching"]["n"] + b0["vs_bottom_pitching"]["n"]) > 0
+    print(f"  feed: {len(doc['batters'])} batters, last10 + splits enriched")
     print("\nBATTING TESTS PASSED")
 
 

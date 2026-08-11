@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS batter_games (
   ab        INTEGER,
   h         INTEGER,
   hr        INTEGER,
+  opp_id    INTEGER,
   PRIMARY KEY (batter_id, date)
 );
 CREATE INDEX IF NOT EXISTS idx_bg_bid ON batter_games(batter_id, date);
@@ -82,6 +83,13 @@ def _ip_to_outs(ip) -> int:
 def connect(db_path: str | Path) -> sqlite3.Connection:
     con = sqlite3.connect(db_path)
     con.executescript(SCHEMA)
+    for tbl, col in (("pitcher_starts", "opp_id"), ("batter_games", "opp_id")):
+        try:
+            have = {r[1] for r in con.execute(f"PRAGMA table_info({tbl})")}
+            if have and col not in have:
+                con.execute(f"ALTER TABLE {tbl} ADD COLUMN {col} INTEGER")
+        except Exception:
+            pass
     cols = {r[1] for r in con.execute("PRAGMA table_info(pitcher_starts)")}
     for c in ("so", "bb", "bf"):
         if c not in cols:
@@ -130,9 +138,12 @@ def ingest_batting(con: sqlite3.Connection, season: int,
                          (sp.get("team") or {}).get("id") or team_id, name,
                          pa, int(st.get("atBats") or 0),
                          int(st.get("hits") or 0),
-                         int(st.get("homeRuns") or 0)))
+                         int(st.get("homeRuns") or 0),
+                         (sp.get("opponent") or {}).get("id")))
         con.executemany(
-            "INSERT OR REPLACE INTO batter_games VALUES (?,?,?,?,?,?,?,?,?)",
+            "INSERT OR REPLACE INTO batter_games "
+            "(batter_id, date, season, team_id, name, pa, ab, h, hr, opp_id) "
+            "VALUES (?,?,?,?,?,?,?,?,?,?)",
             rows)
         if verbose and n % 100 == 0:
             print(f"  ...batter logs {n}/{len(bat_ids)}")
@@ -187,9 +198,12 @@ def ingest_season(con: sqlite3.Connection, season: int, verbose: bool = True) ->
                            _ip_to_outs(st.get("inningsPitched")),
                            int(st.get("strikeOuts") or 0),
                            int(st.get("baseOnBalls") or 0),
-                           int(st.get("battersFaced") or 0)))
+                           int(st.get("battersFaced") or 0),
+                           (s.get("opponent") or {}).get("id")))
         con.executemany(
-            "INSERT OR REPLACE INTO pitcher_starts VALUES (?,?,?,?,?,?,?,?)",
+            "INSERT OR REPLACE INTO pitcher_starts "
+            "(pitcher_id, date, season, er, outs, so, bb, bf, opp_id) "
+            "VALUES (?,?,?,?,?,?,?,?,?)",
             starts
         )
         if verbose and n % 50 == 0:

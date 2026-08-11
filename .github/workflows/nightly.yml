@@ -80,8 +80,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: slate.db
-          key: slate-db-v3-${{ github.run_id }}
-          restore-keys: slate-db-v3-
+          key: slate-db-v4-${{ github.run_id }}
+          restore-keys: slate-db-v4-
 
       - name: Check whether history needs bootstrapping
         if: steps.t.outputs.task != 'odds'

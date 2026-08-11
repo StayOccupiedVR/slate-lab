@@ -275,6 +275,47 @@ def print_backtest(res: dict) -> None:
         print(f"  over {line}: {parts}")
 
 
+def _team_offense_quality(con, date: str) -> dict:
+    """team_id -> batting average, season-to-date of `date`'s season."""
+    season = date[:4]
+    df = pd.read_sql(
+        "SELECT team_id, SUM(h) AS h, SUM(ab) AS ab FROM batter_games "
+        "WHERE date >= ? AND date < ? AND ab > 0 GROUP BY team_id",
+        con, params=(f"{season}-01-01", date))
+    return {int(r.team_id): (r.h / r.ab) for r in df.itertuples()
+            if r.ab and r.ab > 100}
+
+
+def _team_pitching_quality(con, date: str) -> dict:
+    """team_id -> runs allowed per game (lower = better staff)."""
+    season = date[:4]
+    df = pd.read_sql(
+        "SELECT away_id, home_id, away_score, home_score FROM games "
+        "WHERE date >= ? AND date < ?", con,
+        params=(f"{season}-01-01", date))
+    ra, gp = {}, {}
+    for r in df.itertuples():
+        ra[r.away_id] = ra.get(r.away_id, 0) + r.home_score
+        ra[r.home_id] = ra.get(r.home_id, 0) + r.away_score
+        gp[r.away_id] = gp.get(r.away_id, 0) + 1
+        gp[r.home_id] = gp.get(r.home_id, 0) + 1
+    return {t: ra[t] / gp[t] for t in ra if gp[t] >= 10}
+
+
+def _split(pairs_with_opp, quality: dict, top_ids: set):
+    """(succ, opp_count, opp_id) rows -> rate vs top-half and rest."""
+    hi_s = hi_n = lo_s = lo_n = 0
+    for s_, n_, oid in pairs_with_opp:
+        if oid in top_ids:
+            hi_s += s_; hi_n += n_
+        elif oid in quality:
+            lo_s += s_; lo_n += n_
+    return {
+        "hi": {"rate": round(hi_s / hi_n, 3) if hi_n else None, "n": hi_n},
+        "lo": {"rate": round(lo_s / lo_n, 3) if lo_n else None, "n": lo_n},
+    }
+
+
 def project_slate(con, slate: list[dict], date: str) -> dict:
     """Strikeout distributions for every probable starter on a slate.
 
@@ -284,14 +325,26 @@ def project_slate(con, slate: list[dict], date: str) -> dict:
     no network — so it is testable and the workflow can call it right
     after scoring."""
     sp = pd.read_sql(
-        "SELECT pitcher_id, date, so, bf FROM pitcher_starts "
+        "SELECT pitcher_id, date, so, bf, opp_id FROM pitcher_starts "
         "WHERE so IS NOT NULL AND bf IS NOT NULL AND bf > 0 "
         "AND date < ? ORDER BY date", con, params=(date,))
     lg_rate = (float(sp.so.sum()) / float(sp.bf.sum())
                if len(sp) else LG_K_RATE_FALLBACK)
     hist = defaultdict(list)
+    hist_full = defaultdict(list)
     for r in sp.itertuples():
         hist[r.pitcher_id].append((r.so, r.bf))
+        hist_full[r.pitcher_id].append(
+            (r.date, int(r.so), int(r.bf),
+             int(r.opp_id) if pd.notna(r.opp_id) else None))
+    off_q = _team_offense_quality(con, date)
+    off_top = {t for t in off_q
+               if off_q[t] >= sorted(off_q.values())[len(off_q)//2]} \
+        if off_q else set()
+    pitch_q = _team_pitching_quality(con, date)
+    pitch_top = {t for t in pitch_q
+                 if pitch_q[t] <= sorted(pitch_q.values())[len(pitch_q)//2]} \
+        if pitch_q else set()
     out = []
     for g in slate:
         for side, opp_side in (("away", "home"), ("home", "away")):
@@ -301,12 +354,20 @@ def project_slate(con, slate: list[dict], date: str) -> dict:
             d = k_distribution(hist.get(pid, []), lg_rate)
             if d is None:
                 continue
+            full = hist_full.get(pid, [])
+            last10 = [{"date": dt, "so": so_, "bf": bf_}
+                      for dt, so_, bf_, _ in full[-10:]][::-1]
+            spl = _split([(so_, bf_, oid) for _, so_, bf_, oid in full],
+                         off_q, off_top)
             out.append({
                 "pitcher_id": pid,
                 "name": (g.get(side + "_sp_name") or str(pid)),
                 "team": g.get(side) or "",
                 "opp": g.get(opp_side) or "",
                 "gamePk": g.get("gamePk"),
+                "last10": last10,
+                "vs_top_offense": spl["hi"],
+                "vs_bottom_offense": spl["lo"],
                 **d,
             })
     # batters: recent regulars for every team on the slate
@@ -317,16 +378,20 @@ def project_slate(con, slate: list[dict], date: str) -> dict:
                 team_ids.add(g[k])
     opp_of = {}
     ab_map = {}
+    team_pk = {}
     for g in slate:
         if g.get("away_id") and g.get("home_id"):
             opp_of[g["away_id"]] = g.get("home") or ""
             opp_of[g["home_id"]] = g.get("away") or ""
             ab_map[g["away_id"]] = g.get("away") or ""
             ab_map[g["home_id"]] = g.get("home") or ""
+            team_pk[g["away_id"]] = g.get("gamePk")
+            team_pk[g["home_id"]] = g.get("gamePk")
     batters = []
     if team_ids:
         bg = pd.read_sql(
-            "SELECT batter_id, date, team_id, name, ab, h, hr FROM batter_games "
+            "SELECT batter_id, date, team_id, name, ab, h, hr, opp_id "
+            "FROM batter_games "
             "WHERE ab IS NOT NULL AND ab > 0 AND date < ? ORDER BY date",
             con, params=(date,))
         lg_hit = (float(bg.h.sum()) / float(bg.ab.sum())
@@ -338,8 +403,12 @@ def project_slate(con, slate: list[dict], date: str) -> dict:
         latest_name = {}
         recent_ct = defaultdict(int)
         cutoff = (pd.Timestamp(date) - pd.Timedelta(days=14)).date().isoformat()
+        bfull = defaultdict(list)
         for r in bg.itertuples():
             hist2[r.batter_id].append((r.h, r.hr, r.ab))
+            bfull[r.batter_id].append(
+                (r.date, int(r.ab), int(r.h), int(r.hr),
+                 int(r.opp_id) if pd.notna(r.opp_id) else None))
             latest_team[r.batter_id] = r.team_id
             latest_name[r.batter_id] = r.name
             if r.date >= cutoff:
@@ -355,11 +424,21 @@ def project_slate(con, slate: list[dict], date: str) -> dict:
                 hd = hit_distribution([(h, ab) for h, _, ab in pr], lg_hit)
                 rd = hr_distribution([(hr, ab) for _, hr, ab in pr], lg_hr)
                 if hd and rd:
+                    fullb = bfull.get(bid, [])
+                    last10 = [{"date": dt, "ab": ab_, "h": h_, "hr": hr_}
+                              for dt, ab_, h_, hr_, _ in fullb[-10:]][::-1]
+                    hs = _split([(h_, ab_, oid)
+                                 for _, ab_, h_, hr_, oid in fullb],
+                                pitch_q, pitch_top)
                     batters.append({
                         "batter_id": bid,
                         "name": latest_name.get(bid) or str(bid),
                         "team": ab_map.get(tid, ""),
                         "opp": opp_of.get(tid, ""),
+                        "gamePk": team_pk.get(tid),
+                        "last10": last10,
+                        "vs_top_pitching": hs["hi"],
+                        "vs_bottom_pitching": hs["lo"],
                         "hits": {"mean": hd["mean"], "over": hd["over"]},
                         "hr": {"mean": rd["mean"], "over": rd["over"]},
                         "n_prior": hd["n_prior"]})
