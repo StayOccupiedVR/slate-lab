@@ -1,0 +1,106 @@
+{
+ "date": "2026-08-10",
+ "model": "gbdt",
+ "games": [
+  {
+   "date": "2026-08-10",
+   "gamePk": 822780,
+   "away": "BOS",
+   "home": "TOR",
+   "p_model": 0.5296,
+   "away_won": false,
+   "p_market": 0.5868319338931095,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 824887,
+   "away": "NYM",
+   "home": "ATL",
+   "p_model": 0.4648,
+   "away_won": true,
+   "p_market": 0.43325011014833303,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 823675,
+   "away": "BAL",
+   "home": "MIN",
+   "p_model": 0.459,
+   "away_won": false,
+   "p_market": 0.5,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 823018,
+   "away": "PHI",
+   "home": "STL",
+   "p_model": 0.4345,
+   "away_won": true,
+   "p_market": 0.5276417074877537,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 823998,
+   "away": "TEX",
+   "home": "LAA",
+   "p_model": 0.5167,
+   "away_won": true,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 825048,
+   "away": "COL",
+   "home": "AZ",
+   "p_model": 0.4548,
+   "away_won": false,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 824969,
+   "away": "TB",
+   "home": "ATH",
+   "p_model": 0.5371,
+   "away_won": true,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 823265,
+   "away": "MIL",
+   "home": "SD",
+   "p_model": 0.5349,
+   "away_won": false,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 823189,
+   "away": "HOU",
+   "home": "SF",
+   "p_model": 0.5167,
+   "away_won": true,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-08-10",
+   "gamePk": 823918,
+   "away": "KC",
+   "home": "LAD",
+   "p_model": 0.4085,
+   "away_won": false,
+   "p_market": null,
+   "book": null
+  }
+ ]
+}
