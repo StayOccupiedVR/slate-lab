@@ -1,98 +1,98 @@
 {
-  "generated": "2026-08-11T00:50:44.739176Z",
+  "generated": "2026-08-11T11:01:49.783339Z",
   "sport": "mlb",
   "model": "gbdt",
-  "trainRows": 7837,
+  "trainRows": 7847,
   "games": [
     {
       "gamePk": 824240,
       "away": "CLE",
       "home": "DET",
-      "pAway": 0.4548
+      "pAway": 0.4692
     },
     {
       "gamePk": 823832,
       "away": "PIT",
       "home": "MIA",
-      "pAway": 0.4807
+      "pAway": 0.4571
     },
     {
       "gamePk": 822697,
       "away": "CHC",
       "home": "WSH",
-      "pAway": 0.5316
+      "pAway": 0.5175
     },
     {
       "gamePk": 823512,
       "away": "SEA",
       "home": "NYY",
-      "pAway": 0.4548
+      "pAway": 0.4846
     },
     {
       "gamePk": 822778,
       "away": "BOS",
       "home": "TOR",
-      "pAway": 0.4905
+      "pAway": 0.4906
     },
     {
       "gamePk": 824886,
       "away": "NYM",
       "home": "ATL",
-      "pAway": 0.4648
+      "pAway": 0.4944
     },
     {
       "gamePk": 823673,
       "away": "BAL",
       "home": "MIN",
-      "pAway": 0.459
+      "pAway": 0.3897
     },
     {
       "gamePk": 824563,
       "away": "CIN",
       "home": "CWS",
-      "pAway": 0.4349
+      "pAway": 0.4835
     },
     {
       "gamePk": 823019,
       "away": "PHI",
       "home": "STL",
-      "pAway": 0.4559
+      "pAway": 0.4853
     },
     {
       "gamePk": 823997,
       "away": "TEX",
       "home": "LAA",
-      "pAway": 0.5417
+      "pAway": 0.5478
     },
     {
       "gamePk": 825046,
       "away": "COL",
       "home": "AZ",
-      "pAway": 0.4548
+      "pAway": 0.4692
     },
     {
       "gamePk": 824970,
       "away": "TB",
       "home": "ATH",
-      "pAway": 0.5223
+      "pAway": 0.5324
     },
     {
       "gamePk": 823264,
       "away": "MIL",
       "home": "SD",
-      "pAway": 0.5349
+      "pAway": 0.5441
     },
     {
       "gamePk": 823186,
       "away": "HOU",
       "home": "SF",
-      "pAway": 0.5167
+      "pAway": 0.5175
     },
     {
       "gamePk": 823917,
       "away": "KC",
       "home": "LAD",
-      "pAway": 0.365
+      "pAway": 0.3202
     }
   ]
 }
