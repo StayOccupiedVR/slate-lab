@@ -1,139 +1,196 @@
-# SLATE — Project README
+# slate-lab
 
-Transparent sports analytics with a public, timestamped, graded record.
-The brand is the discipline: predictions are filed before games, graded
-against real sportsbook closing lines, and never edited. Losses stay on
-the board. Updated 2026-08-10.
+The machine-learning half of Slate: a point-in-time backtesting pipeline,
+Statcast features, a nightly scoring job, and the gate monetization has to
+pass through.
 
----
+Everything here obeys one rule: **a game on date D may only see data from
+before D.** The test suite enforces it with a tampering tripwire — flip a
+late-season result and every earlier feature row must be byte-identical.
+Run the tests before you trust anything else:
 
-## The two repos
+```
+python tests/test_pipeline.py
+```
 
-| Repo | What it is | Where it serves |
+## Step 1 — backtest pipeline
+
+```
+pip install -r requirements.txt
+python -m slate_lab.ingest --db slate.db --seasons 2023 2024 2025
+python -m slate_lab.train  --db slate.db --test-season 2025 --ablation
+```
+
+Ingest takes a while (it's polite to a free API — roughly 700 pitcher logs
+per season at ~6/second). Training prints three models against each other:
+
+- **baseline** — the exact closed-form model the PWA runs
+- **logistic** — linear model over the feature table
+- **gbdt** — small, regularized gradient boosting
+
+Validation is walk-forward **by season**: train on everything before the
+test season, never after. The `--ablation` flag adds feature groups one at
+a time (team strength → recent form → rest → starters) and prints held-out
+log loss at each step. A group that doesn't lower the number doesn't earn
+a place. This is the feedback loop, done without self-deception.
+
+**How to read results — the numbers that actually matter:**
+
+| | log loss |
+|---|---|
+| coin flip (always 50%) | 0.6931 |
+| always home at 54% | 0.6899 |
+| team record only | ~0.6835 |
+| **team + starter (current best)** | **0.6827** |
+| a PERFECT forecaster | ~0.673–0.680 |
+
+That last row is the important one and it surprises people. Most MLB games
+are close to coin flips: a game whose true probability is 55% costs a
+perfect predictor 0.688; even a lopsided 65% game costs 0.647. So the
+entire achievable range between guessing and omniscience is roughly 0.015,
+and a model at 0.6827 has already captured a third to two-thirds of it.
+
+Any result below ~0.67 is a data leak, not a breakthrough. Check the
+tripwire before celebrating.
+
+## Step 2 — Statcast
+
+```
+pip install pybaseball
+python -m slate_lab.statcast --db slate.db --seasons 2024 2025
+python -m slate_lab.train --db slate.db --test-season 2025 --ablation
+```
+
+Adds a 30-day rolling team xwOBA differential (shifted a day so today's
+games never see today's pitches). Importing the module registers the
+feature group, so the same ablation now answers the only question that
+matters: did Statcast improve held-out log loss or not? First download per
+season is slow; pybaseball caches locally.
+
+## Step 3 — nightly job
+
+`.github/workflows/nightly.yml` runs at 7 AM ET on a free GitHub Actions
+runner: refreshes the current season, retrains, scores today's slate, and
+publishes `predictions.json` to the repo's `gh-pages` branch.
+
+Setup: push this folder to a GitHub repo → Settings → Pages → deploy from
+`gh-pages` → run the workflow once manually (first run bootstraps three
+seasons of history and is slow; after that the DB is cached).
+
+Then open the PWA's `index.html`, set:
+
+```js
+const ML_URL = "https://<user>.github.io/<repo>/predictions.json";
+```
+
+and redeploy the app. Each game card shows the ML probability alongside
+the built-in model. When they disagree, the feature table can tell you why.
+
+## Step 4 — the monetization gate
+
+This step is deliberately not code. Charging money is gated on evidence,
+and the gate is:
+
+1. **Skill** — the trained model beats the team-record-only baseline on
+   held-out log loss across at least two separate test seasons.
+2. **Calibration** — every bucket's predicted vs actual within noise on
+   those seasons.
+3. **Live record** — the nightly job runs for 60+ days with predictions
+   stamped *before* first pitch, graded after, losses included. Backtests
+   convince you; only a live record should convince a customer.
+4. **Honest positioning** — unless the model beats the closing line
+   (see above: it won't), the product is analytics and education, not an
+   edge. Mongoose-style "we show the math, we don't sell picks" is the
+   defensible posture; anything promising profit is a lie with a
+   subscription fee.
+5. **A lawyer** — betting-adjacent products for money touch state gambling
+   regulation, advertising rules, and consumer protection. This is a real
+   conversation with a real attorney before the first dollar.
+
+One sport until the gate is passed. "All sports" is how this dies of
+scope; MLB is the easiest sport to model and it isn't passed yet.
+
+## Layout
+
+```
+slate_lab/ingest.py     seasons → SQLite (records facts, no logic)
+slate_lab/features.py   point-in-time features; the one place leakage could live
+slate_lab/statcast.py   optional xwOBA features via pybaseball
+slate_lab/models.py     baseline / logistic / gbdt + metrics
+slate_lab/train.py      walk-forward eval + ablation harness
+slate_lab/score.py      retrain on everything, score today, emit JSON
+tests/test_pipeline.py  synthetic league + the anti-leakage tripwire
+```
+
+## The ledger (odds + live grading)
+
+`slate_lab/ledger.py` closes the feedback loop with real sportsbook prices.
+
+**Books:** DraftKings preferred, Hard Rock Bet fallback, per game — both via
+The Odds API (the-odds-api.com). DraftKings is licensed in more states and
+carries deeper liquidity, so its closing line is the better benchmark.
+Neither book has a public API and scraping them violates their terms; the
+aggregator is the legitimate route. Free tier is 500 credits/month; the
+schedule below uses ~180.
+
+**Setup (one time):** get a free key at the-odds-api.com → repo Settings →
+Secrets → Actions → new secret `ODDS_API_KEY`.
+
+**What runs when (all automatic):**
+- 11 AM / 6:30 PM / 9:30 PM ET — odds snapshots. The last snapshot before
+  each game's first pitch becomes its closing number.
+- 7 AM ET — grade yesterday's predictions against final scores and closing
+  odds, file today's predictions, publish `report.json`.
+
+**Why files, not database rows:** every snapshot and prediction is committed
+to git. Commit timestamps are tamper-evident proof that predictions were
+filed before first pitch — the property a live record needs before anyone
+(including you) should trust it. `record` refuses to overwrite an existing
+day for the same reason.
+
+**Reading report.json:** `model_logloss` vs `market_logloss` on the same
+games is the scoreboard. Expect the market to win, but by less than you'd
+think — DraftKings' devigged closing line is probably near 0.675, and the
+model is at 0.6827. That gap is small in log-loss terms and still fatal in
+betting terms, because you are not competing on log loss: you are competing
+against a ~4.5% vig. A model slightly behind the market loses money by
+definition; a model slightly ahead of it very likely still loses money after
+the cut.
+
+This is why the honest product is analytics and education, not picks. Watch
+(a) the gap narrowing and (b) `model_won_disagreements` — when model and
+market took opposite sides, who was right. Hundreds of disagreements before
+that number means anything.
+
+
+## Results log
+
+**2025 holdout (n=2123), trained on 2023–2024**
+
+| model | log loss | vs coin flip |
 |---|---|---|
-| **slate-app** | The PWA (single index.html + sw.js) | https://StayOccupiedVR.github.io/slate-app/ |
-| **slate-lab** | Models, ledgers, GitHub Actions workflow | data feeds on its gh-pages branch |
+| hand-tuned formula (the PWA's) | 0.6905 | +0.6% |
+| logistic, team + starter | **0.6827** | +2.0% |
+| gbdt | 0.6828 | +2.0% |
 
-Data feeds published by slate-lab, read by the app:
-`predictions.json` · `odds.json` (MLB, 3 books) · `nfl-odds.json` ·
-`report.json` (graded MLB record)
+**Ship logistic.** gbdt tied it, and a tie means the trees are fitting noise.
 
-Deploys are `git push` for both repos. GitHub Pages rebuilds in ~1 min.
-The Netlify era is over.
+**Feature findings**
 
----
+| feature | corr w/ outcome | corr w/ pyth_diff | verdict |
+|---|---|---|---|
+| pyth_diff | +0.133 | 1.000 | core |
+| sp_edge | +0.081 | +0.309 | keep — real but partly redundant |
+| l10_diff | +0.070 | — | **cut**, raised log loss |
+| rest_diff | −0.014 | — | **cut**, no signal |
+| sp_vs_rot | −0.015 | −0.394 | **cut**, moving baseline |
 
-## What is live
+`sp_vs_rot` was an attempt to make the starter feature orthogonal to team
+strength by rating a pitcher against his own rotation. It failed because the
+baseline moves with team quality — a #3 on a great staff looks bad, a #1 on a
+bad staff looks good — so it encodes roster shape, not pitching. Instructive
+failure, kept in LEGACY as a warning.
 
-**MLB (in season)**
-- Model: `team + kbb` — Pythagorean team strength + K-BB% starter rating,
-  prior-regressed. Holdout log loss **0.6827** on 2025 (n=2123); perfect
-  forecaster ≈ .673, coin flip .693. ERA-based starter rating and park
-  factors retired to LEGACY with their numbers documented in features.py.
-- Ledger: filed daily 7:00 AM ET before first pitch, graded nightly
-  against DraftKings closing. Record accumulates in `report.json`.
-- Odds: DraftKings + FanDuel + Hard Rock captured 11 AM / 6:30 / 9:30 ET
-  (~2 credits per capture, The Odds API free tier, ~500/mo budget).
-- App board: sportsbook dark theme, team-color chips, win% pills,
-  three-book odds table with best price in green, weather (Open-Meteo,
-  30 park table), scratch alerts (regular missing from posted lineup),
-  bullpen availability, K-BB% row ("what the model uses"), EV verdict
-  prefilled from best available line, ET timestamps for stats + odds.
-
-**NFL (built, sleeping until Week 1 — Sept 9)**
-- Adapter validated against embedded closing lines (nflverse carries 27
-  seasons of spreads + moneylines): model .60–.65 vs market .56–.62 on
-  2023–25 holdouts. Features: Pythagorean (exp 2.37, 6-game prior),
-  rest, QB-change flags, divisional.
-- EPA session findings (documented in sports/nfl.py, reproducible via
-  experiments/nfl_epa.py): team EPA **rejected** (r=0.971 with pyth —
-  same signal); QB EPA **benched** (helps 2023/24, hurts 2025 in every
-  formulation).
-- Weekly ledger (`nfl_ledger.py`): file Wednesdays, revise Sundays
-  **only** for QB changes (original preserved beside revision), grade
-  Tuesdays with log loss vs devigged close **and CLV** (line movement
-  toward our side after filing — accumulates signal every game).
-- Eight crons live in the workflow, all behind a season guard that
-  checks nflverse for a REG game within 10 days and prints "asleep"
-  otherwise. Odds capture is deliberately **unguarded** (display-only,
-  never touches the record) — preseason scoreboard shows three-book
-  prices via `nfl-odds.json`.
-- App: NFL scoreboard route (#nfl) from ESPN's public API — preseason
-  display-only with an honest banner; ESPN↔nflverse code aliases
-  (WSH→WAS, LAR→LA).
-
-**Props — Phase 1 (research, zero cost)**
-- `props.py`: MLB starter strikeout **distributions** (not averages):
-  K-per-BF prior-regressed over 70 BF, mixed over full-career empirical
-  workloads. Workload-window ablation documented in the constant (last-10
-  lost to naive, full career won).
-- Real 2025 backtest (n=4,573 starts): **mid-range calibration is good**
-  (pred 32→34, 50→48, 30→28, 27→26); high-confidence buckets run ~5pts
-  hot (manager-pull ceiling effect — v2 candidate); log score ties naive
-  Poisson (2.2369 vs 2.2371). Ships as research display only.
-- v2 priorities, evidence-ranked: workload/pitch-count ceiling, opponent
-  lineup K%. **No edge claims until prop lines exist** (paid tier gate).
-
----
-
-## The homepage roadmap (app tiles)
-
-MLB (LIVE) · NFL (PRESEASON→LIVE Sept) · UFC (roadmap) · PGA (roadmap) ·
-NHL (roadmap — goalies as the starting-pitcher analog, October) · NCAA
-Football (roadmap — NFL adapter + CFBD) · Player props (in development —
-cross-sport hub, per-sport subpages, "graded projections not picks").
-
-Capture budget when all live (worst month): MLB 2/day + NFL 6/wk +
-NCAAF 4/wk + PGA 2/wk + UFC 2/wk ≈ **328 of 500** free credits.
-
----
-
-## Gates (non-negotiable)
-
-1. Features ship only past a backtest/ablation; rejects go to LEGACY
-   with their numbers.
-2. Display and model are separate; the help text says which is which.
-3. No edge claims without real lines to claim against.
-4. Monetization: 60+ days live record, and **attorney review before any
-   paid tier or app-store submission** (odds apps are a regulated
-   category on both stores).
-5. Prop odds are the first-dollar decision (~$59/mo tier) — triggered by
-   record maturity, not calendar.
-
----
-
-## Delivery workflow (hard-won rules)
-
-- **One PowerShell command per line.** Glued pastes fail.
-- **Four beats:** download → `dir` confirm → copy → `Select-String` gate.
-  The copy is the beat that gets skipped; False at the gate means redo it.
-- **Unique zip names** (`slate-app-vN.zip`, `slate-lab-<change>.zip`) —
-  Windows suffixes (`_17`) made same-name zips a stale-file trap.
-- **`.github` files ship as named single files** (`nightly-vN.yml`) —
-  PowerShell's `*` wildcard skips dot-folders. Burned twice; permanent rule.
-- OneDrive sometimes locks `.git` temp dirs mid-rebase: answer `n`, then
-  `Remove-Item .git\rebase-merge -Recurse -Force` if needed.
-- Push rejections are usually the workflow bot; `git pull --rebase` then
-  push.
-- Service worker: shell cached, **data feeds never cached** (odds.json,
-  nfl-odds.json, predictions.json, report.json, MLB/ESPN/Open-Meteo APIs).
-  Bump `slate-vN` in sw.js on every app release; users need two loads.
-
-## Test suites (all must pass before any lab push)
-
-```
-python tests/test_pipeline.py     # point-in-time + tampering tripwire
-python tests/test_sports.py       # adapter contract + synthetic NFL
-python tests/test_ledger.py       # MLB ledger + odds export
-python tests/test_nfl_ledger.py   # weekly filing/revision/CLV lifecycle
-python tests/test_props.py        # strikeout distribution + calibration
-```
-
-## Near-term queue
-
-1. MLB `report.json` review at ~200 graded games
-2. Props hub UI (#props/mlb): distribution bars, over-probabilities,
-   L10 logs, methodology note
-3. NFL spread/margin model (27 years of closing spreads to judge it)
-4. Sept: watch Week 1 auto-file; flip NFL tile to LIVE
-5. Logo: banner deployed; square original remains for icon redraw
+**Next candidates:** park factors, weather, confirmed lineups, pitcher-level
+Statcast. Each carries information neither records nor ERA contain. Expect
+0.001–0.003 each, and let the ablation reject the ones that don't deliver.

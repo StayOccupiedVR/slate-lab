@@ -153,13 +153,53 @@ def print_backtest(res: dict) -> None:
         print(f"  over {line}: {parts}")
 
 
+def project_slate(con, slate: list[dict], date: str) -> dict:
+    """Strikeout distributions for every probable starter on a slate.
+
+    `slate` rows need away_sp/home_sp ids plus team abbreviations; pitcher
+    names are looked up from the ids when the caller provides them in
+    `names` (id -> name), else shown by id. Pure function of the db —
+    no network — so it is testable and the workflow can call it right
+    after scoring."""
+    sp = pd.read_sql(
+        "SELECT pitcher_id, date, so, bf FROM pitcher_starts "
+        "WHERE so IS NOT NULL AND bf IS NOT NULL AND bf > 0 "
+        "AND date < ? ORDER BY date", con, params=(date,))
+    lg_rate = (float(sp.so.sum()) / float(sp.bf.sum())
+               if len(sp) else LG_K_RATE_FALLBACK)
+    hist = defaultdict(list)
+    for r in sp.itertuples():
+        hist[r.pitcher_id].append((r.so, r.bf))
+    out = []
+    for g in slate:
+        for side, opp_side in (("away", "home"), ("home", "away")):
+            pid = g.get(side + "_sp")
+            if not pid:
+                continue
+            d = k_distribution(hist.get(pid, []), lg_rate)
+            if d is None:
+                continue
+            out.append({
+                "pitcher_id": pid,
+                "name": (g.get(side + "_sp_name") or str(pid)),
+                "team": g.get(side) or "",
+                "opp": g.get(opp_side) or "",
+                "gamePk": g.get("gamePk"),
+                **d,
+            })
+    return {"date": date, "market": "strikeouts", "model": "props-k-v1",
+            "pitchers": out}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--db", default="slate.db")
     p.add_argument("--backtest", type=int, default=None,
                    help="season to walk point-in-time")
     p.add_argument("--out", default=None,
-                   help="write full backtest JSON here")
+                   help="write JSON here (backtest or projections)")
+    p.add_argument("--project", default=None,
+                   help="date YYYY-MM-DD: project today's probable starters")
     args = p.parse_args()
     con = sqlite3.connect(args.db)
     if args.backtest:
@@ -169,6 +209,14 @@ def main() -> None:
             with open(args.out, "w") as f:
                 json.dump(res, f, indent=1)
             print(f"written -> {args.out}")
+    if args.project:
+        from .score import todays_slate
+        raw = todays_slate(args.project)
+        doc = project_slate(con, raw, args.project)
+        out = args.out or "props-mlb.json"
+        with open(out, "w") as f:
+            json.dump(doc, f, indent=1)
+        print(f"{len(doc['pitchers'])} starters projected -> {out}")
 
 
 if __name__ == "__main__":

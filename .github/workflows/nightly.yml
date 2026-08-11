@@ -20,7 +20,7 @@ on:
       task:
         description: "What to run"
         type: choice
-        options: [score, odds, bootstrap-only, nfl-odds, nfl-file, nfl-sunday, nfl-grade]
+        options: [score, odds, bootstrap-only]
         default: score
 
 permissions:
@@ -113,6 +113,7 @@ jobs:
           python -m slate_lab.score --db slate.db --update-season --out predictions.json
           python -m slate_lab.ledger record || echo "nothing to file"
           python -m slate_lab.ledger export-odds || echo "no odds yet"
+          python -m slate_lab.props --db slate.db --project "$(date -u +%F)" --out props-mlb.json || echo "props skipped"
           echo "--- predictions.json ---"
           cat predictions.json
 
@@ -190,8 +191,9 @@ jobs:
           [ -f data/report.json ] && cp data/report.json /tmp/pub/
           [ -f odds.json ] && cp odds.json /tmp/pub/
           [ -f nfl-odds.json ] && cp nfl-odds.json /tmp/pub/
+          [ -f props-mlb.json ] && cp props-mlb.json /tmp/pub/
           echo "published $(date -u +%FT%TZ)" > /tmp/pub/index.html
-          rm -f predictions.json odds.json nfl-odds.json
+          rm -f predictions.json odds.json nfl-odds.json props-mlb.json
           git fetch origin gh-pages || true
           if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
             git checkout -B gh-pages origin/gh-pages
@@ -200,6 +202,6 @@ jobs:
             git rm -rf . >/dev/null 2>&1 || true
           fi
           cp /tmp/pub/* . 2>/dev/null || true
-          git add -A -f index.html predictions.json report.json odds.json nfl-odds.json 2>/dev/null || git add -A
+          git add -A -f index.html predictions.json report.json odds.json nfl-odds.json props-mlb.json 2>/dev/null || git add -A
           git commit --allow-empty -m "publish $(date -u +%FT%TZ)"
           git push origin gh-pages

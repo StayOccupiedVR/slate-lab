@@ -38,6 +38,8 @@ def todays_slate(date: str) -> list[dict]:
                 "home_id": g["teams"]["home"]["team"]["id"],
                 "away_sp": (g["teams"]["away"].get("probablePitcher") or {}).get("id"),
                 "home_sp": (g["teams"]["home"].get("probablePitcher") or {}).get("id"),
+                "away_sp_name": (g["teams"]["away"].get("probablePitcher") or {}).get("fullName"),
+                "home_sp_name": (g["teams"]["home"].get("probablePitcher") or {}).get("fullName"),
             })
     return out
 
