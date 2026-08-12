@@ -1,98 +1,98 @@
 {
-  "generated": "2026-08-11T22:49:01.809942Z",
+  "generated": "2026-08-12T11:55:45.536244Z",
   "sport": "mlb",
   "model": "gbdt",
-  "trainRows": 7847,
+  "trainRows": 7862,
   "games": [
     {
-      "gamePk": 824240,
-      "away": "CLE",
-      "home": "DET",
-      "pAway": 0.4692
-    },
-    {
-      "gamePk": 823832,
-      "away": "PIT",
-      "home": "MIA",
-      "pAway": 0.4571
-    },
-    {
-      "gamePk": 822697,
-      "away": "CHC",
-      "home": "WSH",
-      "pAway": 0.5441
-    },
-    {
-      "gamePk": 823512,
-      "away": "SEA",
-      "home": "NYY",
-      "pAway": 0.4846
-    },
-    {
-      "gamePk": 822778,
-      "away": "BOS",
-      "home": "TOR",
-      "pAway": 0.4906
-    },
-    {
-      "gamePk": 824886,
-      "away": "NYM",
-      "home": "ATL",
-      "pAway": 0.4944
-    },
-    {
-      "gamePk": 823673,
+      "gamePk": 823672,
       "away": "BAL",
       "home": "MIN",
-      "pAway": 0.3897
+      "pAway": 0.4528
     },
     {
-      "gamePk": 824563,
-      "away": "CIN",
-      "home": "CWS",
-      "pAway": 0.4835
-    },
-    {
-      "gamePk": 823019,
+      "gamePk": 823017,
       "away": "PHI",
       "home": "STL",
-      "pAway": 0.4853
+      "pAway": 0.4256
     },
     {
-      "gamePk": 823997,
-      "away": "TEX",
-      "home": "LAA",
-      "pAway": 0.5478
-    },
-    {
-      "gamePk": 825046,
-      "away": "COL",
-      "home": "AZ",
-      "pAway": 0.4692
-    },
-    {
-      "gamePk": 824970,
+      "gamePk": 824967,
       "away": "TB",
       "home": "ATH",
-      "pAway": 0.5324
+      "pAway": 0.5766
     },
     {
-      "gamePk": 823264,
-      "away": "MIL",
-      "home": "SD",
-      "pAway": 0.5441
+      "gamePk": 825047,
+      "away": "COL",
+      "home": "AZ",
+      "pAway": 0.4462
     },
     {
-      "gamePk": 823186,
+      "gamePk": 823187,
       "away": "HOU",
       "home": "SF",
-      "pAway": 0.5441
+      "pAway": 0.5241
     },
     {
-      "gamePk": 823917,
+      "gamePk": 823263,
+      "away": "MIL",
+      "home": "SD",
+      "pAway": 0.5286
+    },
+    {
+      "gamePk": 824241,
+      "away": "CLE",
+      "home": "DET",
+      "pAway": 0.448
+    },
+    {
+      "gamePk": 823833,
+      "away": "PIT",
+      "home": "MIA",
+      "pAway": 0.4528
+    },
+    {
+      "gamePk": 822698,
+      "away": "CHC",
+      "home": "WSH",
+      "pAway": 0.5155
+    },
+    {
+      "gamePk": 823511,
+      "away": "SEA",
+      "home": "NYY",
+      "pAway": 0.4412
+    },
+    {
+      "gamePk": 822779,
+      "away": "BOS",
+      "home": "TOR",
+      "pAway": 0.5286
+    },
+    {
+      "gamePk": 824883,
+      "away": "NYM",
+      "home": "ATL",
+      "pAway": 0.4423
+    },
+    {
+      "gamePk": 824562,
+      "away": "CIN",
+      "home": "CWS",
+      "pAway": 0.4412
+    },
+    {
+      "gamePk": 823916,
       "away": "KC",
       "home": "LAD",
-      "pAway": 0.3202
+      "pAway": 0.3627
+    },
+    {
+      "gamePk": 823994,
+      "away": "TEX",
+      "home": "LAA",
+      "pAway": 0.5305
     }
   ]
 }
