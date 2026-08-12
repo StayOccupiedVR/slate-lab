@@ -154,11 +154,34 @@ jobs:
 
       - name: NFL file week
         if: steps.t.outputs.task == 'nfl-file' && steps.nflguard.outputs.state == 'awake'
-        run: python -m slate_lab.ledger record --sport nfl --db nfl.db
+        run: |
+          python -m slate_lab.ledger record --sport nfl --db nfl.db
+          python - << 'EOF'
+          import sqlite3
+          from datetime import date
+          from slate_lab.nfl_props import ingest_player_weeks
+          from slate_lab.nfl_ledger import upcoming_week, export_predictions
+          con = sqlite3.connect("nfl.db")
+          season = date.today().year if date.today().month >= 8 else date.today().year - 1
+          ingest_player_weeks(con, season)
+          sw = upcoming_week(con)
+          if sw:
+              export_predictions(*sw)
+          EOF
+          python -m slate_lab.nfl_props --db nfl.db --project --out nfl-props.json || echo "props skipped"
 
       - name: NFL Sunday revisions
         if: steps.t.outputs.task == 'nfl-sunday' && steps.nflguard.outputs.state == 'awake'
-        run: python -m slate_lab.ledger revise --sport nfl --db nfl.db
+        run: |
+          python -m slate_lab.ledger revise --sport nfl --db nfl.db
+          python - << 'EOF'
+          import sqlite3
+          from slate_lab.nfl_ledger import upcoming_week, export_predictions
+          con = sqlite3.connect("nfl.db")
+          sw = upcoming_week(con)
+          if sw:
+              export_predictions(*sw)
+          EOF
 
       - name: NFL odds capture
         # unguarded on purpose: preseason odds are display-only and never
@@ -191,9 +214,11 @@ jobs:
           [ -f data/report.json ] && cp data/report.json /tmp/pub/
           [ -f odds.json ] && cp odds.json /tmp/pub/
           [ -f nfl-odds.json ] && cp nfl-odds.json /tmp/pub/
+          [ -f nfl-predictions.json ] && cp nfl-predictions.json /tmp/pub/
+          [ -f nfl-props.json ] && cp nfl-props.json /tmp/pub/
           [ -f props-mlb.json ] && cp props-mlb.json /tmp/pub/
           echo "published $(date -u +%FT%TZ)" > /tmp/pub/index.html
-          rm -f predictions.json odds.json nfl-odds.json props-mlb.json
+          rm -f predictions.json odds.json nfl-odds.json props-mlb.json nfl-predictions.json nfl-props.json
           git fetch origin gh-pages || true
           if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
             git checkout -B gh-pages origin/gh-pages
@@ -202,6 +227,6 @@ jobs:
             git rm -rf . >/dev/null 2>&1 || true
           fi
           cp /tmp/pub/* . 2>/dev/null || true
-          git add -A -f index.html predictions.json report.json odds.json nfl-odds.json props-mlb.json 2>/dev/null || git add -A
+          git add -A -f index.html predictions.json report.json odds.json nfl-odds.json props-mlb.json nfl-predictions.json nfl-props.json 2>/dev/null || git add -A
           git commit --allow-empty -m "publish $(date -u +%FT%TZ)"
           git push origin gh-pages

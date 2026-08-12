@@ -74,7 +74,10 @@ def devig(p_a: float, p_h: float) -> tuple[float, float]:
 
 # ---------------------------------------------------------------- capture
 def capture_odds(api_key: str) -> Path:
-    url = (f"{ODDS_API}?apiKey={api_key}&regions=us,us2&markets=h2h"
+    # NFL wants spreads alongside moneylines (4 credits/capture vs 2);
+    # MLB stays h2h-only. Budgeted in the workflow schedule.
+    markets = "h2h,spreads" if "americanfootball" in ODDS_API else "h2h"
+    url = (f"{ODDS_API}?apiKey={api_key}&regions=us,us2&markets={markets}"
            f"&oddsFormat=american")
     with urllib.request.urlopen(url, timeout=30) as r:
         events = json.loads(r.read().decode())
@@ -97,10 +100,19 @@ def capture_odds(api_key: str) -> Path:
                 continue
             prices = {o["name"]: o["price"] for o in m.get("outcomes", [])}
             if ev["away_team"] in prices and ev["home_team"] in prices:
-                row["books"][bk["key"]] = {
+                entry = {
                     "ml_away": prices[ev["away_team"]],
                     "ml_home": prices[ev["home_team"]],
                 }
+                sp_m = next((m2 for m2 in bk.get("markets", [])
+                             if m2["key"] == "spreads"), None)
+                if sp_m:
+                    pts = {o["name"]: o.get("point")
+                           for o in sp_m.get("outcomes", [])}
+                    if ev["home_team"] in pts and pts[ev["home_team"]] is not None:
+                        # store as home line: negative = home favored
+                        entry["spread_home"] = pts[ev["home_team"]]
+                row["books"][bk["key"]] = entry
         if row["books"]:
             rows.append(row)
 

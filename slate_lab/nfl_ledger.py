@@ -260,6 +260,28 @@ def revise_week(sp, con, season: int, week: int) -> None:
     print(f"week {week}: {n} QB revision(s) filed")
 
 
+def export_predictions(season: int, week: int,
+                       out: str = "nfl-predictions.json") -> None:
+    """Publishable view of a filed week: p_away + projected margin per
+    game (revision wins when present). Read straight from the ledger
+    file so the feed can never disagree with the record."""
+    doc = _load_week(season, week)
+    games = []
+    for g in doc["games"]:
+        p = (g["revised"] or {}).get("p_away", g["p_away"])
+        games.append({
+            "game_id": g["game_id"], "away": g["away"], "home": g["home"],
+            "gameday": g["gameday"], "p_away": p,
+            "proj_home_margin": g.get("proj_home_margin"),
+            "revised": g["revised"] is not None,
+        })
+    json_doc = {"season": season, "week": week, "filed": True,
+                "games": games}
+    with open(out, "w") as f:
+        json.dump(json_doc, f, indent=1)
+    print(f"exported {len(games)} predictions -> {out}")
+
+
 def grade(sp, con, season: int) -> None:
     """Fill close + result for finished games; write data/nfl/report.json."""
     results = pd.read_sql(

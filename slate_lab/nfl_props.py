@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS nfl_player_weeks (
   week      INTEGER NOT NULL,
   name      TEXT,
   position  TEXT,
+  team      TEXT,
   targets   REAL,
   receptions REAL,
   rec_yards REAL,
@@ -89,14 +90,16 @@ def ingest_player_weeks(con, season: int, verbose: bool = True) -> None:
         return
     df = df[df.season_type == "REG"]
     df = df[df.player_id.notna()]      # 2025 file carries a few empty rows
+    team_col = "recent_team" if "recent_team" in df.columns else "team"
     rows = [(r.player_id, int(r.season), int(r.week),
              getattr(r, "player_display_name", None), r.position,
+             getattr(r, team_col, None),
              r.targets, r.receptions, r.receiving_yards,
              r.carries, r.rushing_yards)
             for r in df.itertuples()]
     con.executemany(
-        "INSERT OR REPLACE INTO nfl_player_weeks VALUES (?,?,?,?,?,?,?,?,?,?)",
-        rows)
+        "INSERT OR REPLACE INTO nfl_player_weeks VALUES "
+        "(?,?,?,?,?,?,?,?,?,?,?)", rows)
     con.commit()
     if verbose:
         print(f"  {season}: {len(rows)} player-weeks stored")
@@ -152,6 +155,59 @@ def _pools(con, before_season: int, before_week: int | None = None):
     return hist, pos_ry, pos_rush, names
 
 
+def project_week(con, season: int, week: int) -> dict:
+    """Yardage distributions for the players likely to feature in each
+    game of a week. 'Likely' = usage (targets+carries) in the last 5
+    played weeks; top 8 per team. Pure function of the two tables."""
+    sched = pd.read_sql(
+        "SELECT game_id, away_team, home_team, gameday FROM nfl_games "
+        "WHERE season=? AND week=? AND game_type='REG' ORDER BY gameday",
+        con, params=(season, week))
+    hist, pos_ry, pos_rush, names = _pools(con, season, week)
+    # usage in this season's recent weeks
+    recent = pd.read_sql(
+        "SELECT player_id, team, position, "
+        "SUM(COALESCE(targets,0)+COALESCE(carries,0)) AS usage_ct, "
+        "COUNT(*) AS g FROM nfl_player_weeks "
+        "WHERE season=? AND week>=? AND week<? GROUP BY player_id",
+        con, params=(season, max(1, week - 5), week))
+    per_team = defaultdict(list)
+    for r in recent.itertuples():
+        if r.team and r.usage_ct and r.usage_ct > 0:
+            per_team[r.team].append((r.player_id, r.position, r.usage_ct))
+    games = []
+    for g in sched.itertuples():
+        players = []
+        for team, opp in ((g.away_team, g.home_team),
+                          (g.home_team, g.away_team)):
+            cand = sorted(per_team.get(team, []), key=lambda x: -x[2])[:8]
+            for pid, pos, _u in cand:
+                pr = hist.get(pid, [])
+                entry = {"player_id": pid, "name": names.get(pid) or pid,
+                         "pos": pos, "team": team, "opp": opp}
+                if pos in ("WR", "TE", "RB"):
+                    d = yards_distribution(
+                        [x.rec_yards for x in pr
+                         if x.targets and x.targets > 0],
+                        np.array(pos_ry.get(pos, [])))
+                    if d:
+                        entry["rec_yards"] = d
+                if pos == "RB":
+                    d = yards_distribution(
+                        [x.rush_yards for x in pr
+                         if x.carries and x.carries >= 5],
+                        np.array(pos_rush))
+                    if d:
+                        entry["rush_yards"] = d
+                if "rec_yards" in entry or "rush_yards" in entry:
+                    players.append(entry)
+        games.append({"game_id": g.game_id, "away": g.away_team,
+                      "home": g.home_team, "gameday": g.gameday,
+                      "players": players})
+    return {"season": season, "week": week, "market": "yardage",
+            "model": "nfl-props-v1", "games": games}
+
+
 def backtest(con, season: int) -> None:
     hist, pos_ry, pos_rush, _ = _pools(con, season)
     te = pd.read_sql(
@@ -201,6 +257,9 @@ def main() -> None:
     p.add_argument("--db", default="nfl.db")
     p.add_argument("--ingest", nargs="+", type=int, default=None)
     p.add_argument("--backtest", type=int, default=None)
+    p.add_argument("--project", action="store_true",
+                   help="project the upcoming week's players")
+    p.add_argument("--out", default=None)
     args = p.parse_args()
     con = sqlite3.connect(args.db)
     if args.ingest:
@@ -208,6 +267,19 @@ def main() -> None:
             ingest_player_weeks(con, s)
     if args.backtest:
         backtest(con, args.backtest)
+    if args.project:
+        import json
+        from .nfl_ledger import upcoming_week
+        sw = upcoming_week(con)
+        if sw is None:
+            print("No regular-season NFL week in the window — sleeping.")
+            return
+        doc = project_week(con, *sw)
+        out = args.out or "nfl-props.json"
+        with open(out, "w") as f:
+            json.dump(doc, f, indent=1)
+        n = sum(len(g["players"]) for g in doc["games"])
+        print(f"week {sw[1]}: {n} players across {len(doc['games'])} games -> {out}")
 
 
 if __name__ == "__main__":
