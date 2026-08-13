@@ -163,7 +163,8 @@ jobs:
           from slate_lab.nfl_ledger import upcoming_week, export_predictions
           con = sqlite3.connect("nfl.db")
           season = date.today().year if date.today().month >= 8 else date.today().year - 1
-          ingest_player_weeks(con, season)
+          for s in range(season - 5, season + 1):
+              ingest_player_weeks(con, s)
           sw = upcoming_week(con)
           if sw:
               export_predictions(*sw)

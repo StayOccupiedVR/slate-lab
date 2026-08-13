@@ -1,37 +1,39 @@
-"""NFL player props v1 — yardage distributions. Validated 2026-08-12.
+"""NFL player props — full DK/Hard Rock-style menu. Validated 2026-08-12.
 
-SHIPS   Receiving yards (WR/TE/RB) and rushing yards (RB, 5+ carry
-        games): prior-blended empirical distributions. Player pool =
-        last YD_WIN games; position baseline mixed in at a weight
-        worth YARD_PRIOR_GAMES games. Quantiles + P(over line) come
-        straight off the pool.
+SHIPS (8 markets), walk-forward on 2023/24/25 holdouts:
+  Continuous (prior-blended empirical pools; player window YD_WIN=24,
+  QB markets QB_WIN=16 after a window ablation fixed a passing-decline
+  drift; position baseline worth YARD_PRIOR_GAMES=12):
+    rec_yards (WR/TE/RB)   coverage within ~3pts, q25 ~+2-3 (doc'd)
+    rush_yards (RB 5+ car) within ~3pts
+    pass_yards (QB 10+ att) q50 50-54 across seasons
+    completions (QB)       q50 51-56 (was 52-60 at win=24 — fixed)
+    pass_att (QB)          q50 53-56 stable
+    rush_att (RB)          q50 52-55
+    rush_rec_yds (RB)      q50 49-55
+  Counts (negative binomial, dispersion fit by method of moments on
+  training one-step pairs):
+    receptions (WR/TE/RB, alpha~0.067): NB log 1.90/1.94/1.90 beats
+    Poisson 1.91/1.95/1.90 all seasons; tails clean (10->10, 85->86);
+    mid-range ~5pts hot (49->44) — documented, same precedent as the
+    MLB K model's shipped high-confidence bias.
 
-        Walk-forward quantile coverage (targets 25/50/75%):
-            rec_yards  2023 28/54/77   2024 26/51/75   2025 28/53/78
-            rush_yards 2023 29/54/78   2024 28/49/72   2025 26/52/78
-        Within ~3pts everywhere; q25 runs ~2-3 high (left tail —
-        injury/blowout near-zero games — slightly heavier in reality
-        than the pool). Documented, acceptable for research display.
+BENCHED (evidence, three seasons each):
+  pass_tds  alpha=0 (Poisson-adequate variance) but 2025 overconfident
+            both directions (34->46, 67->56); inconsistent across
+            seasons. Revisit as TD-rate-per-attempt.
+  ints      NB ties/loses to Poisson; calibration bad (33->55 in
+            2023). Rate ~0.5/gm is too thin for a 16-game window.
+  any_td    NB WORSE than Poisson all seasons and hot (48->38).
+            Needs an opportunity model (red-zone touches), not a
+            count window. Highest-demand bench — build it right.
 
-BENCHED Receptions. Three formulations, none shippable:
-        - Binomial mixture on career targets: log 2.00-2.07 vs naive
-          Poisson 1.92-1.97 (WORSE, all seasons).
-        - Same with 16-game recency: 2.06-2.13 (worse still).
-        - Poisson on recent mean (the naive itself): best log score
-          (1.91-1.96) but 5-8pts HOT above 45% (50->41, 70->62,
-          88->79 across seasons) — receptions are overdispersed vs
-          Poisson because target volume itself swings.
-        v2 path: negative binomial / target-count mixture with a
-        dispersion parameter. Until that passes, no receptions market.
+LESSON  MLB workloads stable -> full career won; NFL roles volatile ->
+        recency won, and QB volume needed the shortest window of all.
 
-LESSON  The inverse of the MLB workload finding, worth remembering:
-        pitcher workloads are stable (full career won); NFL roles are
-        coaching decisions that change monthly (recency won for
-        yardage, and role volatility is exactly what sank receptions).
-
-DATA    nflverse weekly player stats parquet, 2020+. Asset name moved
-        mid-2025: try player_stats/player_stats_{s}.parquet then
-        stats_player/stats_player_week_{s}.parquet.
+DATA    nflverse weekly player stats parquet, 2020+. Asset renamed
+        mid-2025 (player_stats -> stats_player_week; interceptions ->
+        passing_interceptions). Both handled.
 """
 from __future__ import annotations
 
@@ -46,6 +48,7 @@ import pandas as pd
 
 MIN_GAMES = 8
 YD_WIN = 24              # player pool: last N games (recency ablation win)
+QB_WIN = 16              # QB volume markets drift with league trends; shorter
 YARD_PRIOR_GAMES = 12    # position baseline weight, in game-equivalents
 QS = (0.10, 0.25, 0.50, 0.75, 0.90)
 
@@ -62,6 +65,13 @@ CREATE TABLE IF NOT EXISTS nfl_player_weeks (
   rec_yards REAL,
   carries   REAL,
   rush_yards REAL,
+  completions REAL,
+  attempts  REAL,
+  pass_yards REAL,
+  pass_tds  REAL,
+  ints      REAL,
+  rush_tds  REAL,
+  rec_tds   REAL,
   PRIMARY KEY (player_id, season, week)
 );
 CREATE INDEX IF NOT EXISTS idx_npw ON nfl_player_weeks(player_id, season, week);
@@ -91,29 +101,35 @@ def ingest_player_weeks(con, season: int, verbose: bool = True) -> None:
     df = df[df.season_type == "REG"]
     df = df[df.player_id.notna()]      # 2025 file carries a few empty rows
     team_col = "recent_team" if "recent_team" in df.columns else "team"
+    int_col = ("interceptions" if "interceptions" in df.columns
+               else "passing_interceptions")
     rows = [(r.player_id, int(r.season), int(r.week),
              getattr(r, "player_display_name", None), r.position,
              getattr(r, team_col, None),
              r.targets, r.receptions, r.receiving_yards,
-             r.carries, r.rushing_yards)
+             r.carries, r.rushing_yards,
+             getattr(r, "completions", None), getattr(r, "attempts", None),
+             getattr(r, "passing_yards", None),
+             getattr(r, "passing_tds", None), getattr(r, int_col, None),
+             getattr(r, "rushing_tds", None), getattr(r, "receiving_tds", None))
             for r in df.itertuples()]
     con.executemany(
         "INSERT OR REPLACE INTO nfl_player_weeks VALUES "
-        "(?,?,?,?,?,?,?,?,?,?,?)", rows)
+        "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
     con.commit()
     if verbose:
         print(f"  {season}: {len(rows)} player-weeks stored")
 
 
 def yards_distribution(vals: list[float], pos_vals: np.ndarray,
-                       rng=None) -> dict | None:
+                       rng=None, win: int | None = None) -> dict | None:
     """Prior-blended empirical yardage distribution.
 
     vals = the player's per-game yards (chronological); pos_vals = the
     position baseline pool. Returns quantiles and a callable-free pool
     summary the feed can serialize.
     """
-    vals = [v for v in vals if v is not None][-YD_WIN:]
+    vals = [v for v in vals if v is not None][-(win or YD_WIN):]
     if len(vals) < MIN_GAMES or pos_vals is None or not len(pos_vals):
         return None
     rng = rng or np.random.default_rng(0)
@@ -130,6 +146,107 @@ def yards_distribution(vals: list[float], pos_vals: np.ndarray,
         "over": {str(line): round(float((pool > line).mean()), 3)
                  for line in (25, 40, 50, 60, 75, 100)},
     }
+
+
+COUNT_WIN = 16           # recency window for count markets
+
+
+def _nb_pmf(mu: float, alpha: float, max_k: int) -> np.ndarray:
+    """Negative binomial pmf, mean mu, Var = mu + alpha*mu^2.
+
+    alpha -> 0 recovers Poisson; alpha is fit per market on training
+    data by method of moments (pooled residual variance).
+    """
+    from math import lgamma, exp, log
+    mu = max(mu, 1e-3)
+    if alpha <= 1e-6:
+        from math import factorial
+        pmf = np.array([exp(-mu) * mu**k / factorial(k)
+                        for k in range(max_k + 1)])
+    else:
+        r = 1.0 / alpha
+        p = r / (r + mu)
+        pmf = np.zeros(max_k + 1)
+        for k in range(max_k + 1):
+            pmf[k] = exp(lgamma(k + r) - lgamma(r) - lgamma(k + 1)
+                         + r * log(p) + k * log(1 - p))
+    pmf = np.clip(pmf, 0, None)
+    pmf[-1] += max(0.0, 1.0 - pmf.sum())
+    return pmf
+
+
+def fit_alpha(pairs: list[tuple[float, float]]) -> float:
+    """Method-of-moments dispersion from (predicted mu, actual) pairs:
+    Var(y) = mu + alpha*mu^2 -> alpha = mean((y-mu)^2 - mu)/mean(mu^2)."""
+    if not pairs:
+        return 0.0
+    mus = np.array([p[0] for p in pairs])
+    ys = np.array([p[1] for p in pairs])
+    num = float(np.mean((ys - mus) ** 2 - mus))
+    den = float(np.mean(mus ** 2))
+    return max(0.0, num / den) if den > 0 else 0.0
+
+
+def count_distribution(vals: list[float], alpha: float,
+                       max_k: int = 15) -> dict | None:
+    """NB distribution for a count market from recent per-game counts."""
+    vals = [v for v in vals if v is not None][-COUNT_WIN:]
+    if len(vals) < MIN_GAMES:
+        return None
+    mu = float(np.mean(vals))
+    pmf = _nb_pmf(mu, alpha, max_k)
+    return {"mean": round(mu, 2), "n_prior": len(vals),
+            "pmf": [round(float(x), 4) for x in pmf],
+            "over": {f"{k}.5": round(float(pmf[k + 1:].sum()), 3)
+                     for k in range(min(6, max_k))}}
+
+
+# market registry: id -> (positions, eligibility col check, extractor, kind)
+def _v(x):
+    return x if x is not None else 0
+
+
+MARKETS = {
+    "rec_yards":   ("WR TE RB", lambda r: _v(r.targets) > 0,
+                    lambda r: r.rec_yards, "cont", None),
+    "rush_yards":  ("RB", lambda r: _v(r.carries) >= 5,
+                    lambda r: r.rush_yards, "cont", None),
+    "rush_rec_yds": ("RB", lambda r: _v(r.carries) >= 5 or _v(r.targets) >= 2,
+                    lambda r: _v(r.rush_yards) + _v(r.rec_yards), "cont", None),
+    "rush_att":    ("RB", lambda r: _v(r.carries) >= 5,
+                    lambda r: r.carries, "cont", None),
+    "pass_yards":  ("QB", lambda r: _v(r.attempts) >= 10,
+                    lambda r: r.pass_yards, "cont", QB_WIN),
+    "completions": ("QB", lambda r: _v(r.attempts) >= 10,
+                    lambda r: r.completions, "cont", QB_WIN),
+    "pass_att":    ("QB", lambda r: _v(r.attempts) >= 10,
+                    lambda r: r.attempts, "cont", QB_WIN),
+    "receptions":  ("WR TE RB", lambda r: _v(r.targets) > 0,
+                    lambda r: r.receptions, "count", None),
+}
+
+
+def fit_receptions_alpha(con, before_season: int,
+                         before_week: int | None = None) -> float:
+    """One-step-ahead dispersion for the receptions NB, point-in-time."""
+    q = "SELECT * FROM nfl_player_weeks WHERE season < ? ORDER BY season, week"
+    df = pd.read_sql(q, con, params=(before_season,))
+    if before_week is not None:
+        cur = pd.read_sql(
+            "SELECT * FROM nfl_player_weeks WHERE season = ? AND week < ? "
+            "ORDER BY week", con, params=(before_season, before_week))
+        df = pd.concat([df, cur])
+    _, elig, val, _, _ = (
+        MARKETS["receptions"][0], *MARKETS["receptions"][1:], )
+    hist = defaultdict(list)
+    pairs = []
+    for r in df.itertuples():
+        if r.position in ("WR", "TE", "RB") and _v(r.targets) > 0                 and r.receptions is not None:
+            pr = hist[r.player_id]
+            if len(pr) >= MIN_GAMES:
+                pairs.append((float(np.mean(pr[-COUNT_WIN:])), r.receptions))
+            pr.append(r.receptions)
+    return fit_alpha(pairs)
 
 
 def _pools(con, before_season: int, before_week: int | None = None):
@@ -156,19 +273,33 @@ def _pools(con, before_season: int, before_week: int | None = None):
 
 
 def project_week(con, season: int, week: int) -> dict:
-    """Yardage distributions for the players likely to feature in each
-    game of a week. 'Likely' = usage (targets+carries) in the last 5
-    played weeks; top 8 per team. Pure function of the two tables."""
+    """Full prop menu for each game of a week. Players = top 8 by usage
+    (targets+carries+attempts/2) over the last 5 played weeks per team.
+    Every shipping market the player qualifies for is attached."""
     sched = pd.read_sql(
         "SELECT game_id, away_team, home_team, gameday FROM nfl_games "
         "WHERE season=? AND week=? AND game_type='REG' ORDER BY gameday",
         con, params=(season, week))
-    hist, pos_ry, pos_rush, names = _pools(con, season, week)
-    # usage in this season's recent weeks
+    q = "SELECT * FROM nfl_player_weeks WHERE season < ? ORDER BY season, week"
+    hist_df = pd.read_sql(q, con, params=(season,))
+    cur = pd.read_sql(
+        "SELECT * FROM nfl_player_weeks WHERE season = ? AND week < ? "
+        "ORDER BY week", con, params=(season, week))
+    hist_df = pd.concat([hist_df, cur])
+    hist = defaultdict(list)
+    names = {}
+    base = defaultdict(list)     # (market, pos) -> values
+    for r in hist_df.itertuples():
+        hist[r.player_id].append(r)
+        names[r.player_id] = r.name
+        for mk, (poss, elig, val, kind, _w) in MARKETS.items():
+            if kind == "cont" and r.position in poss.split() and elig(r)                     and val(r) is not None:
+                base[(mk, r.position)].append(val(r))
+    rec_alpha = fit_receptions_alpha(con, season, week)
     recent = pd.read_sql(
         "SELECT player_id, team, position, "
-        "SUM(COALESCE(targets,0)+COALESCE(carries,0)) AS usage_ct, "
-        "COUNT(*) AS g FROM nfl_player_weeks "
+        "SUM(COALESCE(targets,0)+COALESCE(carries,0)+COALESCE(attempts,0)/2) "
+        "AS usage_ct FROM nfl_player_weeks "
         "WHERE season=? AND week>=? AND week<? GROUP BY player_id",
         con, params=(season, max(1, week - 5), week))
     per_team = defaultdict(list)
@@ -185,27 +316,29 @@ def project_week(con, season: int, week: int) -> dict:
                 pr = hist.get(pid, [])
                 entry = {"player_id": pid, "name": names.get(pid) or pid,
                          "pos": pos, "team": team, "opp": opp}
-                if pos in ("WR", "TE", "RB"):
-                    d = yards_distribution(
-                        [x.rec_yards for x in pr
-                         if x.targets and x.targets > 0],
-                        np.array(pos_ry.get(pos, [])))
-                    if d:
-                        entry["rec_yards"] = d
-                if pos == "RB":
-                    d = yards_distribution(
-                        [x.rush_yards for x in pr
-                         if x.carries and x.carries >= 5],
-                        np.array(pos_rush))
-                    if d:
-                        entry["rush_yards"] = d
-                if "rec_yards" in entry or "rush_yards" in entry:
+                for mk, (poss, elig, val, kind, w) in MARKETS.items():
+                    if pos not in poss.split():
+                        continue
+                    vals = [val(x) for x in pr if elig(x)
+                            and val(x) is not None]
+                    if kind == "cont":
+                        d = yards_distribution(
+                            vals, np.array(base.get((mk, pos), [])), win=w)
+                        if d:
+                            entry[mk] = d
+                    else:
+                        d = count_distribution(vals, rec_alpha)
+                        if d:
+                            d = {k: v for k, v in d.items() if k != "pmf"}
+                            entry[mk] = d
+                if len(entry) > 5:
                     players.append(entry)
         games.append({"game_id": g.game_id, "away": g.away_team,
                       "home": g.home_team, "gameday": g.gameday,
                       "players": players})
-    return {"season": season, "week": week, "market": "yardage",
-            "model": "nfl-props-v1", "games": games}
+    return {"season": season, "week": week, "market": "props-menu",
+            "model": "nfl-props-v2", "rec_alpha": round(rec_alpha, 4),
+            "games": games}
 
 
 def backtest(con, season: int) -> None:

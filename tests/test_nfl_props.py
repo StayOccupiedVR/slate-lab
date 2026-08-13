@@ -35,10 +35,11 @@ def main():
                 y = float(np.random.default_rng(pid * 1000 + season * 50 + wk)
                           .gamma(shape, scale))
                 rows.append((f"P{pid}", season, wk, f"Player {pid}", "WR",
-                             "AAA", 6, 4, y, 0, 0))
+                             "AAA", 6, 4, y, 0, 0, None, None, None, None,
+                             None, 0, 0))
     con.executemany(
-        "INSERT OR REPLACE INTO nfl_player_weeks VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-        rows)
+        "INSERT OR REPLACE INTO nfl_player_weeks VALUES "
+        "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
     con.commit()
     import contextlib, io as _io
     buf = _io.StringIO()
@@ -61,16 +62,22 @@ def main():
     rng2 = np.random.default_rng(7)
     for pid in range(20):
         team = "AAA" if pid < 10 else "BBB"
-        pos = "WR" if pid % 3 else "RB"
+        pos = "QB" if pid % 10 == 9 else ("WR" if pid % 3 else "RB")
         for season in (2024, 2025):
             for wk in range(1, 12):
                 y = float(rng2.gamma(2.2, 24))
+                is_qb = pos == "QB"
                 con2.execute(
                     "INSERT OR REPLACE INTO nfl_player_weeks VALUES "
-                    "(?,?,?,?,?,?,?,?,?,?,?)",
+                    "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                     (f"P{pid}", season, wk, f"Player {pid}", pos, team,
-                     6, 4, y, 8 if pos == "RB" else 0,
-                     float(rng2.gamma(2.0, 20)) if pos == "RB" else 0))
+                     0 if is_qb else 6, 0 if is_qb else 4,
+                     0 if is_qb else y,
+                     8 if pos == "RB" else 0,
+                     float(rng2.gamma(2.0, 20)) if pos == "RB" else 0,
+                     22 if is_qb else None, 33 if is_qb else None,
+                     float(rng2.gamma(2.5, 95)) if is_qb else None,
+                     1 if is_qb else None, 0 if is_qb else None, 0, 0))
     con2.execute(
         "INSERT INTO nfl_games VALUES "
         "('2025_12_AAA_BBB',2025,12,'2025-11-30','AAA','BBB',NULL,NULL,"
@@ -79,9 +86,14 @@ def main():
     doc = project_week(con2, 2025, 12)
     assert len(doc["games"]) == 1
     ps_ = doc["games"][0]["players"]
-    assert len(ps_) > 0 and all("rec_yards" in p or "rush_yards" in p for p in ps_)
+    assert len(ps_) > 0 and all(len(p) > 5 for p in ps_), "every player carries a market"
     rb = next(p for p in ps_ if p["pos"] == "RB")
     assert "rush_yards" in rb and "q" in rb["rush_yards"]
+    assert "rush_att" in rb and "rush_rec_yds" in rb
+    qb = next((p for p in ps_ if p["pos"] == "QB"), None)
+    assert qb is None or "pass_yards" in qb
+    wr = next(p for p in ps_ if p["pos"] == "WR")
+    assert "receptions" in wr and "3.5" in wr["receptions"]["over"]
     assert {p["team"] for p in ps_} == {"AAA", "BBB"}
     print(f"  project_week: {len(ps_)} players, both teams, markets attached")
 
