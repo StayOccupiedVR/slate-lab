@@ -36,10 +36,10 @@ def main():
                           .gamma(shape, scale))
                 rows.append((f"P{pid}", season, wk, f"Player {pid}", "WR",
                              "AAA", 6, 4, y, 0, 0, None, None, None, None,
-                             None, 0, 0))
+                             None, 0, 0, None))
     con.executemany(
         "INSERT OR REPLACE INTO nfl_player_weeks VALUES "
-        "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
+        "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
     con.commit()
     import contextlib, io as _io
     buf = _io.StringIO()
@@ -69,7 +69,7 @@ def main():
                 is_qb = pos == "QB"
                 con2.execute(
                     "INSERT OR REPLACE INTO nfl_player_weeks VALUES "
-                    "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                    "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                     (f"P{pid}", season, wk, f"Player {pid}", pos, team,
                      0 if is_qb else 6, 0 if is_qb else 4,
                      0 if is_qb else y,
@@ -77,7 +77,8 @@ def main():
                      float(rng2.gamma(2.0, 20)) if pos == "RB" else 0,
                      22 if is_qb else None, 33 if is_qb else None,
                      float(rng2.gamma(2.5, 95)) if is_qb else None,
-                     1 if is_qb else None, 0 if is_qb else None, 0, 0))
+                     1 if is_qb else None, 0 if is_qb else None, 0, 0,
+                     "https://x/hs.png"))
     con2.execute(
         "INSERT INTO nfl_games VALUES "
         "('2025_12_AAA_BBB',2025,12,'2025-11-30','AAA','BBB',NULL,NULL,"
@@ -94,6 +95,7 @@ def main():
     assert qb is None or "pass_yards" in qb
     wr = next(p for p in ps_ if p["pos"] == "WR")
     assert "receptions" in wr and "3.5" in wr["receptions"]["over"]
+    assert wr.get("headshot") == "https://x/hs.png", "headshot in feed"
     assert {p["team"] for p in ps_} == {"AAA", "BBB"}
     print(f"  project_week: {len(ps_)} players, both teams, markets attached")
 

@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS nfl_player_weeks (
   ints      REAL,
   rush_tds  REAL,
   rec_tds   REAL,
+  headshot  TEXT,
   PRIMARY KEY (player_id, season, week)
 );
 CREATE INDEX IF NOT EXISTS idx_npw ON nfl_player_weeks(player_id, season, week);
@@ -111,11 +112,12 @@ def ingest_player_weeks(con, season: int, verbose: bool = True) -> None:
              getattr(r, "completions", None), getattr(r, "attempts", None),
              getattr(r, "passing_yards", None),
              getattr(r, "passing_tds", None), getattr(r, int_col, None),
-             getattr(r, "rushing_tds", None), getattr(r, "receiving_tds", None))
+             getattr(r, "rushing_tds", None), getattr(r, "receiving_tds", None),
+             getattr(r, "headshot_url", None))
             for r in df.itertuples()]
     con.executemany(
         "INSERT OR REPLACE INTO nfl_player_weeks VALUES "
-        "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
+        "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
     con.commit()
     if verbose:
         print(f"  {season}: {len(rows)} player-weeks stored")
@@ -288,10 +290,13 @@ def project_week(con, season: int, week: int) -> dict:
     hist_df = pd.concat([hist_df, cur])
     hist = defaultdict(list)
     names = {}
+    shots = {}
     base = defaultdict(list)     # (market, pos) -> values
     for r in hist_df.itertuples():
         hist[r.player_id].append(r)
         names[r.player_id] = r.name
+        if getattr(r, "headshot", None):
+            shots[r.player_id] = r.headshot
         for mk, (poss, elig, val, kind, _w) in MARKETS.items():
             if kind == "cont" and r.position in poss.split() and elig(r)                     and val(r) is not None:
                 base[(mk, r.position)].append(val(r))
@@ -315,7 +320,8 @@ def project_week(con, season: int, week: int) -> dict:
             for pid, pos, _u in cand:
                 pr = hist.get(pid, [])
                 entry = {"player_id": pid, "name": names.get(pid) or pid,
-                         "pos": pos, "team": team, "opp": opp}
+                         "pos": pos, "team": team, "opp": opp,
+                         "headshot": shots.get(pid)}
                 for mk, (poss, elig, val, kind, w) in MARKETS.items():
                     if pos not in poss.split():
                         continue
