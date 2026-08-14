@@ -26,7 +26,7 @@ from __future__ import annotations
 from importlib import import_module
 
 _REGISTRY = {"mlb": "slate_lab.sports.mlb", "nfl": "slate_lab.sports.nfl",
-             "nba": "slate_lab.sports.nba"}
+             "nba": "slate_lab.sports.nba", "nhl": "slate_lab.sports.nhl"}
 _LOADED: dict[str, object] = {}
 
 

@@ -142,10 +142,53 @@ def test_nba():
     print("NBA ADAPTER TEST PASSED")
 
 
+
+
+def test_nhl():
+    """NHL features on a dense synthetic schedule: b2b-heavy, sane."""
+    import sqlite3
+    import random
+    import datetime as dt
+    from slate_lab.sports import get_sport
+    sp = get_sport("nhl")
+    con = sqlite3.connect(":memory:")
+    con.executescript(__import__("slate_lab.sports.nhl",
+                                 fromlist=["SCHEMA"]).SCHEMA)
+    rng = random.Random(6)
+    teams = [str(200 + i) for i in range(8)]
+    gid = 0
+    d = dt.date(2022, 10, 12)
+    rows = []
+    for night in range(80):
+        pairs = rng.sample(teams, 6)
+        for i in range(0, 6, 2):
+            a, h = pairs[i], pairs[i + 1]
+            asc = max(0, round(rng.gauss(3.2 if int(a) % 2 else 2.8, 1.6)))
+            hsc = max(0, round(rng.gauss(3.0, 1.6)))
+            rows.append((f"h{gid}", 2023, d.isoformat(), a, h,
+                         f"T{a}", f"T{h}", asc, hsc, 1, "REG"))
+            gid += 1
+        d += dt.timedelta(days=1)
+    con.executemany(
+        "INSERT OR REPLACE INTO nhl_games VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+        rows)
+    con.commit()
+    df = sp.build_features(con)
+    assert len(df) > 80
+    assert df.b2b_away.sum() > 0 and df.b2b_home.sum() > 0, \
+        "dense schedule must produce back-to-backs"
+    assert (df.rest_diff != 0).sum() > 0, "rest differential varies"
+    assert df.pyth_diff.abs().max() < 0.5
+    print(f"  nhl: {len(df)} feature games, b2b_away rate "
+          f"{df.b2b_away.mean():.0%}, rest varies")
+    print("NHL ADAPTER TEST PASSED")
+
+
 if __name__ == "__main__":
     test_contract()
     test_mlb_is_a_delegate()
     test_ledger_configures_per_sport()
     test_nfl_adapter_offline()
     test_nba()
+    test_nhl()
     print("\nSPORTS TESTS PASSED")
