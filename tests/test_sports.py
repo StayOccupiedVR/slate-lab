@@ -98,9 +98,54 @@ def test_nfl_adapter_offline():
     print(f"  nfl synthetic: {len(df)} games, holdout logloss {ll:.4f}")
 
 
+def test_nba():
+    """NBA features on a synthetic season: point-in-time, b2b, rest."""
+    import sqlite3
+    from slate_lab.sports import get_sport
+    sp = get_sport("nba")
+    con = sqlite3.connect(":memory:")
+    con.executescript(__import__("slate_lab.sports.nba",
+                                 fromlist=["SCHEMA"]).SCHEMA)
+    import random
+    rng = random.Random(3)
+    teams = [str(100 + i) for i in range(8)]
+    gid = 0
+    import datetime as dt
+    d = dt.date(2022, 10, 20)
+    rows = []
+    for night in range(70):
+        pairs = rng.sample(teams, 6)
+        for i in range(0, 6, 2):
+            a, h = pairs[i], pairs[i + 1]
+            good = int(a) % 3 == 0
+            asc = rng.gauss(114 if good else 108, 8)
+            hsc = rng.gauss(112, 8)
+            rows.append((f"g{gid}", 2023, d.isoformat(), a, h,
+                         f"T{a}", f"T{h}", asc, hsc, 1, "REG"))
+            gid += 1
+        d += dt.timedelta(days=1)
+    con.executemany(
+        "INSERT OR REPLACE INTO nba_games VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+        rows)
+    con.commit()
+    df = sp.build_features(con)
+    assert len(df) > 60, "burn-in leaves scoreable games"
+    assert set(sp.GROUPS["team"] + sp.GROUPS["schedule"]) <= set(df.columns)
+    assert df.b2b_away.isin((0, 1)).all() and df.b2b_away.sum() > 0, \
+        "back-to-backs detected in a dense schedule"
+    assert df.pyth_diff.abs().max() < 0.5
+    # point-in-time: features for an early game can't see later games
+    early = df.sort_values("date").iloc[0]
+    assert abs(early.pyth_diff) < 0.25, "burn-in-era pyth stays shrunk"
+    print(f"  nba: {len(df)} feature games, b2b rate "
+          f"{df.b2b_away.mean():.0%}, features sane")
+    print("NBA ADAPTER TEST PASSED")
+
+
 if __name__ == "__main__":
     test_contract()
     test_mlb_is_a_delegate()
     test_ledger_configures_per_sport()
     test_nfl_adapter_offline()
+    test_nba()
     print("\nSPORTS TESTS PASSED")
