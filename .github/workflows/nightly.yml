@@ -73,6 +73,7 @@ jobs:
           fi
           python -m slate_lab.ledger capture-odds
           python -m slate_lab.ledger export-odds
+          python -m slate_lab.capture_ufc_odds || echo "ufc odds skipped"
 
       # ---------------- score path ----------------
       - name: Restore database cache
@@ -218,8 +219,9 @@ jobs:
           [ -f nfl-predictions.json ] && cp nfl-predictions.json /tmp/pub/
           [ -f nfl-props.json ] && cp nfl-props.json /tmp/pub/
           [ -f props-mlb.json ] && cp props-mlb.json /tmp/pub/
+          [ -f ufc-odds.json ] && cp ufc-odds.json /tmp/pub/
           echo "published $(date -u +%FT%TZ)" > /tmp/pub/index.html
-          rm -f predictions.json odds.json nfl-odds.json props-mlb.json nfl-predictions.json nfl-props.json
+          rm -f predictions.json odds.json nfl-odds.json props-mlb.json nfl-predictions.json nfl-props.json ufc-odds.json
           git fetch origin gh-pages || true
           if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
             git checkout -B gh-pages origin/gh-pages
