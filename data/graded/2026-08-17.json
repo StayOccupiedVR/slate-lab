@@ -1,0 +1,116 @@
+{
+ "date": "2026-08-17",
+ "model": "gbdt",
+ "games": [
+  {
+   "date": "2026-08-17",
+   "gamePk": 824514,
+   "away": "STL",
+   "home": "CIN",
+   "p_model": 0.5086,
+   "away_won": true,
+   "p_market": 0.5106803425237603,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 824478,
+   "away": "STL",
+   "home": "CIN",
+   "p_model": 0.5118,
+   "away_won": false,
+   "p_market": 0.5106803425237603,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 822939,
+   "away": "BAL",
+   "home": "TB",
+   "p_model": 0.4492,
+   "away_won": false,
+   "p_market": 0.39798846141980065,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 823427,
+   "away": "MIA",
+   "home": "PHI",
+   "p_model": 0.4122,
+   "away_won": false,
+   "p_market": 0.2998721006602371,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 823343,
+   "away": "DET",
+   "home": "PIT",
+   "p_model": 0.5053,
+   "away_won": true,
+   "p_market": 0.5023568230025924,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 824725,
+   "away": "AZ",
+   "home": "BOS",
+   "p_model": 0.4273,
+   "away_won": false,
+   "p_market": 0.4446162768219602,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 823589,
+   "away": "SD",
+   "home": "NYM",
+   "p_model": 0.478,
+   "away_won": false,
+   "p_market": 0.46374367622259693,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 824077,
+   "away": "ATH",
+   "home": "KC",
+   "p_model": 0.4624,
+   "away_won": false,
+   "p_market": 0.36680242272347535,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 823668,
+   "away": "ATL",
+   "home": "MIN",
+   "p_model": 0.5116,
+   "away_won": false,
+   "p_market": 0.5506107338704889,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 824641,
+   "away": "CWS",
+   "home": "CHC",
+   "p_model": 0.4624,
+   "away_won": false,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-08-17",
+   "gamePk": 824320,
+   "away": "LAD",
+   "home": "COL",
+   "p_model": 0.5765,
+   "away_won": true,
+   "p_market": null,
+   "book": null
+  }
+ ]
+}
