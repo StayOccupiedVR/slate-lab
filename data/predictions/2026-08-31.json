@@ -1,0 +1,81 @@
+{
+ "generated": "2026-08-31T18:01:08.740946Z",
+ "sport": "mlb",
+ "model": "gbdt",
+ "trainRows": 8118,
+ "games": [
+  {
+   "gamePk": 824911,
+   "away": "SF",
+   "home": "ATL",
+   "pAway": 0.453
+  },
+  {
+   "gamePk": 824473,
+   "away": "SD",
+   "home": "CIN",
+   "pAway": 0.5014
+  },
+  {
+   "gamePk": 822932,
+   "away": "NYM",
+   "home": "TB",
+   "pAway": 0.3378
+  },
+  {
+   "gamePk": 824719,
+   "away": "SEA",
+   "home": "BOS",
+   "pAway": 0.4734
+  },
+  {
+   "gamePk": 822689,
+   "away": "MIA",
+   "home": "WSH",
+   "pAway": 0.4569
+  },
+  {
+   "gamePk": 823663,
+   "away": "DET",
+   "home": "MIN",
+   "pAway": 0.5151
+  },
+  {
+   "gamePk": 824635,
+   "away": "MIL",
+   "home": "CHC",
+   "pAway": 0.5544
+  },
+  {
+   "gamePk": 822855,
+   "away": "ATH",
+   "home": "TEX",
+   "pAway": 0.3444
+  },
+  {
+   "gamePk": 824149,
+   "away": "CWS",
+   "home": "HOU",
+   "pAway": 0.5014
+  },
+  {
+   "gamePk": 824314,
+   "away": "BAL",
+   "home": "COL",
+   "pAway": 0.5014
+  },
+  {
+   "gamePk": 823982,
+   "away": "NYY",
+   "home": "LAA",
+   "pAway": 0.5743
+  },
+  {
+   "gamePk": 825040,
+   "away": "PHI",
+   "home": "AZ",
+   "pAway": 0.5416
+  }
+ ],
+ "recorded": "2026-08-31T18:01:10.331187+00:00"
+}
