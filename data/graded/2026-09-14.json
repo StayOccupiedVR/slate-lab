@@ -1,0 +1,106 @@
+{
+ "date": "2026-09-14",
+ "model": "gbdt",
+ "games": [
+  {
+   "date": "2026-09-14",
+   "gamePk": 824465,
+   "away": "LAD",
+   "home": "CIN",
+   "p_model": 0.6699,
+   "away_won": true,
+   "p_market": 0.6573142000428357,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 824386,
+   "away": "CWS",
+   "home": "CLE",
+   "p_model": 0.4735,
+   "away_won": true,
+   "p_market": 0.4174548300828387,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 822765,
+   "away": "DET",
+   "home": "TOR",
+   "p_model": 0.5044,
+   "away_won": true,
+   "p_market": 0.4325959272676116,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 823575,
+   "away": "BAL",
+   "home": "NYM",
+   "p_model": 0.4234,
+   "away_won": true,
+   "p_market": 0.4568008190911239,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 824629,
+   "away": "ATL",
+   "home": "CHC",
+   "p_model": 0.4606,
+   "away_won": false,
+   "p_market": 0.44894232232536907,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 823656,
+   "away": "NYY",
+   "home": "MIN",
+   "p_model": 0.5044,
+   "away_won": true,
+   "p_market": 0.533347098905637,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 823006,
+   "away": "SF",
+   "home": "STL",
+   "p_model": 0.4234,
+   "away_won": false,
+   "p_market": 0.43080894408204556,
+   "book": "draftkings"
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 824308,
+   "away": "SD",
+   "home": "COL",
+   "p_model": 0.5368,
+   "away_won": true,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 823981,
+   "away": "SEA",
+   "home": "LAA",
+   "p_model": 0.3301,
+   "away_won": false,
+   "p_market": null,
+   "book": null
+  },
+  {
+   "date": "2026-09-14",
+   "gamePk": 825034,
+   "away": "MIA",
+   "home": "AZ",
+   "p_model": 0.4203,
+   "away_won": false,
+   "p_market": null,
+   "book": null
+  }
+ ]
+}
