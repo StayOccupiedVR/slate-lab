@@ -1,11 +1,11 @@
 {
- "generated": "2026-09-18T14:53:26.727459+00:00",
- "n_games": 656,
- "model_logloss": 0.6785,
- "model_accuracy": 0.5625,
- "n_with_odds": 568,
- "market_logloss": 0.6715,
- "model_logloss_on_same": 0.6795,
- "disagreements": 107,
- "model_won_disagreements": 0.4673
+ "generated": "2026-09-19T14:15:58.290310+00:00",
+ "n_games": 671,
+ "model_logloss": 0.6777,
+ "model_accuracy": 0.5678,
+ "n_with_odds": 576,
+ "market_logloss": 0.6712,
+ "model_logloss_on_same": 0.6797,
+ "disagreements": 109,
+ "model_won_disagreements": 0.4771
 }
