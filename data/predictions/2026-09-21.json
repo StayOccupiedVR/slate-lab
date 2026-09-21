@@ -1,0 +1,27 @@
+{
+ "generated": "2026-09-21T16:58:59.439086Z",
+ "sport": "mlb",
+ "model": "gbdt",
+ "trainRows": 8400,
+ "games": [
+  {
+   "gamePk": 824787,
+   "away": "TOR",
+   "home": "BAL",
+   "pAway": 0.4545
+  },
+  {
+   "gamePk": 824221,
+   "away": "WSH",
+   "home": "DET",
+   "pAway": 0.4545
+  },
+  {
+   "gamePk": 823169,
+   "away": "MIN",
+   "home": "SF",
+   "pAway": 0.4706
+  }
+ ],
+ "recorded": "2026-09-21T16:59:00.918365+00:00"
+}
