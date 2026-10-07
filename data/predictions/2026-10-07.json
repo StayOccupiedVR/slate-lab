@@ -1,0 +1,33 @@
+{
+ "generated": "2026-10-07T17:50:00.155674Z",
+ "sport": "mlb",
+ "model": "gbdt",
+ "trainRows": 8490,
+ "games": [
+  {
+   "gamePk": 849833,
+   "away": "CLE",
+   "home": "CWS",
+   "pAway": 0.4422
+  },
+  {
+   "gamePk": 849822,
+   "away": "LAD",
+   "home": "ATL",
+   "pAway": 0.5475
+  },
+  {
+   "gamePk": 849838,
+   "away": "TB",
+   "home": "NYY",
+   "pAway": 0.4391
+  },
+  {
+   "gamePk": 849827,
+   "away": "MIL",
+   "home": "SD",
+   "pAway": 0.5402
+  }
+ ],
+ "recorded": "2026-10-07T17:50:01.508313+00:00"
+}
