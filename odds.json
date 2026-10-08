@@ -1,5 +1,5 @@
 {
- "captured": "20261008T073553Z",
+ "captured": "20261008T203213Z",
  "games": [
   {
    "away_id": 114,
@@ -18,8 +18,8 @@
      "ml_home": -105
     },
     "fanduel": {
-     "ml_away": -120,
-     "ml_home": 102
+     "ml_away": -112,
+     "ml_home": -104
     }
    }
   },
@@ -32,12 +32,16 @@
    "ml_home": -113,
    "books": {
     "fanduel": {
-     "ml_away": -108,
-     "ml_home": -108
+     "ml_away": -102,
+     "ml_home": -116
     },
     "draftkings": {
      "ml_away": -106,
      "ml_home": -113
+    },
+    "hardrockbet": {
+     "ml_away": -110,
+     "ml_home": -110
     }
    }
   }
