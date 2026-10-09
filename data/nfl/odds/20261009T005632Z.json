@@ -1,0 +1,593 @@
+{
+ "captured": "20261009T005632Z",
+ "events": [
+  {
+   "commence": "2026-10-09T00:15:55Z",
+   "away_id": "TB",
+   "home_id": "DAL",
+   "away": "Tampa Bay Buccaneers",
+   "home": "Dallas Cowboys",
+   "books": {
+    "draftkings": {
+     "ml_away": 258,
+     "ml_home": -366,
+     "spread_home": -6.5
+    },
+    "fanduel": {
+     "ml_away": 280,
+     "ml_home": -390,
+     "spread_home": -6.5
+    },
+    "hardrockbet": {
+     "ml_away": 250,
+     "ml_home": -375,
+     "spread_home": -6.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T13:30:00Z",
+   "away_id": "PHI",
+   "home_id": "JAX",
+   "away": "Philadelphia Eagles",
+   "home": "Jacksonville Jaguars",
+   "books": {
+    "draftkings": {
+     "ml_away": 300,
+     "ml_home": -380,
+     "spread_home": -7.5
+    },
+    "fanduel": {
+     "ml_away": 310,
+     "ml_home": -390,
+     "spread_home": -7.5
+    },
+    "hardrockbet": {
+     "ml_away": 300,
+     "ml_home": -375,
+     "spread_home": -7.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "CHI",
+   "home_id": "GB",
+   "away": "Chicago Bears",
+   "home": "Green Bay Packers",
+   "books": {
+    "draftkings": {
+     "ml_away": -130,
+     "ml_home": 110,
+     "spread_home": 2.5
+    },
+    "fanduel": {
+     "ml_away": -124,
+     "ml_home": 106,
+     "spread_home": 1.5
+    },
+    "hardrockbet": {
+     "ml_away": -125,
+     "ml_home": 105,
+     "spread_home": 1.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "CIN",
+   "home_id": "MIA",
+   "away": "Cincinnati Bengals",
+   "home": "Miami Dolphins",
+   "books": {
+    "draftkings": {
+     "ml_away": -325,
+     "ml_home": 260,
+     "spread_home": 6.5
+    },
+    "fanduel": {
+     "ml_away": -320,
+     "ml_home": 260,
+     "spread_home": 6.5
+    },
+    "hardrockbet": {
+     "ml_away": -325,
+     "ml_home": 260,
+     "spread_home": 6.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "CLE",
+   "home_id": "NYJ",
+   "away": "Cleveland Browns",
+   "home": "New York Jets",
+   "books": {
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -135,
+     "spread_home": -2.5
+    },
+    "fanduel": {
+     "ml_away": 114,
+     "ml_home": -134,
+     "spread_home": -1.5
+    },
+    "hardrockbet": {
+     "ml_away": 110,
+     "ml_home": -130,
+     "spread_home": -1.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "HOU",
+   "home_id": "TEN",
+   "away": "Houston Texans",
+   "home": "Tennessee Titans",
+   "books": {
+    "draftkings": {
+     "ml_away": -425,
+     "ml_home": 330,
+     "spread_home": 7.5
+    },
+    "fanduel": {
+     "ml_away": -390,
+     "ml_home": 310,
+     "spread_home": 7.5
+    },
+    "hardrockbet": {
+     "ml_away": -400,
+     "ml_home": 300,
+     "spread_home": 7.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "IND",
+   "home_id": "PIT",
+   "away": "Indianapolis Colts",
+   "home": "Pittsburgh Steelers",
+   "books": {
+    "draftkings": {
+     "ml_away": 124,
+     "ml_home": -148,
+     "spread_home": -2.5
+    },
+    "fanduel": {
+     "ml_away": 120,
+     "ml_home": -142,
+     "spread_home": -2.5
+    },
+    "hardrockbet": {
+     "ml_away": 125,
+     "ml_home": -145,
+     "spread_home": -2.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "LV",
+   "home_id": "NE",
+   "away": "Las Vegas Raiders",
+   "home": "New England Patriots",
+   "books": {
+    "draftkings": {
+     "ml_away": 164,
+     "ml_home": -198,
+     "spread_home": -3.5
+    },
+    "fanduel": {
+     "ml_away": 166,
+     "ml_home": -198,
+     "spread_home": -3.5
+    },
+    "hardrockbet": {
+     "ml_away": 160,
+     "ml_home": -195,
+     "spread_home": -3.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "MIN",
+   "home_id": "NO",
+   "away": "Minnesota Vikings",
+   "home": "New Orleans Saints",
+   "books": {
+    "draftkings": {
+     "ml_away": -142,
+     "ml_home": 120,
+     "spread_home": 2.5
+    },
+    "fanduel": {
+     "ml_away": -132,
+     "ml_home": 112,
+     "spread_home": 1.5
+    },
+    "hardrockbet": {
+     "ml_away": -135,
+     "ml_home": 115,
+     "spread_home": 2.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T17:00:00Z",
+   "away_id": "NYG",
+   "home_id": "WAS",
+   "away": "New York Giants",
+   "home": "Washington Commanders",
+   "books": {
+    "draftkings": {
+     "ml_away": 160,
+     "ml_home": -192,
+     "spread_home": -3.5
+    },
+    "fanduel": {
+     "ml_away": 166,
+     "ml_home": -198,
+     "spread_home": -3.5
+    },
+    "hardrockbet": {
+     "ml_away": 160,
+     "ml_home": -195,
+     "spread_home": -3.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T20:05:00Z",
+   "away_id": "DEN",
+   "home_id": "LAC",
+   "away": "Denver Broncos",
+   "home": "Los Angeles Chargers",
+   "books": {
+    "draftkings": {
+     "ml_away": -185,
+     "ml_home": 154,
+     "spread_home": 3.5
+    },
+    "fanduel": {
+     "ml_away": -180,
+     "ml_home": 152,
+     "spread_home": 3.5
+    },
+    "hardrockbet": {
+     "ml_away": -180,
+     "ml_home": 150,
+     "spread_home": 3.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T20:25:00Z",
+   "away_id": "DET",
+   "home_id": "ARI",
+   "away": "Detroit Lions",
+   "home": "Arizona Cardinals",
+   "books": {
+    "draftkings": {
+     "ml_away": -258,
+     "ml_home": 210,
+     "spread_home": 5.5
+    },
+    "fanduel": {
+     "ml_away": -235,
+     "ml_home": 194,
+     "spread_home": 5.5
+    },
+    "hardrockbet": {
+     "ml_away": -260,
+     "ml_home": 200,
+     "spread_home": 5.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-11T20:25:00Z",
+   "away_id": "SF",
+   "home_id": "SEA",
+   "away": "San Francisco 49ers",
+   "home": "Seattle Seahawks",
+   "books": {
+    "draftkings": {
+     "ml_away": 136,
+     "ml_home": -162,
+     "spread_home": -3.0
+    },
+    "fanduel": {
+     "ml_away": 146,
+     "ml_home": -174,
+     "spread_home": -3.0
+    },
+    "hardrockbet": {
+     "ml_away": 140,
+     "ml_home": -170,
+     "spread_home": -3.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-12T00:20:00Z",
+   "away_id": "BAL",
+   "home_id": "ATL",
+   "away": "Baltimore Ravens",
+   "home": "Atlanta Falcons",
+   "books": {
+    "draftkings": {
+     "ml_away": 142,
+     "ml_home": -170,
+     "spread_home": -3.0
+    },
+    "fanduel": {
+     "ml_away": 144,
+     "ml_home": -172,
+     "spread_home": -3.5
+    },
+    "hardrockbet": {
+     "ml_away": 145,
+     "ml_home": -175,
+     "spread_home": -3.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-13T00:15:00Z",
+   "away_id": "BUF",
+   "home_id": "LA",
+   "away": "Buffalo Bills",
+   "home": "Los Angeles Rams",
+   "books": {
+    "draftkings": {
+     "ml_away": 145,
+     "ml_home": -175,
+     "spread_home": -3.0
+    },
+    "fanduel": {
+     "ml_away": 148,
+     "ml_home": -176,
+     "spread_home": -3.5
+    },
+    "hardrockbet": {
+     "ml_away": 145,
+     "ml_home": -170,
+     "spread_home": -3.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-16T00:15:00Z",
+   "away_id": "SEA",
+   "home_id": "DEN",
+   "away": "Seattle Seahawks",
+   "home": "Denver Broncos",
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105,
+     "spread_home": 1.5
+    },
+    "fanduel": {
+     "ml_away": -138,
+     "ml_home": 118,
+     "spread_home": 2.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T13:30:00Z",
+   "away_id": "HOU",
+   "home_id": "JAX",
+   "away": "Houston Texans",
+   "home": "Jacksonville Jaguars",
+   "books": {
+    "draftkings": {
+     "ml_away": 145,
+     "ml_home": -175,
+     "spread_home": -3.0
+    },
+    "fanduel": {
+     "ml_away": 140,
+     "ml_home": -166,
+     "spread_home": -3.0
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T17:00:00Z",
+   "away_id": "CHI",
+   "home_id": "ATL",
+   "away": "Chicago Bears",
+   "home": "Atlanta Falcons",
+   "books": {
+    "draftkings": {
+     "ml_away": -125,
+     "ml_home": 105,
+     "spread_home": 1.5
+    },
+    "fanduel": {
+     "ml_away": -134,
+     "ml_home": 114,
+     "spread_home": 1.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T17:00:00Z",
+   "away_id": "BAL",
+   "home_id": "CLE",
+   "away": "Baltimore Ravens",
+   "home": "Cleveland Browns",
+   "books": {
+    "draftkings": {
+     "ml_away": -170,
+     "ml_home": 142,
+     "spread_home": 3.0
+    },
+    "fanduel": {
+     "ml_away": -190,
+     "ml_home": 160,
+     "spread_home": 3.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T17:00:00Z",
+   "away_id": "CAR",
+   "home_id": "PHI",
+   "away": "Carolina Panthers",
+   "home": "Philadelphia Eagles",
+   "books": {
+    "draftkings": {
+     "ml_away": 110,
+     "ml_home": -130,
+     "spread_home": -2.5
+    },
+    "fanduel": {
+     "ml_away": 104,
+     "ml_home": -122,
+     "spread_home": -1.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T17:00:00Z",
+   "away_id": "TEN",
+   "home_id": "IND",
+   "away": "Tennessee Titans",
+   "home": "Indianapolis Colts",
+   "books": {
+    "draftkings": {
+     "ml_away": 240,
+     "ml_home": -298,
+     "spread_home": -6.5
+    },
+    "fanduel": {
+     "ml_away": 245,
+     "ml_home": -300,
+     "spread_home": -6.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T17:00:00Z",
+   "away_id": "NYJ",
+   "home_id": "NE",
+   "away": "New York Jets",
+   "home": "New England Patriots",
+   "books": {
+    "draftkings": {
+     "ml_away": 270,
+     "ml_home": -340,
+     "spread_home": -7.0
+    },
+    "fanduel": {
+     "ml_away": 260,
+     "ml_home": -320,
+     "spread_home": -7.0
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T17:00:00Z",
+   "away_id": "NO",
+   "home_id": "NYG",
+   "away": "New Orleans Saints",
+   "home": "New York Giants",
+   "books": {
+    "draftkings": {
+     "ml_away": -118,
+     "ml_home": -102,
+     "spread_home": 1.5
+    },
+    "fanduel": {
+     "ml_away": -118,
+     "ml_home": 100,
+     "spread_home": 1.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T20:05:00Z",
+   "away_id": "ARI",
+   "home_id": "LA",
+   "away": "Arizona Cardinals",
+   "home": "Los Angeles Rams",
+   "books": {
+    "draftkings": {
+     "ml_away": 470,
+     "ml_home": -650,
+     "spread_home": -10.5
+    },
+    "fanduel": {
+     "ml_away": 490,
+     "ml_home": -670,
+     "spread_home": -11.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T20:25:00Z",
+   "away_id": "BUF",
+   "home_id": "LV",
+   "away": "Buffalo Bills",
+   "home": "Las Vegas Raiders",
+   "books": {
+    "draftkings": {
+     "ml_away": -230,
+     "ml_home": 190,
+     "spread_home": 4.5
+    },
+    "fanduel": {
+     "ml_away": -250,
+     "ml_home": 205,
+     "spread_home": 4.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-18T20:25:00Z",
+   "away_id": "LAC",
+   "home_id": "KC",
+   "away": "Los Angeles Chargers",
+   "home": "Kansas City Chiefs",
+   "books": {
+    "draftkings": {
+     "ml_away": 300,
+     "ml_home": -380,
+     "spread_home": -7.5
+    },
+    "fanduel": {
+     "ml_away": 350,
+     "ml_home": -450,
+     "spread_home": -7.5
+    }
+   }
+  },
+  {
+   "commence": "2026-10-20T00:15:00Z",
+   "away_id": "WAS",
+   "home_id": "SF",
+   "away": "Washington Commanders",
+   "home": "San Francisco 49ers",
+   "books": {
+    "draftkings": {
+     "ml_away": 330,
+     "ml_home": -425,
+     "spread_home": -7.5
+    },
+    "fanduel": {
+     "ml_away": 320,
+     "ml_home": -405,
+     "spread_home": -7.0
+    }
+   }
+  }
+ ]
+}
