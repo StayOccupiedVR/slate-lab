@@ -1,0 +1,16 @@
+{
+ "date": "2026-10-08",
+ "model": "gbdt",
+ "games": [
+  {
+   "date": "2026-10-08",
+   "gamePk": 849832,
+   "away": "CLE",
+   "home": "CWS",
+   "p_model": 0.5047,
+   "away_won": true,
+   "p_market": 0.5043297540699688,
+   "book": "draftkings"
+  }
+ ]
+}
