@@ -1,5 +1,5 @@
 {
- "captured": "20261010T015238Z",
+ "captured": "20261010T071940Z",
  "games": [
   {
    "away_id": 145,
@@ -19,7 +19,7 @@
     },
     "hardrockbet": {
      "ml_away": 115,
-     "ml_home": -140
+     "ml_home": -135
     }
    }
   },
