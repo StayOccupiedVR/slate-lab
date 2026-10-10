@@ -1,0 +1,47 @@
+{
+ "captured": "20261010T015238Z",
+ "events": [
+  {
+   "commence": "2026-10-11T00:01:00Z",
+   "away_id": 145,
+   "home_id": 114,
+   "away": "Chicago White Sox",
+   "home": "Cleveland Guardians",
+   "books": {
+    "fanduel": {
+     "ml_away": 118,
+     "ml_home": -138
+    },
+    "draftkings": {
+     "ml_away": 114,
+     "ml_home": -137
+    },
+    "hardrockbet": {
+     "ml_away": 115,
+     "ml_home": -140
+    }
+   }
+  },
+  {
+   "commence": "2026-10-12T00:00:00Z",
+   "away_id": 119,
+   "home_id": 158,
+   "away": "Los Angeles Dodgers",
+   "home": "Milwaukee Brewers",
+   "books": {
+    "fanduel": {
+     "ml_away": -104,
+     "ml_home": -112
+    },
+    "draftkings": {
+     "ml_away": -107,
+     "ml_home": -113
+    },
+    "hardrockbet": {
+     "ml_away": -105,
+     "ml_home": -115
+    }
+   }
+  }
+ ]
+}
