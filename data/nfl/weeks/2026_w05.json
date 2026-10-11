@@ -320,7 +320,15 @@
     "ml_home": -175,
     "captured": "20261007T001242Z"
    },
-   "revised": null,
+   "revised": {
+    "filed": "2026-10-11T17:56:57Z",
+    "reason": "qb_change",
+    "p_away": 0.5627,
+    "qb": {
+     "away": "Tyler Huntley",
+     "home": "Michael Penix Jr."
+    }
+   },
    "close": null,
    "result": null
   },
