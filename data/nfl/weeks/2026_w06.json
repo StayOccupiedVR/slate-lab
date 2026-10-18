@@ -67,7 +67,15 @@
     "ml_home": 136,
     "captured": "20261014T000001Z"
    },
-   "revised": null,
+   "revised": {
+    "filed": "2026-10-18T16:25:26Z",
+    "reason": "qb_change",
+    "p_away": 0.4462,
+    "qb": {
+     "away": "Caleb Williams",
+     "home": "Michael Penix Jr."
+    }
+   },
    "close": null,
    "result": null
   },
@@ -182,7 +190,15 @@
     "ml_home": -115,
     "captured": "20261014T000001Z"
    },
-   "revised": null,
+   "revised": {
+    "filed": "2026-10-18T16:25:26Z",
+    "reason": "qb_change",
+    "p_away": 0.944,
+    "qb": {
+     "away": "Bryce Young",
+     "home": "Tanner McKee"
+    }
+   },
    "close": null,
    "result": null
   },
