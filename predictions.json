@@ -1,14 +1,14 @@
 {
-  "generated": "2026-10-17T14:10:49.143197Z",
+  "generated": "2026-10-18T14:28:34.834276Z",
   "sport": "mlb",
   "model": "gbdt",
   "trainRows": 8490,
   "games": [
     {
-      "gamePk": 849816,
+      "gamePk": 849817,
       "away": "TB",
       "home": "CLE",
-      "pAway": 0.4936
+      "pAway": 0.5043
     }
   ]
 }
