@@ -1,25 +1,39 @@
 {
- "captured": "20261018T175230Z",
+ "captured": "20261019T002322Z",
  "games": [
   {
-   "away_id": 139,
-   "home_id": 114,
-   "commence": "2026-10-18T21:10:00Z",
+   "away_id": 114,
+   "home_id": 139,
+   "commence": "2026-10-19T21:00:00Z",
    "book": "draftkings",
-   "ml_away": -132,
-   "ml_home": 110,
+   "ml_away": 113,
+   "ml_home": -137,
    "books": {
     "draftkings": {
-     "ml_away": -132,
-     "ml_home": 110
-    },
+     "ml_away": 113,
+     "ml_home": -137
+    }
+   }
+  },
+  {
+   "away_id": 114,
+   "home_id": 139,
+   "commence": "2026-10-20T00:10:00Z",
+   "book": "draftkings",
+   "ml_away": 113,
+   "ml_home": -137,
+   "books": {
     "fanduel": {
-     "ml_away": -132,
-     "ml_home": 112
+     "ml_away": 118,
+     "ml_home": -138
     },
     "hardrockbet": {
-     "ml_away": -135,
-     "ml_home": 115
+     "ml_away": 115,
+     "ml_home": -135
+    },
+    "draftkings": {
+     "ml_away": 113,
+     "ml_home": -137
     }
    }
   }
