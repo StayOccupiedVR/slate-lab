@@ -1,10 +1,10 @@
 {
- "generated": "2026-10-18T14:25:07.587715+00:00",
- "n_games": 822,
+ "generated": "2026-10-19T17:23:42.381278+00:00",
+ "n_games": 823,
  "model_logloss": 0.6781,
- "model_accuracy": 0.5706,
- "n_with_odds": 707,
- "market_logloss": 0.6692,
+ "model_accuracy": 0.5711,
+ "n_with_odds": 708,
+ "market_logloss": 0.6691,
  "model_logloss_on_same": 0.6785,
  "disagreements": 150,
  "model_won_disagreements": 0.4733
