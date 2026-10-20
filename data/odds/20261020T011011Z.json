@@ -1,0 +1,26 @@
+{
+ "captured": "20261020T011011Z",
+ "events": [
+  {
+   "commence": "2026-10-20T00:10:00Z",
+   "away_id": 114,
+   "home_id": 139,
+   "away": "Cleveland Guardians",
+   "home": "Tampa Bay Rays",
+   "books": {
+    "fanduel": {
+     "ml_away": 600,
+     "ml_home": -1100
+    },
+    "hardrockbet": {
+     "ml_away": 550,
+     "ml_home": -950
+    },
+    "draftkings": {
+     "ml_away": 510,
+     "ml_home": -900
+    }
+   }
+  }
+ ]
+}
