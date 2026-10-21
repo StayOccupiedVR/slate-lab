@@ -1,0 +1,328 @@
+{
+ "season": 2026,
+ "week": 7,
+ "games": [
+  {
+   "game_id": "2026_07_NE_CHI",
+   "gameday": "2026-10-22",
+   "away": "NE",
+   "home": "CHI",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.5153,
+   "proj_home_margin": 0.5,
+   "qb_assumed": {
+    "away": "Drake Maye",
+    "home": "Caleb Williams"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 130,
+    "ml_home": -155,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_PIT_NO",
+   "gameday": "2026-10-25",
+   "away": "PIT",
+   "home": "NO",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.5253,
+   "proj_home_margin": -0.4,
+   "qb_assumed": {
+    "away": "Aaron Rodgers",
+    "home": "Tyler Shough"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -180,
+    "ml_home": 150,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_SF_ATL",
+   "gameday": "2026-10-25",
+   "away": "SF",
+   "home": "ATL",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.4853,
+   "proj_home_margin": -0.1,
+   "qb_assumed": {
+    "away": "Brock Purdy",
+    "home": "Michael Penix Jr."
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -175,
+    "ml_home": 145,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_CIN_BAL",
+   "gameday": "2026-10-25",
+   "away": "CIN",
+   "home": "BAL",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.8535,
+   "proj_home_margin": -10.1,
+   "qb_assumed": {
+    "away": "Joe Burrow",
+    "home": "Tyler Huntley"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 124,
+    "ml_home": -148,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_TB_CAR",
+   "gameday": "2026-10-25",
+   "away": "TB",
+   "home": "CAR",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.5755,
+   "proj_home_margin": -0.6,
+   "qb_assumed": {
+    "away": "Jalon Daniels",
+    "home": "Bryce Young"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 154,
+    "ml_home": -185,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_NYG_HOU",
+   "gameday": "2026-10-25",
+   "away": "NYG",
+   "home": "HOU",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.5583,
+   "proj_home_margin": 5.3,
+   "qb_assumed": {
+    "away": "J.J. McCarthy",
+    "home": "C.J. Stroud"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 400,
+    "ml_home": -535,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_IND_MIN",
+   "gameday": "2026-10-25",
+   "away": "IND",
+   "home": "MIN",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.1941,
+   "proj_home_margin": 10.7,
+   "qb_assumed": {
+    "away": "Daniel Jones",
+    "home": "Kyler Murray"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 235,
+    "ml_home": -290,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_MIA_NYJ",
+   "gameday": "2026-10-25",
+   "away": "MIA",
+   "home": "NYJ",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.8462,
+   "proj_home_margin": -8.8,
+   "qb_assumed": {
+    "away": "Malik Willis",
+    "home": "Geno Smith"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 190,
+    "ml_home": -230,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_CLE_TEN",
+   "gameday": "2026-10-25",
+   "away": "CLE",
+   "home": "TEN",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.5253,
+   "proj_home_margin": -0.4,
+   "qb_assumed": {
+    "away": "Deshaun Watson",
+    "home": "Cam Ward"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -125,
+    "ml_home": 105,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_DEN_ARI",
+   "gameday": "2026-10-25",
+   "away": "DEN",
+   "home": "ARI",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.6711,
+   "proj_home_margin": -4.2,
+   "qb_assumed": {
+    "away": "Bo Nix",
+    "home": "Jacoby Brissett"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -238,
+    "ml_home": 195,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_GB_DET",
+   "gameday": "2026-10-25",
+   "away": "GB",
+   "home": "DET",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.253,
+   "proj_home_margin": 7.4,
+   "qb_assumed": {
+    "away": "Jordan Love",
+    "home": "Jared Goff"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 136,
+    "ml_home": -162,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_LA_LV",
+   "gameday": "2026-10-25",
+   "away": "LA",
+   "home": "LV",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.5163,
+   "proj_home_margin": 0.4,
+   "qb_assumed": {
+    "away": "Matthew Stafford",
+    "home": "Kirk Cousins"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -225,
+    "ml_home": 185,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_KC_SEA",
+   "gameday": "2026-10-25",
+   "away": "KC",
+   "home": "SEA",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.3768,
+   "proj_home_margin": 3.2,
+   "qb_assumed": {
+    "away": "Patrick Mahomes",
+    "home": "Drew Lock"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 130,
+    "ml_home": -155,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_07_DAL_PHI",
+   "gameday": "2026-10-26",
+   "away": "DAL",
+   "home": "PHI",
+   "filed": "2026-10-21T17:57:59Z",
+   "model": "nfl-v1",
+   "p_away": 0.6447,
+   "proj_home_margin": -6.4,
+   "qb_assumed": {
+    "away": "Dak Prescott",
+    "home": "Jalen Hurts"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -225,
+    "ml_home": 185,
+    "captured": "20261020T233016Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  }
+ ]
+}
