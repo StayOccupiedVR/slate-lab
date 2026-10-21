@@ -1,21 +1,21 @@
 {
- "captured": "20261021T060856Z",
+ "captured": "20261021T190915Z",
  "games": [
   {
    "away_id": 139,
    "home_id": 158,
    "commence": "2026-10-24T00:00:00Z",
    "book": "draftkings",
-   "ml_away": 134,
-   "ml_home": -162,
+   "ml_away": 133,
+   "ml_home": -161,
    "books": {
     "fanduel": {
      "ml_away": 134,
      "ml_home": -158
     },
     "draftkings": {
-     "ml_away": 134,
-     "ml_home": -162
+     "ml_away": 133,
+     "ml_home": -161
     },
     "hardrockbet": {
      "ml_away": 135,
