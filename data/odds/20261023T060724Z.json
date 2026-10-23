@@ -1,0 +1,26 @@
+{
+ "captured": "20261023T060724Z",
+ "events": [
+  {
+   "commence": "2026-10-24T00:00:00Z",
+   "away_id": 139,
+   "home_id": 158,
+   "away": "Tampa Bay Rays",
+   "home": "Milwaukee Brewers",
+   "books": {
+    "fanduel": {
+     "ml_away": 164,
+     "ml_home": -196
+    },
+    "draftkings": {
+     "ml_away": 163,
+     "ml_home": -198
+    },
+    "hardrockbet": {
+     "ml_away": 155,
+     "ml_home": -190
+    }
+   }
+  }
+ ]
+}
