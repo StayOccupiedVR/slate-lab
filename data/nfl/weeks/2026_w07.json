@@ -297,7 +297,15 @@
     "ml_home": -155,
     "captured": "20261020T233016Z"
    },
-   "revised": null,
+   "revised": {
+    "filed": "2026-10-25T17:00:08Z",
+    "reason": "qb_change",
+    "p_away": 0.4303,
+    "qb": {
+     "away": "Patrick Mahomes",
+     "home": "Sam Darnold"
+    }
+   },
    "close": null,
    "result": null
   },
