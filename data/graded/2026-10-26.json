@@ -1,0 +1,16 @@
+{
+ "date": "2026-10-26",
+ "model": "gbdt",
+ "games": [
+  {
+   "date": "2026-10-26",
+   "gamePk": 849804,
+   "away": "MIL",
+   "home": "TB",
+   "p_model": 0.52,
+   "away_won": true,
+   "p_market": null,
+   "book": null
+  }
+ ]
+}
