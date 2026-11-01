@@ -44,7 +44,15 @@
     "ml_home": -185,
     "captured": "20261028T000706Z"
    },
-   "revised": null,
+   "revised": {
+    "filed": "2026-11-01T18:19:28Z",
+    "reason": "qb_change",
+    "p_away": 0.1171,
+    "qb": {
+     "away": "Lamar Jackson",
+     "home": "Josh Allen"
+    }
+   },
    "close": null,
    "result": null
   },
