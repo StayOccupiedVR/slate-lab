@@ -22,8 +22,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 160,
+    "ml_home": -192,
+    "captured": "20261028T000706Z"
+   },
+   "result": {
+    "away_score": 19.0,
+    "home_score": 27.0
+   }
   },
   {
    "game_id": "2026_08_BAL_BUF",
@@ -53,8 +61,16 @@
      "home": "Josh Allen"
     }
    },
-   "close": null,
-   "result": null
+   "close": {
+    "book": "fanduel",
+    "ml_away": 3000,
+    "ml_home": -50000,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 10.0,
+    "home_score": 36.0
+   }
   },
   {
    "game_id": "2026_08_TEN_CIN",
@@ -76,8 +92,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 123,
+    "ml_home": -166,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 36.0,
+    "home_score": 43.0
+   }
   },
   {
    "game_id": "2026_08_ARI_DAL",
@@ -99,8 +123,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "fanduel",
+    "ml_away": 2500,
+    "ml_home": -20000,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 33.0,
+    "home_score": 30.0
+   }
   },
   {
    "game_id": "2026_08_MIN_DET",
@@ -122,8 +154,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": -117,
+    "ml_home": -112,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 15.0,
+    "home_score": 19.0
+   }
   },
   {
    "game_id": "2026_08_IND_JAX",
@@ -145,8 +185,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 690,
+    "ml_home": -1340,
+    "captured": "20261101T181929Z"
+   },
+   "result": {
+    "away_score": 7.0,
+    "home_score": 42.0
+   }
   },
   {
    "game_id": "2026_08_LV_NYJ",
@@ -168,8 +216,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": -404,
+    "ml_home": 281,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 38.0,
+    "home_score": 33.0
+   }
   },
   {
    "game_id": "2026_08_CLE_PIT",
@@ -191,8 +247,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 141,
+    "ml_home": -188,
+    "captured": "20261101T181929Z"
+   },
+   "result": {
+    "away_score": 6.0,
+    "home_score": 27.0
+   }
   },
   {
    "game_id": "2026_08_ATL_TB",
@@ -214,8 +278,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 141,
+    "ml_home": -189,
+    "captured": "20261101T181929Z"
+   },
+   "result": {
+    "away_score": 0.0,
+    "home_score": 16.0
+   }
   },
   {
    "game_id": "2026_08_LAC_LA",
@@ -237,8 +309,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 235,
+    "ml_home": -290,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 9.0,
+    "home_score": 24.0
+   }
   },
   {
    "game_id": "2026_08_KC_DEN",
@@ -260,8 +340,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": -108,
+    "ml_home": -112,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 24.0,
+    "home_score": 28.0
+   }
   },
   {
    "game_id": "2026_08_NE_MIA",
@@ -283,8 +371,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": -345,
+    "ml_home": 275,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 24.0,
+    "home_score": 19.0
+   }
   },
   {
    "game_id": "2026_08_PHI_WAS",
@@ -306,8 +402,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 220,
+    "ml_home": -270,
+    "captured": "20261101T205017Z"
+   },
+   "result": {
+    "away_score": 10.0,
+    "home_score": 27.0
+   }
   },
   {
    "game_id": "2026_08_CHI_SEA",
@@ -329,8 +433,16 @@
     "captured": "20261028T000706Z"
    },
    "revised": null,
-   "close": null,
-   "result": null
+   "close": {
+    "book": "draftkings",
+    "ml_away": 140,
+    "ml_home": -166,
+    "captured": "20261102T020854Z"
+   },
+   "result": {
+    "away_score": 34.0,
+    "home_score": 17.0
+   }
   }
  ]
 }
