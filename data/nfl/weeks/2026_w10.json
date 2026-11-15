@@ -136,7 +136,15 @@
     "ml_home": -192,
     "captured": "20261111T005617Z"
    },
-   "revised": null,
+   "revised": {
+    "filed": "2026-11-15T19:17:45Z",
+    "reason": "qb_change",
+    "p_away": 0.5534,
+    "qb": {
+     "away": "Kyle McCord",
+     "home": "Daniel Jones"
+    }
+   },
    "close": null,
    "result": null
   },
