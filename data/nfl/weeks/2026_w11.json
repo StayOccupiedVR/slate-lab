@@ -159,7 +159,15 @@
     "ml_home": -1450,
     "captured": "20261118T023838Z"
    },
-   "revised": null,
+   "revised": {
+    "filed": "2026-11-22T20:13:43Z",
+    "reason": "qb_change",
+    "p_away": 0.4438,
+    "qb": {
+     "away": "Josh Johnson",
+     "home": "Patrick Mahomes"
+    }
+   },
    "close": null,
    "result": null
   },
