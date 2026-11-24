@@ -1,9 +1,9 @@
 {
  "season": 2026,
- "n": 86,
- "logloss": 0.686,
- "market_logloss": 0.5652,
- "clv_avg_pts": 1.84,
- "margin_mae": 10.96,
+ "n": 99,
+ "logloss": 0.6809,
+ "market_logloss": 0.5355,
+ "clv_avg_pts": 2.61,
+ "margin_mae": 10.81,
  "market_margin_mae": null
 }
