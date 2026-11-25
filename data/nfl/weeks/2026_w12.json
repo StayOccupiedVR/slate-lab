@@ -1,0 +1,374 @@
+{
+ "season": 2026,
+ "week": 12,
+ "games": [
+  {
+   "game_id": "2026_12_GB_LA",
+   "gameday": "2026-11-25",
+   "away": "GB",
+   "home": "LA",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.4587,
+   "proj_home_margin": 5.1,
+   "qb_assumed": {
+    "away": "Jordan Love",
+    "home": "Matthew Stafford"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 114,
+    "ml_home": -134,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_CHI_DET",
+   "gameday": "2026-11-26",
+   "away": "CHI",
+   "home": "DET",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.5382,
+   "proj_home_margin": -0.3,
+   "qb_assumed": {
+    "away": "Caleb Williams",
+    "home": "Jared Goff"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -121,
+    "ml_home": 102,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_PHI_DAL",
+   "gameday": "2026-11-26",
+   "away": "PHI",
+   "home": "DAL",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.4722,
+   "proj_home_margin": 7.0,
+   "qb_assumed": {
+    "away": "Joe Milton III",
+    "home": "Dak Prescott"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 364,
+    "ml_home": -470,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_KC_BUF",
+   "gameday": "2026-11-26",
+   "away": "KC",
+   "home": "BUF",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.5079,
+   "proj_home_margin": -0.2,
+   "qb_assumed": {
+    "away": "Patrick Mahomes",
+    "home": "Josh Allen"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 126,
+    "ml_home": -149,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_DEN_PIT",
+   "gameday": "2026-11-27",
+   "away": "DEN",
+   "home": "PIT",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.6161,
+   "proj_home_margin": -3.4,
+   "qb_assumed": {
+    "away": "Bo Nix",
+    "home": "Mason Rudolph"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -157,
+    "ml_home": 132,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_NO_CIN",
+   "gameday": "2026-11-29",
+   "away": "NO",
+   "home": "CIN",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.4716,
+   "proj_home_margin": 8.6,
+   "qb_assumed": {
+    "away": "Tyler Shough",
+    "home": "Joe Burrow"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 447,
+    "ml_home": -600,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_BAL_HOU",
+   "gameday": "2026-11-29",
+   "away": "BAL",
+   "home": "HOU",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.2922,
+   "proj_home_margin": 10.2,
+   "qb_assumed": {
+    "away": "Jacoby Brissett",
+    "home": "C.J. Stroud"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 264,
+    "ml_home": -328,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_NYG_IND",
+   "gameday": "2026-11-29",
+   "away": "NYG",
+   "home": "IND",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.5102,
+   "proj_home_margin": -6.1,
+   "qb_assumed": {
+    "away": "J.J. McCarthy",
+    "home": "Anthony Richardson"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -311,
+    "ml_home": 252,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_TEN_JAX",
+   "gameday": "2026-11-29",
+   "away": "TEN",
+   "home": "JAX",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.3983,
+   "proj_home_margin": 15.2,
+   "qb_assumed": {
+    "away": "Cam Ward",
+    "home": "Trevor Lawrence"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 780,
+    "ml_home": -1280,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_NYJ_MIA",
+   "gameday": "2026-11-29",
+   "away": "NYJ",
+   "home": "MIA",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.5673,
+   "proj_home_margin": -3.5,
+   "qb_assumed": {
+    "away": "Geno Smith",
+    "home": "Kyle McCord"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -195,
+    "ml_home": 164,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_ATL_MIN",
+   "gameday": "2026-11-29",
+   "away": "ATL",
+   "home": "MIN",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.7808,
+   "proj_home_margin": -0.2,
+   "qb_assumed": {
+    "away": "Michael Penix Jr.",
+    "home": "Kirk Cousins"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 265,
+    "ml_home": -328,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_NE_LAC",
+   "gameday": "2026-11-29",
+   "away": "NE",
+   "home": "LAC",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.8486,
+   "proj_home_margin": -12.5,
+   "qb_assumed": {
+    "away": "Drake Maye",
+    "home": "Justin Herbert"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -104,
+    "ml_home": -113,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_WAS_ARI",
+   "gameday": "2026-11-29",
+   "away": "WAS",
+   "home": "ARI",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.617,
+   "proj_home_margin": -8.3,
+   "qb_assumed": {
+    "away": "Jayden Daniels",
+    "home": "Gardner Minshew"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": -348,
+    "ml_home": 279,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_SEA_SF",
+   "gameday": "2026-11-29",
+   "away": "SEA",
+   "home": "SF",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.8232,
+   "proj_home_margin": -4.2,
+   "qb_assumed": {
+    "away": "Sam Darnold",
+    "home": "Brock Purdy"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 151,
+    "ml_home": -179,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_LV_CLE",
+   "gameday": "2026-11-29",
+   "away": "LV",
+   "home": "CLE",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.1755,
+   "proj_home_margin": 9.0,
+   "qb_assumed": {
+    "away": "Fernando Mendoza",
+    "home": "Deshaun Watson"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 182,
+    "ml_home": -219,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  },
+  {
+   "game_id": "2026_12_CAR_TB",
+   "gameday": "2026-11-30",
+   "away": "CAR",
+   "home": "TB",
+   "filed": "2026-11-25T22:18:44Z",
+   "model": "nfl-v1",
+   "p_away": 0.5177,
+   "proj_home_margin": 2.0,
+   "qb_assumed": {
+    "away": "Bryce Young",
+    "home": "Baker Mayfield"
+   },
+   "line_at_file": {
+    "book": "draftkings",
+    "ml_away": 131,
+    "ml_home": -155,
+    "captured": "20261125T035020Z"
+   },
+   "revised": null,
+   "close": null,
+   "result": null
+  }
+ ]
+}
